@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Locação de Veiculos - Cadastro de Usuario</title>
+<!-- CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css"
+	rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+</head>
+<body>
+	<header>
+		<!-- Navbar -->
+		<nav class="navbar navbar-light bg-light">
+			<a class="navbar-brand mb-0 h1" style="font-weight: bold;" href="#">SLV
+				- Sistema de Locação de Veiculos</a>
+		</nav>
+	</header>
+	
+	<th:block th:include="usuario/mensagemValidacao"></th:block>
+	<section>
+		<div class="container"
+			style="width: 60%; padding-bottom: 30px; margin-top: 30px;">
+			<div>
+				<form method="POST">
+					<div class="form-group">
+						Nome <input type="text" class="form-control" value="" name="nome"
+							placeholder="Nome *">
+					</div>
+					<div class="form-group">
+						Email <input type="email" class="form-control" value=""
+							name="email" placeholder="Email *">
+					</div>
+					<div class="form-group">
+						Senha <input type="password" class="form-control" value=""
+							name="senha" placeholder="Senha *">
+					</div>
+					<button type="submit" class="btn btn-primary"
+						style="margin-top: 10px;">Cadastrar</button>
+					<a href="/home" class="btn btn-light" role="button"
+						style="margin-top: 10px;">Cancelar</a>
+				</form>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

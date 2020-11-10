@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Locação de Veiculos - Login</title>
+<!-- CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css"
+	rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+</head>
+<body>
+	<header>
+		<!-- Navbar -->
+		<nav class="navbar navbar-light bg-light">
+			<a class="navbar-brand mb-0 h1" style="font-weight: bold;" href="#">SLV
+				- Sistema de Locação de Veiculos</a>
+		</nav>
+	</header>
+
+	<section>
+		<div class="container"
+			style="width: 60%; padding-bottom: 30px; margin-top: 30px;">
+			<div th:if="${param.error}">
+				<div class="alert alert-danger">Usuário e/ou inválidos!</div>
+			</div>
+			<div>
+				<form th:action="@{/login}" method="post">
+					<div class="form-group">
+						Email <input type="email" class="form-control" value=""
+							name="username" placeholder="Email *">
+					</div>
+
+					<div class="form-group">
+						Senha <input type="password" class="form-control" value=""
+							name="password" placeholder="Senha *">
+					</div>
+
+					<button type="submit" class="btn btn-primary"
+						style="margin-top: 10px;">Entrar</button>
+
+				</form>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
