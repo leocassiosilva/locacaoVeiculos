@@ -71,7 +71,8 @@ public class VeiculoController {
 				System.out.println("Renomedo: -> New name: " + arq);
 				uploadedFile.transferTo(arq2);
 
-				dado = (arq2.getName());
+				dado = ("C:\\Users\\Leocassio\\Documents\\workspace-spring-tool-suite-4-4.8.1.RELEASE\\locacao-veiculo-master\\uploadingDir\\" + arq2.getName());
+				System.out.println(dado);
 				Arquivo aquivo1 = new Arquivo(dado, veiculo);
 
 				arquivoService.save(aquivo1);
@@ -91,10 +92,10 @@ public class VeiculoController {
 
 		String toReturn = null;
 		try {
-			MessageDigest digest = MessageDigest.getInstance("SHA-512");
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
 			digest.reset();
 			digest.update(input.getBytes("utf8"));
-			toReturn = String.format("%0128x", new BigInteger(1, digest.digest()));
+			toReturn = String.format("%064x", new BigInteger(1, digest.digest()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
