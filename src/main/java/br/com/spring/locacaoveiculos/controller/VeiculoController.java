@@ -67,7 +67,6 @@ public class VeiculoController {
 				String hahs = getSHA512(uploadedFile.getOriginalFilename());
 				File arq = new File(file, uploadedFile.getOriginalFilename());
 				File arq2 = new File(file, data + "_" + hahs + ".jpg");
-				// boolean statusRename = arq.renameTo(arq2);
 				System.out.println("Renomedo:  -> New name: " + arq2);
 				System.out.println("Renomedo: -> New name: " + arq);
 				uploadedFile.transferTo(arq2);
@@ -85,34 +84,7 @@ public class VeiculoController {
 		return "redirect:/veiculo/cadastrar";
 	}
 
-	public static String enviarDiretorio(MultipartFile[] uploadingFiles) {
-
-		String dado = null;
-
-		for (MultipartFile uploadedFile : uploadingFiles) {
-
-			try {
-				String data = formataDados();
-				File file = new File(uploadingDir);
-				String hahs = getSHA512(uploadedFile.getOriginalFilename());
-				File arq = new File(file, uploadedFile.getOriginalFilename());
-				File arq2 = new File(file, data + "_" + hahs + ".jpg");
-				// boolean statusRename = arq.renameTo(arq2);
-				System.out.println("Renomedo:  -> New name: " + arq2);
-				System.out.println("Renomedo: -> New name: " + arq);
-				uploadedFile.transferTo(arq2);
-
-				dado = (arq2.getName());
-
-			} catch (IllegalStateException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
-		return dado;
-
-	}
+	
 
 	/* Metodo para gerar a Hash */
 	public static String getSHA512(String input) {
