@@ -45,7 +45,7 @@ public class VeiculoController {
 	@Autowired
 	private ArquivoService arquivoService;
 
-	public static final String uploadingDir = System.getProperty("user.dir") + "/uploadingDir/";
+	public static final String uploadingDir = System.getProperty("user.dir") + "/src/main/resources/imagens/";
 
 	@GetMapping(value = "/newVeiculo")
 	public String form(Veiculo veiculo) {
@@ -71,7 +71,7 @@ public class VeiculoController {
 				System.out.println("Renomedo: -> New name: " + arq);
 				uploadedFile.transferTo(arq2);
 
-				dado = ("C:\\Users\\Leocassio\\Documents\\workspace-spring-tool-suite-4-4.8.1.RELEASE\\locacao-veiculo-master\\uploadingDir\\" + arq2.getName());
+				dado = ("C:\\Users\\Leocassio\\Documents\\workspace-spring-tool-suite-4-4.8.1.RELEASE\\locacao-veiculo-master\\src\\main\\resources\\" + arq2.getName());
 				System.out.println(dado);
 				Arquivo aquivo1 = new Arquivo(dado, veiculo);
 
