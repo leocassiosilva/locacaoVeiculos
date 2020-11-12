@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/bootstrap/**");
+		web.ignoring().antMatchers("/bootstrap/**", "/img/**", "/uploadingDir/**");
 //	        web.ignoring().antMatchers("/bootstrap/**", "/style/**");
 	}
 	
