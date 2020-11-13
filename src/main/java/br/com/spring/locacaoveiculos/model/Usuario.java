@@ -24,8 +24,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Usuario implements UserDetails, Serializable {
 	
 	
-
-	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // Sever para geração dos id automaticos
