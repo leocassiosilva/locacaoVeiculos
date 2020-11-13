@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
-<title>Locação de Veiculos - Cadastro de Usuario</title>
+<title>Locação de Veiculos - Home</title>
 <!-- CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
@@ -19,25 +19,381 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
 <link rel="stylesheet" href="/css/home.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="/css/carrosel.css">
 </head>
-<body>
-	<!-- Navigation Bar -->
-	<div class="w3-bar w3-white w3-large">
-		<a href="#" class="w3-bar-item w3-button w3-red w3-mobile"><i
-			class="fa fa-car"></i> SLV</a> <a href="#about"
-			class="w3-bar-item w3-button w3-mobile">Requisitos</a> <a
-			href="#rooms" class="w3-bar-item w3-button w3-mobile">Veículos</a> <a
-			href="#contact" class="w3-bar-item w3-button w3-mobile">Contato</a> <a
-			href="../../index.html"
-			class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">Área
-			do cliente</a>
+<body class="w3-light-grey">
+	<!-- <nav class="navbar navbar-light" style="background-color: #0275df;">
+		 Navbar content 	</nav>
+-->
+	<nav class="navbar navbar-expand-lg navbar-dark w3-large"
+		style="background-color: #0275df;">
+		<a class="navbar-brand" href="#"> SLV</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="#">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item active"><a class="nav-link" href="#">Requisitos</a></li>
+				<li class="nav-item active"><a class="nav-link" href="#">Veiculos</a></li>
+				<li class="nav-item active"><a class="nav-link" href="#">Contatos</a></li>
+			</ul>
+			<div class="form-inline my-2 my-lg-0">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a class="nav-link" href="#">Área
+							do cliente</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+
+		<!-- Header -->
+		<header class="w3-display-container w3-content"
+			style="max-width: 1200px;">
+			<img class="w3-image" src="/imagens/cm2.png"
+				style="max-width: 1250px;">
+			<div class="w3-display-left w3-padding w3-col l6 m4">
+				<div class="w3-container w3-red">
+					<h2>
+						<i class="fa fa-car"></i> Locadora SLV
+					</h2>
+				</div>
+				<div class="w3-container w3-white w3-padding-16">
+					<form action="/action_page.php" target="_blank">
+						<div class="w3-row-padding" style="margin: 0 -16px;">
+							<div class="w3-half w3-margin-bottom">
+								<label><i class="fa fa-calendar-o"></i> Retirar</label> <input
+									class="w3-input w3-border" type="text" placeholder="DD MM YYYY"
+									name="CheckIn" required>
+							</div>
+							<div class="w3-half">
+								<label><i class="fa fa-calendar-o"></i> Devolução</label> <input
+									class="w3-input w3-border" type="text" placeholder="DD MM YYYY"
+									name="CheckOut" required>
+							</div>
+						</div>
+						<div class="w3-row-padding" style="margin: 8px -16px;">
+							<div class="w3-half w3-margin-bottom">
+								<label><i class="fa fa-clock-o"></i> Hora de Retirada</label> <input
+									class="w3-input w3-border" type="time" placeholder="00:00"
+									name="hora">
+							</div>
+							<div class="w3-half">
+								<label><i class="fa fa-clock-o"></i> Hora de Devolução</label> <input
+									class="w3-input w3-border" type="time" placeholder="00:00"
+									name="hora">
+							</div>
+						</div>
+						<button class="w3-button w3-dark-grey" type="submit">
+							<i class="fa fa-search w3-margin-right"></i>Buscar
+						</button>
+					</form>
+				</div>
+			</div>
+		</header>
 	</div>
 
-	<h1>Nossa View!</h1>
+	<div class="btn-topo" style="margin: 32px 0;" id="about">
+		<h3>Requisitos para aluguel de carros e motos</h3>
+		<div class="w3-row-padding w3-padding-16">
+			<div class="w3-third w3-margin-bottom">
+				<div class="w3-container w3-white">
+					<h1>
+						<i class="fa fa-id-card"></i>
+					</h1>
+					<h3>Idade e tempo de carteira</h3>
+					<p>
+						O responsável pela locação </br> deve ter 21 anos completos, </br> ser
+						habilitado há pelo menos </br> 2 anos, e portar CNH dentro </br> da validade
+						(se vencida, mesmo </br> dentro dos 30 dias permitidos </br> pelo DETRAN,
+						não é aceita). </br> Em alguns casos, dependendo </br> da locadora essa
+						regra pode </br> ser flexibilizada, mantenha </br> contato com nossa equipe.
+					</p>
+				</div>
+			</div>
 
+			<div class="w3-third w3-margin-bottom">
+				<div class="w3-container w3-white">
+					<h1>
+						<i class="fa fa-user-o"></i>
+					</h1>
+					<h3>Documentos originais</h3>
+					<p>
+						É preciso apresentar CNH original, </br>nela constam também CPF e RG,
+						ideal </br>ter em mãos.Em alguns casos é </br>solicitado apresentar
+						comprovante </br>de residência atualizado.
+					</p>
+					</br> </br> </br> </br> </br> </br>
+				</div>
+			</div>
+
+			<div class="w3-third w3-margin-bottom">
+				<div class="w3-container w3-white">
+					<h1>
+						<i class="fa fa-credit-card"></i>
+					</h1>
+					<h3>Cartão de crédito</h3>
+					<p>
+						Portar cartão de crédito </br>emitido por banco, e de </br>titularidade
+						própria, com </br>limite disponível para o </br>bloqueio da caução.Algumas </br>locadoras
+						aceitam cartões </br>emitidos por lojas ou </br>financeiras, consulte </br>exceções.
+					</p>
+					</br> </br>
+				</div>
+			</div>
+
+			<div class="w3-third w3-margin-bottom">
+				<div class="w3-container w3-white">
+					<h1>
+						<i class="fa fa-check"></i>
+					</h1>
+					<h3>CPF sem restrição</h3>
+					<p>
+						As empresas de locação </br>consultam o CPF do locatário, </br>e não liberam
+						o carro em caso </br>de apontamentos. Isso também se </br>aplica aos
+						condutores adicionais. </br>Algumas locadoras, desde que todos </br>os
+						outros requisitos sejam respeitados, </br>dependendo da restrição,
+						liberam a </br>locação. Fale com nossa equipe e </br>saiba quais.
+					</p>
+					</br>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- Page content -->
+	<div class="w3-content" style="max-width: 1532px;">
+		<div class="w3-container w3-margin-top" id="rooms">
+			<h2>Veículos</h2>
+			<p>
+			<h4>Sinta o conforto é o nosso slogan. Oferecemos os melhores
+				veículos de acordo com seu dinheiro. Dirija ou pilote bem no
+				conforto.</h4>
+			</p>
+		</div>
+		<div class="w3-panel w3-red w3-leftbar w3-padding-32">
+			<div class="w3-row-padding w3-padding-16">
+				<div class="w3-third w3-margin-bottom">
+					<img src="/imagens/gol.png" alt="Norway" style="width: 89.9%">
+					<div class="w3-container w3-white">
+						<h3>Veículo Normal</h3>
+						<h5 class="w3-opacity">R$ 100,00</h5>
+						<p>+Seguro</p>
+						<p>R$ 10,00</p>
+						<p class="w3-large">
+							<i class="fa fa-credit-card"></i> <i class="fa fa-money"></i>
+						</p>
+						<a href="carrosNormal.html"
+							class="w3-button w3-block w3-black w3-margin-bottom">Escolha
+							Veículo</a>
+					</div>
+				</div>
+				<div class="w3-third w3-margin-bottom">
+					<img src="/imagens/fiat.png" alt="Norway" style="width: 97%">
+					<div class="w3-container w3-white">
+						<h3>Veículo VIP</h3>
+						<h5 class="w3-opacity">R$ 250,00</h5>
+						<p>+Seguro</p>
+						<p>R$ 20,00</p>
+						<p class="w3-large">
+							<i class="fa fa-credit-card"></i> <i class="fa fa-money"></i>
+						</p>
+						<a href="carrosVIP.html"
+							class="w3-button w3-block w3-black w3-margin-bottom">Escolha
+							Veículo</a>
+					</div>
+				</div>
+				<div class="w3-third w3-margin-bottom">
+					<img src="/imagens/moto.png" alt="Norway" style="width: 90%">
+					<div class="w3-container w3-white">
+						<h3>Moto Normal</h3>
+						<h5 class="w3-opacity">R$ 50,00</h5>
+						<p>+Seguro</p>
+						<p>R$ 10,00</p>
+						<p class="w3-large">
+							<i class="fa fa-credit-card"></i> <i class="fa fa-money"></i>
+						</p>
+						<a href="motoNormal.html"
+							class="w3-button w3-block w3-black w3-margin-bottom">Escolha
+							Moto</a>
+					</div>
+				</div>
+				<div class="w3-third w3-margin-bottom">
+					<img src="imagens/moto1.png" alt="Norway" style="width: 85%">
+					<div class="w3-container w3-white">
+						<h3>Moto VIP</h3>
+						<h5 class="w3-opacity">R$ 150,00</h5>
+						<p>+Seguro</p>
+						<p>R$ 20,00</p>
+						<p class="w3-large">
+							<i class="fa fa-credit-card"></i> <i class="fa fa-money"></i>
+						</p>
+						<a href="motoVIP.html"
+							class="w3-button w3-block w3-black w3-margin-bottom">Escolha
+							Moto</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="btn-ctg">
+			<h2>As categorias preferidas</h2>
+		</div>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+				<li data-target="#myCarousel" data-slide-to="3"></li>
+				<li data-target="#myCarousel" data-slide-to="4"></li>
+				<li data-target="#myCarousel" data-slide-to="5"></li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="/imagens/moto.png" alt="Norway" style="width: 31%">
+					<div class="carousel-caption">
+						<h3>CG</h3>
+						<p>Moto com o melhor conforto da categoria normal.</p>
+					</div>
+				</div>
+
+				<div class="item">
+					<img src="/imagens/toro.png" alt="Chicago" style="width: 31%">
+					<div class="carousel-caption">
+						<h3>Pickup Compacta</h3>
+						<p>
+							Possuem cabine dupla, acomodam até 5 passageiros, </br>contam com
+							motorização a partir de 1.6 e câmbio automático. </br>São veículos
+							flex e a caçamba acomoda uma boa quantidade de </br>bagagem/carga.
+							Ideais para todos os tipos de utilização.
+						</p>
+					</div>
+				</div>
+
+				<div class="item">
+					<img src="/imagens/cb.png" alt="New York" style="width: 32.4%">
+					<div class="carousel-caption">
+						<h3>CB</h3>
+						<p>Conforto, seguraçã e desempenho.</p>
+					</div>
+				</div>
+
+				<div class="item">
+					<img src="/imagens/s.png" alt="New York" style="width: 34.5%">
+					<div class="carousel-caption">
+						<h3>Pickup</h3>
+						<p>
+							São veículos de grande porte, cabine dupla e motor potente. </br>Acomodam
+							até 5 pessoas com muito conforto. Versões à gasolina ou diesel </br>(verifique
+							no momento da reserva). Oferecem amplo espaço para transporte </br>de
+							bagagens/carga. Indicados para qualquer utilização.
+						</p>
+					</div>
+				</div>
+
+				<div class="item">
+					<img src="/imagens/xre.png" alt="New York" style="width: 30.4%">
+					<div class="carousel-caption">
+						<h3>XRE</h3>
+						<p>Conforto, seguraçã e desempenho em estrada carrosal.</p>
+					</div>
+				</div>
+
+				<div class="item">
+					<img src="/imagens/gol.png" alt="New York" style="width: 31%">
+					<div class="carousel-caption">
+						<h3>Econômico</h3>
+						<p>
+							É a categoria mais reservada, seja por ter preço mais acessível
+							ou pela economia de combustível. </br>São hatchback, com porta-malas
+							integrado e reduzido. Acomodam até 5 pessoas (ideal 4). Em geral
+							</br>possuem motor com menor potência. Indicados para quem vai rodar
+							na cidade.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				<span class="sr-only">Previous</span>
+			</a> <a class="right carousel-control" href="#myCarousel"
+				data-slide="next"> <span class="sr-only">Next</span>
+			</a>
+		</div>
+
+		<div class="w3-container" id="contact">
+			<h2>Contato</h2>
+			<p>Se você tiver alguma dúvida, não hesite em perguntar.</p>
+			<i class="fa fa-map-marker w3-text-red" style="width: 30px"></i> Pau
+			dos Feros, RN<br> <i class="fa fa-phone w3-text-red"
+				style="width: 30px"></i> Phone: (84) 99814-2536<br> <i
+				class="fa fa-envelope w3-text-red" style="width: 30px"> </i> Email:
+			locadorafl@gmail.com<br>
+			<form action="/action_page.php" target="_blank">
+				<p>
+					<input class="w3-input w3-padding-16 w3-border" type="text"
+						placeholder="Name" required name="Name">
+				</p>
+				<p>
+					<input class="w3-input w3-padding-16 w3-border" type="text"
+						placeholder="Email" required name="Email">
+				</p>
+				<p>
+					<input class="w3-input w3-padding-16 w3-border" type="text"
+						placeholder="Message" required name="Message">
+				</p>
+				<p>
+					<button class="w3-button w3-black w3-padding-large" type="submit">Enviar</button>
+				</p>
+			</form>
+		</div>
+
+		<!-- End page content -->
+	</div>
+
+	<!-- Footer -->
+	<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
+		<div class="w3-xlarge w3-padding-16">
+			<i class="fa fa-facebook-official w3-hover-opacity"></i> <i
+				class="fa fa-instagram w3-hover-opacity"></i> <i
+				class="fa fa-snapchat w3-hover-opacity"></i> <i
+				class="fa fa-pinterest-p w3-hover-opacity"></i> <i
+				class="fa fa-twitter w3-hover-opacity"></i> <i
+				class="fa fa-linkedin w3-hover-opacity"></i>
+		</div>
+		<p>
+			Felipe Gabriel </br>Francisco Leocacio
+		</p>
+	</footer>
+
+
+
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/webjars/jquery/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
@@ -45,7 +401,6 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<!-- To use this code on your website, get a free API key from Google. Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp -->
 </body>
 </html>
 
