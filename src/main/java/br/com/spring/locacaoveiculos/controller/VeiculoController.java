@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -59,8 +60,10 @@ public class VeiculoController {
 	}
 
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
-	public String salvarVeiculo(@RequestParam("uploadingFiles") MultipartFile[] uploadingFiles, Veiculo veiculo) {
-
+	public String salvarVeiculo(Veiculo veiculo, @RequestParam("uploadingFiles") MultipartFile[] uploadingFiles) {
+		
+		System.out.println(veiculo.getCategoria().getNome());
+		
 		veiculoService.save(veiculo);
 		System.out.println(veiculo.getId());
 		String dado = null;
@@ -128,7 +131,6 @@ public class VeiculoController {
 
 	@ModelAttribute("tipos")
 	public List<Tipo> listaDeTipos() {
-		// System.out.println("Ola" + "");
 		return tipoService.buscarTodosTipos();
 	}
 	

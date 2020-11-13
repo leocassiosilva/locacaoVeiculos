@@ -1,6 +1,7 @@
 package br.com.spring.locacaoveiculos.service.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,5 +20,12 @@ public class CategoriaServiceImpl implements CategoriaService{
 	public List<Categoria> buscarTodos() {
 		return categoriaRepository.findAll();
 	}
+
+	@Override
+	public Optional<Categoria> buscarPorId(Long id) {
+		return categoriaRepository.findById(id);
+	}
+
+	
 
 }
