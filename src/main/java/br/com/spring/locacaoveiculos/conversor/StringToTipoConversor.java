@@ -24,7 +24,6 @@ public class StringToTipoConversor implements Converter<String, Tipo>{
 		
 		Long id = Long.valueOf(text);
 		 Optional<Tipo> tipo = service.buscarPorId(id); 
-		 //System.out.println(optUser.get());
 		return tipo.get();
 	}
 

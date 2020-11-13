@@ -21,7 +21,6 @@ public class ArquivoServiceImpl implements ArquivoService{
 
 	@Override
 	public List<Arquivo> buscarTodos() {
-		// TODO Auto-generated method stub
 		return arquivoRepository.findAll();
 	}
 	

@@ -30,6 +30,11 @@ public class Veiculo extends AbstractEntity<Long> {
 	@OneToMany(mappedBy = "veiculo")
 	private List<Arquivo> arquivos;
 	
+	
+	@ManyToOne
+	@JoinColumn(name = "id_categoria")
+	private Categoria categoria;
+	
 	public String getNome() {
 		return nome;
 	}

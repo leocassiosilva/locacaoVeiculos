@@ -20,11 +20,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+
 import br.com.spring.locacaoveiculos.model.Arquivo;
+import br.com.spring.locacaoveiculos.model.Categoria;
 import br.com.spring.locacaoveiculos.model.Marca;
 import br.com.spring.locacaoveiculos.model.Tipo;
 import br.com.spring.locacaoveiculos.model.Veiculo;
 import br.com.spring.locacaoveiculos.service.ArquivoService;
+import br.com.spring.locacaoveiculos.service.CategoriaService;
 import br.com.spring.locacaoveiculos.service.MarcaService;
 import br.com.spring.locacaoveiculos.service.TipoService;
 import br.com.spring.locacaoveiculos.service.VeiculoService;
@@ -44,6 +47,9 @@ public class VeiculoController {
 
 	@Autowired
 	private ArquivoService arquivoService;
+	
+	@Autowired
+	private CategoriaService categoriaService;
 
 	public static final String uploadingDir = System.getProperty("user.dir") + "/src/main/resources/static/img/";
 
@@ -132,8 +138,13 @@ public class VeiculoController {
 		System.out.println("123");
 		
 		model.addAttribute("veiculos", veiculo); 
-		
 		return "veiculo/lista";
+	}
+	
+	
+	@ModelAttribute("categorias")
+	public List<Categoria> listaDeDepartamentos(){
+		return categoriaService.buscarTodos();
 	}
 
 }
