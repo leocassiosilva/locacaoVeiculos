@@ -2,77 +2,81 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Login</title>
-<link rel="stylesheet" href="/css/style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Locação de Veiculos - Cadastro de Usuario</title>
+<!-- CSS -->
 <link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-	integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
-	crossorigin="anonymous">
-<body>
-	<th:block th:include="usuario/mensagemValidacao"></th:block>
-	<section>
-		<div class="container">
-			<div class="content first-content">
-				<div class="first-column">
-					<h2 class="title title-primary">Bem vindo !</h2>
-					<p class="description description-primary">Para manter-se
-						conectado conosco</p>
-					<p class="description description-primary">Faça o login com
-						suas informações pessoais.</p>
-					</br>
-					<button class="btn btn-primary">Login</button>
-				</div>
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css"
+	rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/cadastroUsuario.css">
+</head>
+<body style="background-color: whiter;">
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-dark w3-large"
+			style="background-color: #0275df;">
+			<a class="navbar-brand" href="#"> SLV</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-				<div class="second-column">
-					<h2 class="title title-second">Criar Conta</h2>
-					<div class="social-media"></div>
-					<form class="form" method="POST">
-						<label class="label-input" for=""> <i
-							class="far fa-user icon-modify"></i> <input type="text"
-							name="nome" placeholder="Nome" required>
-						</label> <label class="label-input" for=""> <i
-							class="far fa-envelope icon-modify"></i> <input type="email"
-							name="email" placeholder="Email" required>
-						</label> <label class="label-input" for=""> <i
-							class="fas fa-lock icon-modify"></i> <input type="password"
-							name="senha" placeholder="Senha" required>
-						</label>
-						<button type="submit" class="btn btn-second">Cadastrar</button>
-					</form>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a class="nav-link" href="#">Home
+							<span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item active"><a class="nav-link" href="#">Requisitos</a></li>
+					<li class="nav-item active"><a class="nav-link" href="#">Veiculos</a></li>
+					<li class="nav-item active"><a class="nav-link" href="#">Contatos</a></li>
+				</ul>
+				<div class="form-inline my-2 my-lg-0">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active"><a class="nav-link" href="#">Área
+								do cliente</a></li>
+					</ul>
 				</div>
 			</div>
-			<div class="content second-content">
-				<div class="first-column">
-					<h2 class="title title-primary">Olá amigo(a)!</h2>
-					<p class="description description-primary">Insira seus dados
-						pessoais</p>
-					<p class="description description-primary">e comece a jornada
-						conosco.</p>
-					</br>
-					<button id="signup" class="btn btn-primary">Cadastre-se</button>
-				</div>
-				<div class="second-column">
-					<h2 class="title title-second">Realize seu login</h2>
-					<div class="social-media"></div>
-					<form class="form">
-						<form method="POST">
-							<label class="label-input" for=""> <i
-								class="far fa-envelope icon-modify"></i> <input type="email"
-								name="username" placeholder="Email" required>
-							</label> <label class="label-input" for=""> <i
-								class="fas fa-lock icon-modify"></i> <input type="password"
-								name="password" placeholder="Senha" required>
-							</label> <a class="password" href="#">Esqueceu sua senha?</a>
-							<button type="submit" class="btn btn-second">Login</button>
-						</form>
-					</form>
-				</div>
+		</nav>
+	</header>
+
+	<th:block th:include="usuario/mensagemValidacao"></th:block>
+	<section>
+		<div class="container"
+			style="width: 60%; padding-bottom: 30px; margin-top: 30px;">
+			 <div class="wrapper">
+				<form method="POST">
+					<div class="form-group">
+						Nome <input type="text" class="form-control" value="" name="nome"
+							placeholder="Nome *">
+					</div>
+					<div class="form-group">
+						Email <input type="email" class="form-control" value=""
+							name="email" placeholder="Email *">
+					</div>
+					<div class="form-group">
+						Senha <input type="password" class="form-control" value=""
+							name="senha" placeholder="Senha *">
+					</div>
+					<button type="submit" class="btn btn-primary"
+						style="margin-top: 10px;">Cadastrar</button>
+					<a href="/home" class="btn btn-light" role="button"
+						style="margin-top: 10px;">Cancelar</a>
+				</form>
 			</div>
 		</div>
 	</section>
-	<script src="/js/app.js"></script>
 </body>
-
 </html>

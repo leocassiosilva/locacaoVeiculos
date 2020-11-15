@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="/css/home.css">
 <link rel="stylesheet" href="/css/cadastroUsuario.css">
 </head>
-<body style="background-color: whiter;">
+<body style="background-color: #fff;">
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark w3-large"
 			style="background-color: #0275df;">
@@ -54,27 +54,46 @@
 
 	<th:block th:include="usuario/mensagemValidacao"></th:block>
 	<section>
-		<div class="container"
-			style="width: 60%; padding-bottom: 30px; margin-top: 30px;">
-			 <div class="wrapper">
-				<form method="POST">
-					<div class="form-group">
-						Nome <input type="text" class="form-control" value="" name="nome"
-							placeholder="Nome *">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-xs-8 mx-auto" id="classePrincipal">
+					<div class="card card-signin flex-row my-5">
+						<div class="card-body">
+							<h5 class="card-title text-center">Cadastra-se</h5>
+							<form method="POST" class="form-signin">
+								<div class="form-label-group col-md-12 mb-4">
+									<label for="nome" id="label">Nome</label> <input type="text"
+										class="form-control" value="" name="nome" placeholder="Nome *">
+								</div>
+
+								<div class="form-label-group col-md-12 mb-4">
+									<label for="email" id="label">E-mail</label> <input
+										type="email" class="form-control" value="" name="email"
+										placeholder="Email *">
+								</div>
+
+
+								<div class="form-label-group col-md-12 mb-4">
+									<div class="form-group">
+										<label id="label">Senha</label> <input type="password"
+											class="form-control" value="" name="senha"
+											placeholder="Senha *">
+									</div>
+								</div>
+
+
+								<hr>
+								<div class="form-label-group col-md-12">
+
+									<button type="submit" class="btn btn-primary"
+										style="margin-top: 10px;">Cadastrar</button>
+									<a href="/home" class="btn btn-light" role="button"
+										style="margin-top: 10px;">Cancelar</a>
+								</div>
+							</form>
+						</div>
 					</div>
-					<div class="form-group">
-						Email <input type="email" class="form-control" value=""
-							name="email" placeholder="Email *">
-					</div>
-					<div class="form-group">
-						Senha <input type="password" class="form-control" value=""
-							name="senha" placeholder="Senha *">
-					</div>
-					<button type="submit" class="btn btn-primary"
-						style="margin-top: 10px;">Cadastrar</button>
-					<a href="/home" class="btn btn-light" role="button"
-						style="margin-top: 10px;">Cancelar</a>
-				</form>
+				</div>
 			</div>
 		</div>
 	</section>
