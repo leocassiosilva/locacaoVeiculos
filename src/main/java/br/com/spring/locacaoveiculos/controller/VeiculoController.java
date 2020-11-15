@@ -51,7 +51,8 @@ public class VeiculoController {
 	
 	@Autowired
 	private CategoriaService categoriaService;
-
+	
+	
 	public static final String uploadingDir = System.getProperty("user.dir") + "/src/main/resources/static/img/";
 
 	@GetMapping(value = "/newVeiculo")
@@ -126,8 +127,21 @@ public class VeiculoController {
 	@GetMapping(value = "/getVeiculo/{id}")
 	@ResponseBody
 	public List<Marca> relatorio(@PathVariable("id") Long id, Veiculo veiculo) {
+		
 		return marcaService.buscarMarcaPeloTipo(id);
 	}
+	
+	
+	@GetMapping(value = "/getVeiculoMarca/{id_marca}&{id}")
+	@ResponseBody
+	public String tipo_marca(@PathVariable("id_marca") Long id_marca, @PathVariable("id") Long id, Veiculo veiculo) {
+		System.out.println(id);	
+		System.out.println(id_marca);
+		return "pronto";
+	}
+	
+	
+		
 
 	@ModelAttribute("tipos")
 	public List<Tipo> listaDeTipos() {
@@ -136,9 +150,7 @@ public class VeiculoController {
 	
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
-		List<Veiculo> veiculo = veiculoService.buscarTodos();
-		System.out.println("123");
-		
+		List<Veiculo> veiculo = veiculoService.buscarTodos();		
 		model.addAttribute("veiculos", veiculo); 
 		return "veiculo/lista";
 	}

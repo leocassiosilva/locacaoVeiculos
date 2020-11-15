@@ -96,14 +96,9 @@
 	crossorigin="anonymous"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#marca').change(function() {
-			//var id = $('#marca').val();
-			//alert(id);
-		});
-	});
-	$(document).ready(function() {
+		var id;
 		$('#tipo').change(function() {
-			var id = $('#tipo').val();
+			id = $('#tipo').val();
 			$("#marca").empty();
 			jQuery.ajax({
 				type : "GET",
@@ -126,6 +121,24 @@
 				console.log("erro ajax");
 			})
 
+		});
+		
+		$('#marca').change(function() {
+			var id_marca = $('#marca').val();
+			
+			jQuery.ajax({
+				type : "GET",
+				url : "/veiculos/getVeiculoMarca/"+ id_marca + "&" + id,
+				data : {},
+				success : function(dados) {
+					console.log(dados.length);
+					alert("ola");
+				}
+			}).done(function() {
+
+			}).fail(function() {
+				console.log("erro ajax");
+			})
 		});
 	});
 </script>
