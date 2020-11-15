@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
-<title>Locação de Veiculos - Cadastro de Usuario</title>
+<title>Locação de Veiculos - Login</title>
 <!-- CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
@@ -18,63 +18,60 @@
 	rel="stylesheet">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
-<link rel="stylesheet" href="/css/home.css">
-<link rel="stylesheet" href="/css/cadastroUsuario.css">
 </head>
-<body style="background-color: whiter;">
+<body>
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-dark w3-large"
-			style="background-color: #0275df;">
-			<a class="navbar-brand" href="#"> SLV</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link" href="#">Home
-							<span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item active"><a class="nav-link" href="#">Requisitos</a></li>
-					<li class="nav-item active"><a class="nav-link" href="#">Veiculos</a></li>
-					<li class="nav-item active"><a class="nav-link" href="#">Contatos</a></li>
-				</ul>
-				<div class="form-inline my-2 my-lg-0">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active"><a class="nav-link" href="#">Área
-								do cliente</a></li>
-					</ul>
-				</div>
-			</div>
+		<!-- Navbar -->
+		<nav class="navbar navbar-light bg-light">
+			<a class="navbar-brand mb-0 h1" style="font-weight: bold;" href="#">SLV
+				- Sistema de Locação de Veiculos</a>
 		</nav>
 	</header>
 
-	<th:block th:include="usuario/mensagemValidacao"></th:block>
 	<section>
 		<div class="container"
 			style="width: 60%; padding-bottom: 30px; margin-top: 30px;">
-			 <div class="wrapper">
-				<form method="POST">
-					<div class="form-group">
-						Nome <input type="text" class="form-control" value="" name="nome"
-							placeholder="Nome *">
+			<div th:if="${param.error}">
+				<div class="alert alert-danger">Usuário e/ou inválidos!</div>
+			</div>
+
+			<div class="row  d-flex justify-content-center">
+				<div class="col-lg-7 col-sm-12 mb-4 text-rigth" id="classePrincipal">
+					<div class="card rounded-0" id="login-form">
+						<div class="card-header">
+							<h3 class="mb-0" style="text-align: center;">Login</h3>
+						</div>
+						<div class="card-body">
+							<form class="form" role="form" id="login-form" novalidate=""
+								method="POST">
+								<div class="form-group" id="formulario">
+									<div class="form-row">
+										<div class="form-group col-md-12">
+											<label for="inputEmail" id="label">E-mail</label> <input
+												type="email" class="form-control" value="" name="username"
+												placeholder="Email *">
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col-md-12">
+											<label for="inputSenha" id="label">Senha</label> <input
+												type="password" class="form-control" value=""
+												name="password" placeholder="Senha *">
+										</div>
+									</div>
+								</div>
+
+								<div>
+									<label class="custom-control custom-checkbox float-right">
+										<a href="#" class="register-form-link">Cadastre-se</a>
+									</label>
+								</div>
+								<button type="submit" class="btn btn-primary"
+									style="margin-top: 10px;">Entrar</button>
+							</form>
+						</div>
 					</div>
-					<div class="form-group">
-						Email <input type="email" class="form-control" value=""
-							name="email" placeholder="Email *">
-					</div>
-					<div class="form-group">
-						Senha <input type="password" class="form-control" value=""
-							name="senha" placeholder="Senha *">
-					</div>
-					<button type="submit" class="btn btn-primary"
-						style="margin-top: 10px;">Cadastrar</button>
-					<a href="/home" class="btn btn-light" role="button"
-						style="margin-top: 10px;">Cancelar</a>
-				</form>
+				</div>
 			</div>
 		</div>
 	</section>
