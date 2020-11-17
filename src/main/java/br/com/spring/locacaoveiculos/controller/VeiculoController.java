@@ -160,5 +160,30 @@ public class VeiculoController {
 	public List<Categoria> listaDeDepartamentos(){
 		return categoriaService.buscarTodos();
 	}
+	
+	
+	@GetMapping(value = "/newCVIP")
+	public String carroVIP() {
+		return "veiculo/carroVIP";
+
+	}
+
+	@GetMapping(value = "/newCNormal")
+	public String carroNormal() {
+		return "veiculo/carroNormal";
+
+	}
+
+	@GetMapping(value = "/newVIP")
+	public String motoVIP() {
+		return "veiculo/MVIP";
+
+	}
+	
+	@GetMapping(value = "/newNormal")
+	public String motoNormal() {
+		return "veiculo/MNormal";
+
+	}
 
 }
