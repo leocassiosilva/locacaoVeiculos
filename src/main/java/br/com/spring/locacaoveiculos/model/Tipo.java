@@ -29,9 +29,6 @@ public class Tipo implements Serializable{
 	private List<TipoMarca> tipo_marcas;
 		
 	
-	@OneToMany(mappedBy = "tipo")
-	private List<Veiculo> veiculos;
-	
 	
 	public Long getId_tipo() {
 		return id_tipo;

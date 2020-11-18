@@ -12,11 +12,7 @@ import javax.persistence.Table;
 public class Marca extends AbstractEntity<Long> {
 
 	private String nome;
-	
-	@OneToMany(mappedBy = "marca")
-	private List<Veiculo> veiculos;
-	
-	
+		
 	 @OneToMany(mappedBy = "marca")
 	 private List<TipoMarca> tipo_marcas;
 	

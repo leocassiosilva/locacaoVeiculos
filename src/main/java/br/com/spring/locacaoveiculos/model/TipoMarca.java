@@ -1,8 +1,11 @@
 package br.com.spring.locacaoveiculos.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
@@ -17,6 +20,9 @@ public class TipoMarca extends AbstractEntity<Long>{
 	@ManyToOne
 	@JoinColumn(name = "id_tipo")
 	private Tipo tipo;
+	
+	@OneToMany(mappedBy = "tipoMarca")
+	private List<Veiculo> veiculos;
 
 	public Marca getMarca() {
 		return marca;
@@ -33,7 +39,16 @@ public class TipoMarca extends AbstractEntity<Long>{
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
-	
+
+	public List<Veiculo> getVeiculos() {
+		return veiculos;
+	}
+
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
+	}
+
+
 	
 	
 }

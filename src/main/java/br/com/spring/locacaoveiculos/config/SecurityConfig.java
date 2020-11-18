@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 
-	private static final String[] AUTH_LIST = { "/", "/home", "/newUsuario", "/veiculos/newCNormal", "/veiculos/newCVIP", "/veiculos/newNormal", "/veiculos/newVIP", "/veiculos/getVeiculo/{id}", "/veiculos/getVeiculoMarca/{id_marca}&{id}", "/veiculos/getMarcas", "/veiculos/salvar" , "/veiculos/listar"};
+	private static final String[] AUTH_LIST = { "/", "/home", "/newUsuario", "/veiculos/newCNormal", "/veiculos/newCVIP", "/veiculos/newNormal", "/veiculos/newVIP", "/veiculos/getVeiculo/{id}", "/veiculos/getVeiculoMarca/{id_marca}&{id}", "/veiculos/getMarcas", "/veiculos/salvar" , "/veiculos/listar", "/veiculos/newVeiculo", "/veiculos/getTipo"};
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

@@ -15,13 +15,6 @@ public class Veiculo extends AbstractEntity<Long> {
 
 	private String nome;
 
-	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_marca")
-	private Marca marca;
-
-	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_tipo")
-	private Tipo tipo;
 
 	private String placa;
 
@@ -35,78 +28,55 @@ public class Veiculo extends AbstractEntity<Long> {
 	@JoinColumn(name = "id_categoria")
 	private Categoria categoria;
 
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "id_tipoMarca")
+	private TipoMarca tipoMarca;
 
 	public String getNome() {
 		return nome;
 	}
 
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-
-	public Marca getMarca() {
-		return marca;
-	}
-
-
-	public void setMarca(Marca marca) {
-		this.marca = marca;
-	}
-
-
-	public Tipo getTipo() {
-		return tipo;
-	}
-
-
-	public void setTipo(Tipo tipo) {
-		this.tipo = tipo;
-	}
-
 
 	public String getPlaca() {
 		return placa;
 	}
 
-
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
-
 
 	public String getRenavan() {
 		return renavan;
 	}
 
-
 	public void setRenavan(String renavan) {
 		this.renavan = renavan;
 	}
-
 
 	public List<Arquivo> getArquivos() {
 		return arquivos;
 	}
 
-
 	public void setArquivos(List<Arquivo> arquivos) {
 		this.arquivos = arquivos;
 	}
-
 
 	public Categoria getCategoria() {
 		return categoria;
 	}
 
-
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
 
-	
-	
+	public TipoMarca getTipoMarca() {
+		return tipoMarca;
+	}
 
+	public void setTipoMarca(TipoMarca tipoMarca) {
+		this.tipoMarca = tipoMarca;
+	}
 }

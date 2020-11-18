@@ -26,10 +26,12 @@ import br.com.spring.locacaoveiculos.model.Arquivo;
 import br.com.spring.locacaoveiculos.model.Categoria;
 import br.com.spring.locacaoveiculos.model.Marca;
 import br.com.spring.locacaoveiculos.model.Tipo;
+import br.com.spring.locacaoveiculos.model.TipoMarca;
 import br.com.spring.locacaoveiculos.model.Veiculo;
 import br.com.spring.locacaoveiculos.service.ArquivoService;
 import br.com.spring.locacaoveiculos.service.CategoriaService;
 import br.com.spring.locacaoveiculos.service.MarcaService;
+import br.com.spring.locacaoveiculos.service.TipoMarcaService;
 import br.com.spring.locacaoveiculos.service.TipoService;
 import br.com.spring.locacaoveiculos.service.VeiculoService;
 
@@ -52,6 +54,9 @@ public class VeiculoController {
 	@Autowired
 	private CategoriaService categoriaService;
 	
+	
+	@Autowired
+	private TipoMarcaService tipoMarcaService;
 	
 	public static final String uploadingDir = System.getProperty("user.dir") + "/src/main/resources/static/img/";
 
@@ -134,19 +139,18 @@ public class VeiculoController {
 	
 	@GetMapping(value = "/getVeiculoMarca/{id_marca}&{id}")
 	@ResponseBody
-	public String tipo_marca(@PathVariable("id_marca") Long id_marca, @PathVariable("id") Long id, Veiculo veiculo) {
+	public List<TipoMarca> tipo_marca(@PathVariable("id_marca") Long id_marca, @PathVariable("id") Long id, Veiculo veiculo) {
 		System.out.println(id);	
 		System.out.println(id_marca);
-		return "pronto";
+		return tipoMarcaService.buscarTipoMarca(id, id_marca);
 	}
 	
-	
-		
-
-	@ModelAttribute("tipos")
+	@GetMapping(value = "/getTipo")
+	@ResponseBody
 	public List<Tipo> listaDeTipos() {
 		return tipoService.buscarTodosTipos();
 	}
+		
 	
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
@@ -185,5 +189,5 @@ public class VeiculoController {
 		return "veiculo/MNormal";
 
 	}
-
+	
 }

@@ -1,0 +1,19 @@
+package br.com.spring.locacaoveiculos.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import br.com.spring.locacaoveiculos.model.TipoMarca;
+@Repository
+public interface TipoMarcaRepository extends JpaRepository<TipoMarca, Long>{
+
+	@Query(name="buscarTipoMarca", value = "Select * FROM marca as m inner join tipomarca as tm on(m.id = tm.id_marca)"
+			+ " inner join tipo as t on(t.id_tipo = tm.id_tipo)\n" + 
+			"WHERE tm.id_tipo = :id and tm.id_marca = :id_marca", nativeQuery = true)
+	List<TipoMarca> buscarTipoMarca(@Param("id") Long id, @Param("id_marca") Long id_marca);
+
+}
