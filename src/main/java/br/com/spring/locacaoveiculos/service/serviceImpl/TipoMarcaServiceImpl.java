@@ -1,6 +1,5 @@
 package br.com.spring.locacaoveiculos.service.serviceImpl;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class TipoMarcaServiceImpl implements TipoMarcaService{
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<TipoMarca> buscarTipoMarca(Long id, Long id_marca) {
+	public TipoMarca buscarTipoMarca(Long id, Long id_marca) {
 		return tipoMarcaRepository.buscarTipoMarca(id, id_marca);
 	}
 

@@ -33,7 +33,6 @@ public class UsuarioController {
 	
 	@RequestMapping(value = "/newUsuario", method = RequestMethod.GET)
 	public String form() {
-		// System.out.println("Logging user login success...");
 		return "usuario/cadastroUsuario";
 	}
 

@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Table(name = "VEICULOS")
 public class Veiculo extends AbstractEntity<Long> {
 
+	
 	private String nome;
 
 
@@ -22,7 +23,6 @@ public class Veiculo extends AbstractEntity<Long> {
 	
 	@OneToMany(mappedBy = "veiculo")
 	private List<Arquivo> arquivos;
-	
 	
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_categoria")

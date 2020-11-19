@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "TIPOMARCA")
@@ -40,15 +41,6 @@ public class TipoMarca extends AbstractEntity<Long>{
 		this.tipo = tipo;
 	}
 
-	public List<Veiculo> getVeiculos() {
-		return veiculos;
-	}
-
-	public void setVeiculos(List<Veiculo> veiculos) {
-		this.veiculos = veiculos;
-	}
-
-
 	
-	
+		
 }

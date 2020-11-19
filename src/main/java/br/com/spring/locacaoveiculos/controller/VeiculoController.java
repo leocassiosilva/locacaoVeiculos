@@ -137,9 +137,9 @@ public class VeiculoController {
 	}
 	
 	
-	@GetMapping(value = "/getVeiculoMarca/{id_marca}&{id}")
+	@GetMapping(value = "/getVeiculoMarca/{id}&{id_marca}")
 	@ResponseBody
-	public List<TipoMarca> tipo_marca(@PathVariable("id_marca") Long id_marca, @PathVariable("id") Long id, Veiculo veiculo) {
+	public TipoMarca tipo_marca(@PathVariable("id") Long id, @PathVariable("id_marca") Long id_marca, Veiculo veiculo) {
 		System.out.println(id);	
 		System.out.println(id_marca);
 		return tipoMarcaService.buscarTipoMarca(id, id_marca);

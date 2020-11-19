@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 
 
+
 @Entity
 @Table(name = "TIPO")
 public class Tipo implements Serializable{
@@ -27,23 +28,32 @@ public class Tipo implements Serializable{
 	
 	@OneToMany(mappedBy = "tipo")
 	private List<TipoMarca> tipo_marcas;
-		
-	
-	
+
+
 	public Long getId_tipo() {
 		return id_tipo;
 	}
+
 
 	public void setId_tipo(Long id_tipo) {
 		this.id_tipo = id_tipo;
 	}
 
+
 	public String getNome() {
 		return nome;
 	}
 
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+
+
+
+		
+	
+
 	
 }

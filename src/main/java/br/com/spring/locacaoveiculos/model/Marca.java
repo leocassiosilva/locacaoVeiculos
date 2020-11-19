@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "MARCA")
@@ -24,5 +25,7 @@ public class Marca extends AbstractEntity<Long> {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	
 	
 }

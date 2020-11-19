@@ -56,9 +56,9 @@
 							<option value="">Selecione</option>
 						</select>
 					</div>
-					
-					<input type="text"  id="tipoMarca" th:field="*{tipoMarca}"/>
-				
+
+					<input type="text" id="tipoMarca" th:field="*{tipoMarca}" />
+
 					<div class="form-group">
 						<label>Categoria(ex:NORMAL/VIP)</label> <select id="categoria"
 							class="form-control" th:field="*{categoria}">
@@ -109,7 +109,6 @@
 			url : "/veiculos/getTipo",
 			data : {},
 			success : function(dados) {
-				console.log(dados.length);
 				$("#tipo").append('<option value="">Selecione</option>');
 				for (var i = 0; i < dados.length; i++) {
 					$("#tipo").append($('<option>', {
@@ -126,15 +125,12 @@
 
 		$('#tipo').change(function() {
 			id = $('#tipo').val();
-
-			alert(id);
 			$("#marca").empty();
 			jQuery.ajax({
 				type : "GET",
 				url : "/veiculos/getVeiculo/" + id,
 				data : {},
 				success : function(dados) {
-					console.log(dados);
 					$("#marca").append('<option value="">Selecione</option>');
 					for (var i = 0; i < dados.length; i++) {
 						$("#marca").append($('<option>', {
@@ -149,31 +145,29 @@
 			}).fail(function() {
 				console.log("erro ajax");
 			})
-			
-			$('#marca').change(function() {
-				var id_marca = $('#marca').val();
-				
-				jQuery.ajax({
-					type : "GET",
-					url : "/veiculos/getVeiculoMarca/"+ id_marca + "&" + id,
-					data : {},
-					success : function(dados) {
-						console.log(dados);	
-						 var id_tipo_marca; 
-						
-						for (var i = 0; i < dados.length; i++) {
-							 id_tipo_marca =  dados[i].id; 
-							// alert(id_tipo_marca.val());		
-						}
-						
-						$('#tipoMarca').val(id_tipo_marca);
-					}
-				}).done(function() {
 
-				}).fail(function() {
-					console.log("erro ajax");
-				})
-			});
+		});
+
+		$('#marca').change(function() {
+
+			var id_marca = $('#marca').val();
+			console.log(id);
+			console.log(id_marca);
+			jQuery.ajax({
+				type : "GET",
+				url : "/veiculos/getVeiculoMarca/" + id + "&" + id_marca,
+				data : {},
+				success : function(dados) {
+
+					console.log("id = " + dados.id);
+					$('#tipoMarca').val(dados.id);
+
+				}
+			}).done(function() {
+
+			}).fail(function() {
+				console.log("erro ajax");
+			})
 
 		});
 	});
