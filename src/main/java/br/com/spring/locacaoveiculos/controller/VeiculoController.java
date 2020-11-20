@@ -8,7 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
 
 import br.com.spring.locacaoveiculos.model.Arquivo;
 import br.com.spring.locacaoveiculos.model.Categoria;
@@ -50,14 +48,13 @@ public class VeiculoController {
 
 	@Autowired
 	private ArquivoService arquivoService;
-	
+
 	@Autowired
 	private CategoriaService categoriaService;
-	
-	
+
 	@Autowired
 	private TipoMarcaService tipoMarcaService;
-	
+
 	public static final String uploadingDir = System.getProperty("user.dir") + "/src/main/resources/static/img/";
 
 	@GetMapping(value = "/newVeiculo")
@@ -67,7 +64,7 @@ public class VeiculoController {
 
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public String salvarVeiculo(Veiculo veiculo, @RequestParam("uploadingFiles") MultipartFile[] uploadingFiles) {
-		
+
 		System.out.println(veiculo.getCategoria().getNome());
 		veiculo.setStatus(false);
 		veiculoService.save(veiculo);
@@ -85,7 +82,7 @@ public class VeiculoController {
 				System.out.println("Renomedo:  -> New name: " + arq2);
 				System.out.println("Renomedo: -> New name: " + arq);
 				uploadedFile.transferTo(arq2);
- 
+
 				dado = ("\\img\\" + arq2.getName());
 				System.out.println(dado);
 				Arquivo aquivo1 = new Arquivo(dado, veiculo);
@@ -96,11 +93,9 @@ public class VeiculoController {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return "redirect:/veiculo/cadastrar";
 	}
-
-	
 
 	/* Metodo para gerar a Hash */
 	public static String getSHA512(String input) {
@@ -132,40 +127,36 @@ public class VeiculoController {
 	@GetMapping(value = "/getVeiculo/{id}")
 	@ResponseBody
 	public List<Marca> relatorio(@PathVariable("id") Long id, Veiculo veiculo) {
-		
+
 		return marcaService.buscarMarcaPeloTipo(id);
 	}
-	
-	
+
 	@GetMapping(value = "/getVeiculoMarca/{id}&{id_marca}")
 	@ResponseBody
 	public TipoMarca tipo_marca(@PathVariable("id") Long id, @PathVariable("id_marca") Long id_marca, Veiculo veiculo) {
-		System.out.println(id);	
+		System.out.println(id);
 		System.out.println(id_marca);
 		return tipoMarcaService.buscarTipoMarca(id, id_marca);
 	}
-	
+
 	@GetMapping(value = "/getTipo")
 	@ResponseBody
 	public List<Tipo> listaDeTipos() {
 		return tipoService.buscarTodosTipos();
 	}
-		
-	
+
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
-		List<Veiculo> veiculo = veiculoService.buscarTodos();		
-		model.addAttribute("veiculos", veiculo); 
+		List<Veiculo> veiculo = veiculoService.buscarTodos();
+		model.addAttribute("veiculos", veiculo);
 		return "veiculo/lista";
 	}
-	
-	
+
 	@ModelAttribute("categorias")
-	public List<Categoria> listaDeDepartamentos(){
+	public List<Categoria> listaDeDepartamentos() {
 		return categoriaService.buscarTodos();
 	}
-	
-	
+
 	@GetMapping(value = "/newCVIP")
 	public String carroVIP() {
 		return "veiculo/carroVIP";
@@ -183,11 +174,11 @@ public class VeiculoController {
 		return "veiculo/MVIP";
 
 	}
-	
+
 	@GetMapping(value = "/newNormal")
 	public String motoNormal() {
 		return "veiculo/MNormal";
 
 	}
-	
+
 }

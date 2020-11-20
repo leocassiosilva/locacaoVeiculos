@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head lang="en"></head>
-<body>
-<tr th:each="customer : ${veiculos}">
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+<section layout:fragment="corpo">
+	<tr th:each="customer : ${veiculos}">
 
-    <td th:text="${customer.id}">001</td>
-    <td th:text="${customer.nome}">Name</td>
-	<td th:text="${customer.renavan}">Name</td>	
-	<td><img th:src="${customer.arquivos[0].nome}"/></td>	
-	
-	
-</tr>
+		<td th:text="${customer.id}">001</td>
+		<td th:text="${customer.nome}">Name</td>
+		<td th:text="${customer.renavan}">Name</td>
+		<td><img th:src="${customer.arquivos[0].nome}" /></td>
+
+
+	</tr>
+</section>
 </body>
 </html>
