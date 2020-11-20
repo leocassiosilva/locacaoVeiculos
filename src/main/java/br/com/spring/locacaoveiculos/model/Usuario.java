@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.LazyCollection;
@@ -45,6 +47,10 @@ public class Usuario implements UserDetails, Serializable {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
 	private Set<Role> role;
+	
+	@OneToMany(mappedBy = "usuario")
+	private List<Locacao> locacoes;
+	
 	
 	public long getId_usuario() {
 		return id_usuario;

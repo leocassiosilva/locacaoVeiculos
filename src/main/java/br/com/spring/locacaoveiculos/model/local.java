@@ -1,6 +1,9 @@
 package br.com.spring.locacaoveiculos.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
@@ -9,7 +12,13 @@ import javax.persistence.Table;
 public class Local extends AbstractEntity<Long>{
 	
 	private String nome;
-
+	
+	@OneToMany(mappedBy = "localRetirada")
+	private List<Locacao> locacaoRetirada;
+	
+	@OneToMany(mappedBy = "localEntrega")
+	private List<Locacao> locacaoEntrega;
+	
 	public String getNome() {
 		return nome;
 	}

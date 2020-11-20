@@ -13,9 +13,19 @@ public class Categoria extends AbstractEntity<Long>{
 	
 	private String nome;
 	
+	private Float valor;
 	
 	@OneToMany(mappedBy = "categoria")
 	private List<Veiculo> veiculos;
+
+
+	public Float getValor() {
+		return valor;
+	}
+
+	public void setValor(Float valor) {
+		this.valor = valor;
+	}
 
 
 	public String getNome() {
