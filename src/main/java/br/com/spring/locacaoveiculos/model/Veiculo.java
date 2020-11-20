@@ -8,6 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "VEICULOS")
@@ -31,6 +33,18 @@ public class Veiculo extends AbstractEntity<Long> {
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_tipoMarca")
 	private TipoMarca tipoMarca;
+
+    @Type(type="true_false")
+	public boolean status; 
+	
+	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 	public String getNome() {
 		return nome;

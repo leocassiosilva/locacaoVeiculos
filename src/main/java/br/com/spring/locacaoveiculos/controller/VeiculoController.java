@@ -69,7 +69,7 @@ public class VeiculoController {
 	public String salvarVeiculo(Veiculo veiculo, @RequestParam("uploadingFiles") MultipartFile[] uploadingFiles) {
 		
 		System.out.println(veiculo.getCategoria().getNome());
-		
+		veiculo.setStatus(false);
 		veiculoService.save(veiculo);
 		System.out.println(veiculo.getId());
 		String dado = null;
