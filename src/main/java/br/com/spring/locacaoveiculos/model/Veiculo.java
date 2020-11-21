@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Type;
 
@@ -17,12 +18,13 @@ import org.hibernate.annotations.Type;
 public class Veiculo extends AbstractEntity<Long> {
 
    
+	@NotBlank(message = "O nome do veiculo é obrigatório.")
 	private String nome;
 
-	
+	@NotBlank(message = "A placa é obrigatório.")
 	private String placa;
 
-	
+	@NotBlank(message = "O renavan é obrigatório.")
 	private String renavan;
 	
 	
@@ -34,10 +36,12 @@ public class Veiculo extends AbstractEntity<Long> {
 	private List<Locacao> locacoes;
 	
 	
+	@NotNull(message = "Selecione a categoria.")
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_categoria")
 	private Categoria categoria;
 	
+	@NotNull(message = "Selecione o tipo e a marca do veiculo.")
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_tipoMarca")
 	private TipoMarca tipoMarca;

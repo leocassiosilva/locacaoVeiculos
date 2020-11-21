@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -65,14 +67,14 @@ public class VeiculoController {
 	}
 
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
-	public String salvarVeiculo(Veiculo veiculo, BindingResult result, RedirectAttributes attr, @RequestParam("uploadingFiles") MultipartFile[] uploadingFiles) {
+	public String salvarVeiculo(@Valid Veiculo veiculo, BindingResult result, RedirectAttributes attr,
+			@RequestParam("uploadingFiles") MultipartFile[] uploadingFiles) {
 
-		
 		if (result.hasErrors()) {
-			System.out.println("pronto");
+			attr.addFlashAttribute("mensagem", "Verifique se os campos obrigatórios foram preenchidos!");
 			return "veiculo/cadastroVeiculo";
 		}
-		
+
 		veiculo.setStatus(false);
 		veiculoService.save(veiculo);
 		String dado = null;
