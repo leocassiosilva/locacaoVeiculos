@@ -36,6 +36,11 @@
 	<section>
 		<div class="container"
 			style="width: 60%; padding-bottom: 30px; margin-top: 30px;">
+			<div class="row">
+				<div class="col-sm-6 col-xs-8 mx-auto" id="classePrincipal">
+					<th:block th:include="veiculo/mensagemValidacao"></th:block>
+				</div>
+			</div>
 			<div>
 
 				<form method="POST" th:action=@{/veiculos/salvar}
@@ -57,7 +62,7 @@
 						</select>
 					</div>
 
-					<input type="text" id="tipoMarca" th:field="*{tipoMarca}" />
+					<input  type = "hidden" id="tipoMarca" th:field="*{tipoMarca}" />
 
 					<div class="form-group">
 						<label>Categoria(ex:NORMAL/VIP)</label> <select id="categoria"

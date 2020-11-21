@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.spring.locacaoveiculos.model.Arquivo;
 import br.com.spring.locacaoveiculos.model.Categoria;
@@ -63,12 +65,16 @@ public class VeiculoController {
 	}
 
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
-	public String salvarVeiculo(Veiculo veiculo, @RequestParam("uploadingFiles") MultipartFile[] uploadingFiles) {
+	public String salvarVeiculo(Veiculo veiculo, BindingResult result, RedirectAttributes attr, @RequestParam("uploadingFiles") MultipartFile[] uploadingFiles) {
 
-		System.out.println(veiculo.getCategoria().getNome());
+		
+		if (result.hasErrors()) {
+			System.out.println("pronto");
+			return "veiculo/cadastroVeiculo";
+		}
+		
 		veiculo.setStatus(false);
 		veiculoService.save(veiculo);
-		System.out.println(veiculo.getId());
 		String dado = null;
 
 		for (MultipartFile uploadedFile : uploadingFiles) {

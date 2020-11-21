@@ -7,6 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.Type;
 
@@ -15,16 +16,19 @@ import org.hibernate.annotations.Type;
 @Table(name = "VEICULOS")
 public class Veiculo extends AbstractEntity<Long> {
 
-	
+   
 	private String nome;
 
-
+	
 	private String placa;
 
+	
 	private String renavan;
+	
 	
 	@OneToMany(mappedBy = "veiculo")
 	private List<Arquivo> arquivos;
+	
 	
 	@OneToMany(mappedBy = "veiculo")
 	private List<Locacao> locacoes;
@@ -33,7 +37,7 @@ public class Veiculo extends AbstractEntity<Long> {
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_categoria")
 	private Categoria categoria;
-
+	
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_tipoMarca")
 	private TipoMarca tipoMarca;
