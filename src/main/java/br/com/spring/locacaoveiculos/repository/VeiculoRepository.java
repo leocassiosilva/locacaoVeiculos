@@ -1,6 +1,7 @@
 package br.com.spring.locacaoveiculos.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,4 +13,7 @@ public interface VeiculoRepository extends JpaRepository<Veiculo, Long>{
 	
 	@Query(name="buscarTodos", value = "Select * FROM veiculos as v inner join arquivos as ar on(v.id = ar.id_veiculo)", nativeQuery = true)
 	List<Veiculo> buscarTodos();
+	
+	
+	Optional<Veiculo> buscarPeloId(Long id);
 }

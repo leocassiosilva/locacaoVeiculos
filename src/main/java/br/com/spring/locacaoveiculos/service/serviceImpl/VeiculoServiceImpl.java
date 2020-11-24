@@ -1,6 +1,7 @@
 package br.com.spring.locacaoveiculos.service.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,11 @@ public class VeiculoServiceImpl implements VeiculoService{
 	public List<Veiculo> buscarTodos() {
 		return veiculoRepository.buscarTodos();
 		
+	}
+
+	@Override
+	public Optional<Veiculo> buscarPeloId(Long id) {
+		return veiculoRepository.findById(id);
 	}
 
 }
