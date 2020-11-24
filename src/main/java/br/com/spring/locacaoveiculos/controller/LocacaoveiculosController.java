@@ -3,17 +3,22 @@ package br.com.spring.locacaoveiculos.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
+@RequestMapping("locacao")
 public class LocacaoveiculosController {
 
-	/* Para chamar o metodo da pagina inicial */
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String home() {
-		return "/home";
-	}	
+	
+	@GetMapping("/veiculo/{id}")
+	public String preLocacao(@PathVariable("id") Long id, ModelMap model) {
+		System.out.println(id);
+		return "/locacao/cadastroLocacao";
+
+	}
 	
 }

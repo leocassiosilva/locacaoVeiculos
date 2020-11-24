@@ -155,6 +155,7 @@ public class VeiculoController {
 
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
+		System.out.println("Pronto");
 		List<Veiculo> veiculo = veiculoService.buscarTodos();
 		model.addAttribute("veiculos", veiculo);
 		return "veiculo/lista";
