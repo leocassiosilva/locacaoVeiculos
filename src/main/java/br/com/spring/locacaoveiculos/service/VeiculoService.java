@@ -10,4 +10,5 @@ public interface VeiculoService {
 	Veiculo save(Veiculo veiculo);
 	List <Veiculo> buscarTodos();
 	Optional<Veiculo> buscarPeloId(Long id);
+	Veiculo buscarVeiculo(Long id);
 }

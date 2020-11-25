@@ -31,4 +31,9 @@ public class VeiculoServiceImpl implements VeiculoService{
 		return veiculoRepository.buscarPeloId(id);
 	}
 
+	@Override
+	public Veiculo buscarVeiculo(Long id) {
+		return veiculoRepository.buscarVeiculo(id);
+	}
+
 }

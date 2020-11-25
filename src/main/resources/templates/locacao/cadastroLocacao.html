@@ -3,41 +3,44 @@
 <head>
 <meta charset="UTF-8" />
 <section layout:fragment="corpo">
-	<tr th:each="customer : ${veiculos}">
 
-		<td th:text="${customer.id}">001</td>
-		<td th:text="${customer.nome}">Name</td>
-		<td th:text="${customer.renavan}">Name</td>
+	<div class="container" id="listagem">
 
+		<div class="row">
+			<div class="col-6 col-md-12">
 
-	</tr>
-	
-	
-		<div class="container" id="listagem">
+				<div class="row">
+					<div class="col-12 col-md-6">
+						<div class="row">
+							<img th:src="${veiculo.arquivos[0].nome}" />
+						</div>
+					</div>
 
-			<div class="table-responsive">
-				<table class="table table-striped table-hover table-sm">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Nome</th>
-							<th>Renavan</th>
-							<th>Ação</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="v : ${veiculos}">
-							<td th:text="${v.id}">1</td>
-							<td th:text="${v.nome}">Auxiliar Contábil</td>
-							<td th:text="${v.renavan}">Auxiliar Contábil</td>
-							<td colspan="2"><a class="btn btn-info btn-sm"
-								th:href="@{/locacao/veiculo/{id} (id=${v.id}) }"
-								role="button">Locar veiculo
-							</a></td>
-						</tr>
-					</tbody>
-				</table>
+				</div>
 			</div>
+
+			<div class="col-6 col-md-12">
+				Nome: <a th:text="${veiculo.nome}"></a><br/>
+				Marca: <a th:text="${veiculo.tipoMarca.marca.nome}"></a><br>
+				Categoria: <a th:text="${veiculo.categoria.nome}"></a>
+				<form method="POST" th:action=@{/veiculos/salvar}
+					th:object="${veiculo}" enctype="multipart/form-data">
+					<div class="form-group">
+						<label>Seguro(ex:Normal/Vip)</label> <select id="seguro"
+							class="form-control">
+							<option value="">Selecione</option>
+							<option th:each="c : ${seguros}" th:value="${c.id}"
+								th:text="${c.nome}"></option>
+
+						</select>
+					</div>
+				</form>
+			</div>
+
+
+
+
+
 		</div>
 </section>
 </body>
