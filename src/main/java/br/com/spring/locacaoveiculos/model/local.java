@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "LOCAL")
-public class Local extends AbstractEntity<Long>{
+public class local extends AbstractEntity<Long>{
 	
 	private String nome;
 	
