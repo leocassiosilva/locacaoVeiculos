@@ -1,57 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html layout:decorate="~{layout}">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width" />
-<title>Locação de Veiculos - Cadastro de Usuario</title>
-<!-- CSS -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css"
-	rel="stylesheet">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/home.css">
-<link rel="stylesheet" href="/css/cadastroUsuario.css">
 </head>
-<body style="background-color: #fff;">
-	<header>
-		<nav class="navbar navbar-expand-lg navbar-dark w3-large"
-			style="background-color: #0275df;">
-			<a class="navbar-brand" href="#"><i class="fa fa-car"></i> SLV</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link" href="/home">Home
-							<span class="sr-only">(current)</span>
-					</a></li>
-				</ul>
-				<div class="form-inline my-2 my-lg-0">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active"><a class="nav-link" href="/login">Área
-								do cliente</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</header>
-
-	<section>
+<body>
+	<section layout:fragment="corpo">
 		<div class="container">
 
 			<div class="row">
@@ -68,13 +21,14 @@
 							<form method="POST" class="form-signin">
 								<div class="form-label-group col-md-12 mb-4">
 									<label for="nome" id="label">Nome</label> <input type="text"
-										class="form-control rounded-0" value="" name="nome" placeholder="Nome *">
+										class="form-control rounded-0" value="" name="nome"
+										placeholder="Nome *">
 								</div>
 
 								<div class="form-label-group col-md-12 mb-4">
 									<label for="email" id="label">E-mail</label> <input
-										type="email" class="form-control rounded-0" value="" name="email"
-										placeholder="Email *">
+										type="email" class="form-control rounded-0" value=""
+										name="email" placeholder="Email *">
 								</div>
 
 
@@ -103,20 +57,5 @@
 			</div>
 		</div>
 	</section>
-	
-	<!-- Footer -->
-	<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
-		<div class="w3-xlarge w3-padding-16">
-			<i class="fa fa-facebook-official w3-hover-opacity"></i> <i
-				class="fa fa-instagram w3-hover-opacity"></i> <i
-				class="fa fa-snapchat w3-hover-opacity"></i> <i
-				class="fa fa-pinterest-p w3-hover-opacity"></i> <i
-				class="fa fa-twitter w3-hover-opacity"></i> <i
-				class="fa fa-linkedin w3-hover-opacity"></i>
-		</div>
-		<p>
-			Felipe Gabriel </br> Francisco Leocacio
-		</p>
-	</footer>
 </body>
 </html>
