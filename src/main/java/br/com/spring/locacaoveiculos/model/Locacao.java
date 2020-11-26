@@ -18,7 +18,6 @@ public class Locacao extends AbstractEntity<Long>{
 
 	
 	
-	
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_veiculo")
 	private Veiculo veiculo;

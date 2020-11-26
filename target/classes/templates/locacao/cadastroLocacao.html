@@ -26,6 +26,7 @@
 							th:text="${veiculo.tipoMarca.marca.nome}"></a><br>
 						Categoria: <a th:text="${veiculo.categoria.nome}"></a><br>
 						Preço: <a th:text="${veiculo.categoria.valor}"></a><br>
+						Diarias: <a id="diarias"></a>
 
 					</div>
 
@@ -50,3 +51,23 @@
 </section>
 </body>
 </html>
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
+<script type="text/javascript">
+	const DAY = 24 * 60 * 60 * 1000;
+	var data1 = new Date(2020, 11, 26);
+	var data2 = new Date(2020, 12, 1);
+
+	var calcMlsdata1 = data1.getTime();
+	var calcMlsdata2 = data2.getTime();
+	var diferenca = calcMlsdata2 - calcMlsdata1;
+	var qtdDias = diferenca / DAY;
+	console.log(qtdDias);
+	$("#diarias").text(qtdDias);
+</script>
+</script>
+
+
+
