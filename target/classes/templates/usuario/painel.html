@@ -1,43 +1,18 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<html layout:decorate="~{layout}">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width" />
-<title>Locação de Veiculos - Cadastro de Usuario</title>
-<!-- CSS -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css"
-	rel="stylesheet">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
 </head>
 <body>
+	<section layout:fragment="corpo">
+		<span sec:authorize="isAuthenticated()"> Logged user: <span
+			sec:authentication="name"></span>
+		</span>
 
-	<header>
-		<!-- Navbar -->
-		<nav class="navbar navbar-light bg-light">
-			<a class="navbar-brand mb-0 h1" style="font-weight: bold;" href="#">SLV
-				- Sistema de Locação de Veiculos</a>
-		</nav>
-	</header>
-
-
-	<span sec:authorize="isAuthenticated()"> Logged user: <span
-		sec:authentication="name"></span>
-	</span>
-
-	<form th:action="@{/logout}" method="post">
-		<input type="submit" value="Sign Out" />
-	</form>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" />
+		</form>
+	</section>
 </body>
 </html>
 
