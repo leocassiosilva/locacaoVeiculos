@@ -25,8 +25,9 @@
 						Nome: <a th:text="${veiculo.nome}"></a><br /> Marca: <a
 							th:text="${veiculo.tipoMarca.marca.nome}"></a><br>
 						Categoria: <a th:text="${veiculo.categoria.nome}"></a><br>
-						Preço: <a th:text="${veiculo.categoria.valor}"></a><br>
-						Diarias: <a id="diarias"></a>
+						Preço: <a id="preco" th:text="${veiculo.categoria.valor}"></a><br>
+						Diarias: <a id="diarias"></a><br /> Seguro: <a id="valorSeguro"></a><br />
+						Valor Final: <a id="valorLocacao"></a><br />
 
 					</div>
 
@@ -38,7 +39,7 @@
 									class="form-control">
 									<option value="">Selecione</option>
 									<option th:each="c : ${seguros}" th:value="${c.id}"
-										th:text="${c.nome}"></option>
+										th:text="${c.nome} + ' R$' + ${c.preco}"></option>
 
 								</select>
 							</div>
@@ -48,6 +49,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </section>
 </body>
 </html>
@@ -56,16 +58,53 @@
 	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 	crossorigin="anonymous"></script>
 <script type="text/javascript">
-	const DAY = 24 * 60 * 60 * 1000;
-	var data1 = new Date(2020, 11, 26);
-	var data2 = new Date(2020, 12, 1);
+	$(document).ready(
+			function() {
+				const DAY = 24 * 60 * 60 * 1000;
+				var data1 = new Date(2020, 11, 26);
+				var data2 = new Date(2020, 12, 1);
 
-	var calcMlsdata1 = data1.getTime();
-	var calcMlsdata2 = data2.getTime();
-	var diferenca = calcMlsdata2 - calcMlsdata1;
-	var qtdDias = diferenca / DAY;
-	console.log(qtdDias);
-	$("#diarias").text(qtdDias);
+				var calcMlsdata1 = data1.getTime();
+				var calcMlsdata2 = data2.getTime();
+				var diferenca = calcMlsdata2 - calcMlsdata1;
+				var qtdDias = diferenca / DAY;
+				console.log(qtdDias);
+				var array;
+				var valorSeguro = 0;
+				var valorFinal = 0;
+				$("#diarias").text(qtdDias);
+				var precoVeiculo = $('#preco').text();
+				console.log(precoVeiculo);
+				$('#seguro').change(
+						function() {
+
+							var valor = $('#seguro option:selected').val();
+							var nome = $('#seguro option:selected').text();
+							if (valor != "") {
+
+								console.log(valor);
+								console.log(nome);
+
+								array = nome.split("R$");
+								console.log(array[0]);
+								valorSeguro = array[1];
+								console.log(valorSeguro);
+								$("#valorSeguro").text(valorSeguro);
+
+								valorFinal = (precoVeiculo * qtdDias)
+										+ (valorSeguro * qtdDias);
+
+								$("#valorLocacao").text(valorFinal);
+							} else {
+								valorFinal = (precoVeiculo * qtdDias);
+								valorSeguro = 0;
+								$("#valorSeguro").text(valorSeguro);
+								console.log(valorFinal);
+								$("#valorLocacao").text(valorFinal);
+							}
+						});
+
+			});
 </script>
 </script>
 

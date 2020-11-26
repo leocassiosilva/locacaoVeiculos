@@ -29,12 +29,12 @@ public class Locacao extends AbstractEntity<Long>{
 	
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_localRetirada")
-	private local localRetirada;
+	private Local localRetirada;
 	
 	
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_localEntrega")
-	private local localEntrega;
+	private Local localEntrega;
 	
 	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name = "data_retirada", nullable = false, columnDefinition = "DATE")
@@ -73,19 +73,19 @@ public class Locacao extends AbstractEntity<Long>{
 		this.usuario = usuario;
 	}
 
-	public local getLocalRetirada() {
+	public Local getLocalRetirada() {
 		return localRetirada;
 	}
 
-	public void setLocalRetirada(local localRetirada) {
+	public void setLocalRetirada(Local localRetirada) {
 		this.localRetirada = localRetirada;
 	}
 
-	public local getLocalEntrega() {
+	public Local getLocalEntrega() {
 		return localEntrega;
 	}
 
-	public void setLocalEntrega(local localEntrega) {
+	public void setLocalEntrega(Local localEntrega) {
 		this.localEntrega = localEntrega;
 	}
 
