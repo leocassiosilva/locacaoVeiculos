@@ -43,12 +43,21 @@ public class Locacao extends AbstractEntity<Long>{
 	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name = "data_entrega", nullable = false, columnDefinition = "DATE")
 	private LocalDate dataEntrega;
-
 	
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_seguro")
 	private Seguro seguro;
 	
+	private double valorTotal; 
+
+	public double getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(double valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+
 	public Seguro getSeguro() {
 		return seguro;
 	}
