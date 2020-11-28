@@ -75,7 +75,6 @@ public class VeiculoController {
 			return "veiculo/cadastroVeiculo";
 		}
 
-		veiculo.setStatus(false);
 		veiculoService.save(veiculo);
 		String dado = null;
 
