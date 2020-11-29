@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.spring.locacaoveiculos.model.Local;
 import br.com.spring.locacaoveiculos.model.Seguro;
+import br.com.spring.locacaoveiculos.service.LocalService;
 import br.com.spring.locacaoveiculos.service.SeguroService;
 import br.com.spring.locacaoveiculos.service.VeiculoService;
 
@@ -28,6 +30,9 @@ public class LocacaoveiculosController {
 	@Autowired
 	private SeguroService seguroService;
 	
+	@Autowired
+	private LocalService localService;
+	
 	
 	@GetMapping("/veiculo/{id}")
 	public String preLocacao(@PathVariable("id") Long id, ModelMap model) {
@@ -39,8 +44,13 @@ public class LocacaoveiculosController {
 	}
 	
 	@ModelAttribute("seguros")
-	public List<Seguro> listaDeDepartamentos() {
+	public List<Seguro> listaSeguros() {
 		return seguroService.buscarTodos();
+	}
+	
+	@ModelAttribute("locais")
+	public List<Local> listaLocais() {
+		return localService.buscarTodos();
 	}
 	
 	
