@@ -12,6 +12,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import nz.net.ultraq.thymeleaf.LayoutDialect;
+
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -22,6 +24,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public LayoutDialect layoutDialect() {
+	    return new LayoutDialect();
 	}
 
 	private static final String[] AUTH_LIST = { "/", "/home", "/locacao/veiculo/{id}", "/locacao/locais" ,"/locacao/pagar", "/newUsuario", "/veiculos/newCNormal", "/veiculos/newCVIP", "/veiculos/newNormal", "/veiculos/newVIP", "/veiculos/getVeiculo/{id}", "/veiculos/getVeiculoMarca/{id}&{id_marca}", "/veiculos/getMarcas", "/veiculos/salvar" , "/veiculos/listar", "/veiculos/newVeiculo", "/veiculos/getTipo"};
