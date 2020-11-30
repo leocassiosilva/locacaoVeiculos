@@ -4,9 +4,12 @@ package br.com.spring.locacaoveiculos.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,9 +59,12 @@ public class LocacaoveiculosController {
 	
 	
 	@PostMapping("/pagar")
-	public String pagarLocacao( Locacao locacao) {
+	public String pagarLocacao(@Valid Locacao locacao, BindingResult result, ModelMap model) {
 		System.out.println("Pague a locação rapaz!");
 		System.out.println(locacao.getVeiculo().getId());
+		System.out.println(locacao.getValorTotal());
+		System.out.println(locacao.getSeguro().getNome());
+		model.addAttribute("locacao", locacao);
 		return "/locacao/pagarLocacao";
 
 	}

@@ -50,10 +50,10 @@
 						th:object="${locacao}" enctype="multipart/form-data">
 						<div class="form-group">
 							<label>Seguro(ex:Normal/Vip)</label> <select id="seguro"
-								class="form-control">
+								class="form-control" th:field="*{seguro}">
 								<option value="">Selecione</option>
-								<option th:each="c : ${seguros}" th:value="${c.id}"
-									th:text="${c.nome} + ' R$' + ${c.preco}"></option>
+								<option th:each="s : ${seguros}" th:value="${s.id}"
+									th:text="${s.nome} + ' R$' + ${s.preco}"></option>
 							</select>
 						</div>
 
@@ -75,7 +75,9 @@
 
 
 						<input type="hidden" th:value="${veiculo.id}" name="veiculo"
-							id="veiculo" class="form control">
+							id="veiculo" class="form control"> 
+							
+						<input type="text" id="valorTotal" name="valorTotal" class="form control">
 
 						<div class="form-group" style="text-align: right;">
 							<button type="submit" class="btn btn-primary">Pagar
@@ -131,12 +133,14 @@
 										+ (valorSeguro * qtdDias);
 
 								$("#valorLocacao").text(valorFinal);
+								$("#valorTotal").val(valorFinal);
 							} else {
 								valorFinal = (precoVeiculo * qtdDias);
 								valorSeguro = 0;
 								$("#valorSeguro").text(valorSeguro);
 								console.log(valorFinal);
 								$("#valorLocacao").text(valorFinal);
+								$("#valorTotal").val(valorFinal);
 							}
 						});
 
