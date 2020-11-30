@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.spring.locacaoveiculos.model.Locacao;
 import br.com.spring.locacaoveiculos.model.Local;
 import br.com.spring.locacaoveiculos.model.Seguro;
 import br.com.spring.locacaoveiculos.service.LocalService;
@@ -35,7 +36,7 @@ public class LocacaoveiculosController {
 	
 	
 	@GetMapping("/veiculo/{id}")
-	public String preLocacao(@PathVariable("id") Long id, ModelMap model) {
+	public String preLocacao(@PathVariable("id") Long id, ModelMap model, Locacao locacao) {
 		System.out.println(id);
 		model.addAttribute("veiculo", veiculoService.buscarVeiculo(id)); 
 		System.out.println(veiculoService.buscarVeiculo(id));
@@ -55,8 +56,9 @@ public class LocacaoveiculosController {
 	
 	
 	@PostMapping("/pagar")
-	public String pagarLocacao() {
+	public String pagarLocacao( Locacao locacao) {
 		System.out.println("Pague a locação rapaz!");
+		System.out.println(locacao.getVeiculo().getId());
 		return "/locacao/pagarLocacao";
 
 	}
