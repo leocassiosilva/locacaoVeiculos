@@ -20,6 +20,7 @@ import br.com.spring.locacaoveiculos.model.Locacao;
 import br.com.spring.locacaoveiculos.model.Locadora;
 import br.com.spring.locacaoveiculos.model.Local;
 import br.com.spring.locacaoveiculos.model.Seguro;
+import br.com.spring.locacaoveiculos.model.Veiculo;
 import br.com.spring.locacaoveiculos.service.LocadoraService;
 import br.com.spring.locacaoveiculos.service.LocalService;
 import br.com.spring.locacaoveiculos.service.SeguroService;
@@ -63,12 +64,11 @@ public class LocacaoveiculosController {
 	
 	
 	@PostMapping("/pagar")
-	public String pagarLocacao(@Valid Locacao locacao, BindingResult result, ModelMap model) {
+	public String pagarLocacao(@Valid Veiculo veiculo, BindingResult result, ModelMap model) {
 		System.out.println("Pague a locação rapaz!");
-		System.out.println(locacao.getVeiculo().getId());
-		System.out.println(locacao.getValorTotal());
-		System.out.println(locacao.getSeguro().getNome());
-		model.addAttribute("locacao", locacao);
+		System.out.println(veiculo.getId());
+		System.out.println(veiculo.getSeguro().getNome());
+		System.out.println(veiculo.getLocadoraDevolucao().getLocalLocadora().getNome());
 		return "/locacao/pagarLocacao";
 
 	}

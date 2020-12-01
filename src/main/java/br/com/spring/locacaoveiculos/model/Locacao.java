@@ -35,9 +35,6 @@ public class Locacao extends AbstractEntity<Long>{
 	@Column(name = "data_entrega", nullable = false, columnDefinition = "DATE")
 	private LocalDate dataEntrega;
 	
-	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_seguro")
-	private Seguro seguro;
 	
 	private double valorTotal; 
 
@@ -49,13 +46,7 @@ public class Locacao extends AbstractEntity<Long>{
 		this.valorTotal = valorTotal;
 	}
 
-	public Seguro getSeguro() {
-		return seguro;
-	}
-
-	public void setSeguro(Seguro seguro) {
-		this.seguro = seguro;
-	}
+	
 
 	public Veiculo getVeiculo() {
 		return veiculo;

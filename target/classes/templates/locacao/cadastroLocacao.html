@@ -49,7 +49,7 @@
 					
 
 					<form method="POST" th:action=@{/locacao/pagar}
-						th:object="${locacao}" enctype="multipart/form-data">
+						th:object="${veiculo}" enctype="multipart/form-data">
 						<div class="form-group">
 							<label>Seguro(ex:Normal/Vip)</label> <select id="seguro"
 								class="form-control" th:field="*{seguro}">
@@ -61,7 +61,7 @@
 						
 						<div class="form-group">
 							<label>Local de Devolucao</label> <select id="locadoraDevolucao"
-								class="form-control" >
+								class="form-control" th:field="*{locadoraDevolucao}">
 								<option value="">Selecione</option>
 								<option th:each="l : ${locadoras}" th:value="${l.id}"
 									th:text="${l.localLocadora.nome}"></option>
@@ -73,7 +73,7 @@
 							id="veiculo" class="form control"> 
 						
 							
-							 <input type="text" id="valorTotal"
+							 <input type="hidden" id="valorTotal"
 							name="valorTotal" class="form control">
 
 						<div class="form-group" style="text-align: right;">

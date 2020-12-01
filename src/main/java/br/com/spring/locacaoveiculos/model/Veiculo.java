@@ -50,7 +50,25 @@ public class Veiculo extends AbstractEntity<Long> {
 	@JoinColumn(name = "id_locadora")
 	private Locadora locadora; 
 
-		
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "id_locadora_devolucao")
+	private Locadora locadoraDevolucao;
+	
+	
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "id_seguro")
+	private Seguro seguro;
+	
+	
+	
+	public Seguro getSeguro() {
+		return seguro;
+	}
+
+	public void setSeguro(Seguro seguro) {
+		this.seguro = seguro;
+	}
+
 	
 	public Locadora getLocadora() {
 		return locadora;
@@ -58,6 +76,14 @@ public class Veiculo extends AbstractEntity<Long> {
 
 	public void setLocadora(Locadora locadora) {
 		this.locadora = locadora;
+	}
+	
+	public Locadora getLocadoraDevolucao() {
+		return locadoraDevolucao;
+	}
+
+	public void setLocadoraDevolucao(Locadora locadoraDevolucao) {
+		this.locadoraDevolucao = locadoraDevolucao;
 	}
 
 	public String getNome() {

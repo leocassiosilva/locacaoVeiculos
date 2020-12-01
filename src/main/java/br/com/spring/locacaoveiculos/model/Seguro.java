@@ -16,7 +16,7 @@ public class Seguro extends AbstractEntity<Long>{
 	private double preco;
 	
 	@OneToMany(mappedBy = "seguro")
-	private List<Locacao> locacoes;
+	private List<Veiculo> veiculos;
 
 	public String getNome() {
 		return nome;
