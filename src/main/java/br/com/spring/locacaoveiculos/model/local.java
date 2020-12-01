@@ -13,13 +13,7 @@ public class Local extends AbstractEntity<Long>{
 	
 	private String nome;
 	
-	@OneToMany(mappedBy = "localRetirada")
-	private List<Locacao> locacaoRetirada;
-	
-	@OneToMany(mappedBy = "localEntrega")
-	private List<Locacao> locacaoEntrega;
-	
-	
+
 	@OneToMany(mappedBy = "localLocadora")
 	private List<Locadora> localLocadora;
 	

@@ -1,6 +1,7 @@
 package br.com.spring.locacaoveiculos.service.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,5 +19,10 @@ public class LocalServiceImpl implements LocalService{
 	@Override
 	public List<Local> buscarTodos() {
 		return localRepository.findAll();
+	}
+
+	@Override
+	public Optional<Local> buscarPorId(Long id) {
+		return localRepository.findById(id);
 	} 
 }

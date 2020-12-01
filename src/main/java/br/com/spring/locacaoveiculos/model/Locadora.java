@@ -23,6 +23,9 @@ public class Locadora extends AbstractEntity<Long>{
 	
 	@OneToMany(mappedBy = "locadora")
 	private List<Veiculo> locadora;
+	
+	
+	
 
 	public String getNome() {
 		return nome;

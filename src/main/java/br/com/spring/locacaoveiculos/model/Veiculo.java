@@ -50,10 +50,7 @@ public class Veiculo extends AbstractEntity<Long> {
 	@JoinColumn(name = "id_locadora")
 	private Locadora locadora; 
 
-	
-	
-	
-	
+		
 	
 	public Locadora getLocadora() {
 		return locadora;
