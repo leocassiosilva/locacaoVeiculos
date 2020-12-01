@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.com.spring.locacaoveiculos.model.Locadora;
 import br.com.spring.locacaoveiculos.repository.LocadoraRepository;
 import br.com.spring.locacaoveiculos.service.LocadoraService;
-
+@Service
 public class LocadoraServiceImpl implements LocadoraService{
 
 	@Autowired

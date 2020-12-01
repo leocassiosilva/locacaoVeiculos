@@ -44,6 +44,24 @@ public class Veiculo extends AbstractEntity<Long> {
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_tipoMarca")
 	private TipoMarca tipoMarca;
+	
+	
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "id_locadora")
+	private Locadora locadora; 
+
+	
+	
+	
+	
+	
+	public Locadora getLocadora() {
+		return locadora;
+	}
+
+	public void setLocadora(Locadora locadora) {
+		this.locadora = locadora;
+	}
 
 	public String getNome() {
 		return nome;

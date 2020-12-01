@@ -1,8 +1,11 @@
 package br.com.spring.locacaoveiculos.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
@@ -16,6 +19,10 @@ public class Locadora extends AbstractEntity<Long>{
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_local")
 	private Local localLocadora;
+	
+	
+	@OneToMany(mappedBy = "locadora")
+	private List<Veiculo> locadora;
 
 	public String getNome() {
 		return nome;

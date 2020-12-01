@@ -26,12 +26,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.spring.locacaoveiculos.model.Arquivo;
 import br.com.spring.locacaoveiculos.model.Categoria;
+import br.com.spring.locacaoveiculos.model.Locadora;
 import br.com.spring.locacaoveiculos.model.Marca;
 import br.com.spring.locacaoveiculos.model.Tipo;
 import br.com.spring.locacaoveiculos.model.TipoMarca;
 import br.com.spring.locacaoveiculos.model.Veiculo;
 import br.com.spring.locacaoveiculos.service.ArquivoService;
 import br.com.spring.locacaoveiculos.service.CategoriaService;
+import br.com.spring.locacaoveiculos.service.LocadoraService;
 import br.com.spring.locacaoveiculos.service.MarcaService;
 import br.com.spring.locacaoveiculos.service.TipoMarcaService;
 import br.com.spring.locacaoveiculos.service.TipoService;
@@ -58,6 +60,10 @@ public class VeiculoController {
 
 	@Autowired
 	private TipoMarcaService tipoMarcaService;
+	
+	@Autowired
+	private LocadoraService locadoraService;
+	
 
 	public static final String uploadingDir = System.getProperty("user.dir") + "/src/main/resources/static/img/";
 
@@ -74,7 +80,7 @@ public class VeiculoController {
 			attr.addFlashAttribute("mensagem", "Verifique se os campos obrigatórios foram preenchidos!");
 			return "veiculo/cadastroVeiculo";
 		}
-
+		System.out.println("cade");
 		veiculoService.save(veiculo);
 		String dado = null;
 
@@ -161,7 +167,7 @@ public class VeiculoController {
 	}
 
 	@ModelAttribute("categorias")
-	public List<Categoria> listaDeDepartamentos() {
+	public List<Categoria> listaDeCategorias() {
 		return categoriaService.buscarTodos();
 	}
 
@@ -187,6 +193,12 @@ public class VeiculoController {
 	public String motoNormal() {
 		return "veiculo/MNormal";
 
+	}
+	
+	
+	@ModelAttribute("locadoras")
+	public List<Locadora> listaDeLocadoras() {
+		return locadoraService.buscarTodos();
 	}
 
 }

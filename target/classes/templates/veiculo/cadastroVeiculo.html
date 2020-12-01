@@ -85,6 +85,17 @@
 							class="form-control" placeholder="Renavan *"
 							th:field="*{renavan}" />
 					</div>
+					
+					
+					<div class="form-group">
+						<label>Categoria(ex:NORMAL/VIP)</label> <select id="locadora"
+							class="form-control" th:field="*{locadora}">
+							<option value="">Selecione</option>
+							<option th:each="c : ${locadoras}" th:value="${c.id}"
+								th:text="${c.nome}"></option>
+
+						</select>
+					</div>
 
 					<div class="form-group">
 						<p>
