@@ -2,6 +2,7 @@ package br.com.spring.locacaoveiculos.controller;
 
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -64,11 +65,14 @@ public class LocacaoveiculosController {
 	
 	
 	@PostMapping("/pagar")
-	public String pagarLocacao(@Valid Veiculo veiculo, BindingResult result, ModelMap model) {
+	public String pagarLocacao(@Valid Veiculo veiculo, LocalDate dataRetirada, BindingResult result,  ModelMap model) {
 		System.out.println("Pague a locação rapaz!");
+		System.out.println(dataRetirada);
 		System.out.println(veiculo.getId());
-		System.out.println(veiculo.getSeguro().getNome());
-		System.out.println(veiculo.getLocadoraDevolucao().getLocalLocadora().getNome());
+		System.out.println(veiculo.getSeguro().getPreco() + veiculo.getCategoria().getValor());
+		//System.out.println(veiculo.getLocadoraDevolucao().getLocalLocadora().getNome());
+		model.addAttribute("veiculo", veiculo);
+		model.addAttribute("dataRetirada", dataRetirada);
 		return "/locacao/pagarLocacao";
 
 	}
