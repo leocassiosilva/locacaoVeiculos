@@ -19,6 +19,11 @@ public class Local extends AbstractEntity<Long>{
 	@OneToMany(mappedBy = "localEntrega")
 	private List<Locacao> locacaoEntrega;
 	
+	
+	@OneToMany(mappedBy = "localLocadora")
+	private List<Locadora> localLocadora;
+	
+	
 	public String getNome() {
 		return nome;
 	}
