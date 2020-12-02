@@ -3,6 +3,8 @@ package br.com.spring.locacaoveiculos.controller;
 
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -65,12 +67,27 @@ public class LocacaoveiculosController {
 	
 	
 	@PostMapping("/pagar")
-	public String pagarLocacao(@Valid Veiculo veiculo, LocalDate dataRetirada, BindingResult result,  ModelMap model) {
+	public String pagarLocacao(@Valid Veiculo veiculo, LocalDate dataRetirada, String dataEntrega, BindingResult result,  ModelMap model) {
+		
+        LocalDate localDate = LocalDate.parse(dataEntrega);
+        
+        long diaria = ChronoUnit.DAYS.between(dataRetirada, localDate);
+        
+        System.out.println("Diarias: " + diaria);
 		System.out.println("Pague a locação rapaz!");
 		System.out.println(dataRetirada);
+		System.out.println(localDate);
 		System.out.println(veiculo.getId());
+		
+		System.out.println("Local de devolução: " + veiculo.getLocadoraDevolucao().getLocalLocadora().getNome());
+		
+		double seguro = veiculo.getSeguro().getPreco();
+		
 		System.out.println(veiculo.getSeguro().getPreco() + veiculo.getCategoria().getValor());
 		//System.out.println(veiculo.getLocadoraDevolucao().getLocalLocadora().getNome());
+		model.addAttribute("diarias", diaria);
+		model.addAttribute("seguro", seguro);
+		model.addAttribute("dataEntrega", localDate);
 		model.addAttribute("veiculo", veiculo);
 		model.addAttribute("dataRetirada", dataRetirada);
 		return "/locacao/pagarLocacao";

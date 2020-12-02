@@ -27,26 +27,13 @@
 
 			</div>
 			<div class="col-12 col-md-6">
-
-				<div class="card mb-3">
-
-					<div class="card-header">
-						<h5 class="card-title">Informações da locação</h5>
-					</div>
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item">Diarias: <a id="diarias"></a></li>
-						<li class="list-group-item">Seguro: <a id="valorSeguro"></a></li>
-						<li class="list-group-item">Valor Final: <a id="valorLocacao"></a></li>
-						<li class="list-group-item">Local de Retirada: <a th:text="${veiculo.locadora.localLocadora.nome}"></a></li>
-					</ul>
-				</div>
 				<div class="card mb-3">
 
 
 					<div class="card-header">
 						<h5 class="card-title">Informações da locação</h5>
 					</div>
-					
+
 
 					<form method="POST" th:action=@{/locacao/pagar}
 						th:object="${veiculo}" enctype="multipart/form-data">
@@ -58,7 +45,7 @@
 									th:text="${s.nome} + ' R$' + ${s.preco}"></option>
 							</select>
 						</div>
-						
+
 						<div class="form-group">
 							<label>Local de Devolucao</label> <select id="locadoraDevolucao"
 								class="form-control" th:field="*{locadoraDevolucao}">
@@ -67,17 +54,19 @@
 									th:text="${l.localLocadora.nome}"></option>
 							</select>
 						</div>
-						
-						<input type="hidden" name="dataRetirada" id="dataRetirada" class="form control" >
 
+						<input type="hidden" name="dataRetirada" id="dataRetirada"
+							class="form control">
+						<div class="form-group col-md-6">
+							<label for="dataEntrega">Data Entrega</label> <input type="date"
+								class="form-control" id="dataEntrega" name="dataEntrega" />
+							<div class="invalid-feedback"></div>
+						</div>
 
 
 						<input type="hidden" th:value="${veiculo.id}" name="veiculo"
-							id="veiculo" class="form control"> 
-						
-							
-							 <input type="hidden" id="valorTotal"
-							name="valorTotal" class="form control">
+							id="veiculo" class="form control"> <input type="hidden"
+							id="valorTotal" name="valorTotal" class="form control">
 
 						<div class="form-group" style="text-align: right;">
 							<button type="submit" class="btn btn-primary">Pagar
@@ -99,21 +88,26 @@
 	$(document).ready(
 			function() {
 				const DAY = 24 * 60 * 60 * 1000;
-				var data1 = new Date(2020, 11, 26);
-				var data2 = new Date(2020, 12, 1);
-				
+				var data1 = new Date(2020, 11, 30);
+				var data2 = new Date(2020, 11, 06);
+
+				/*Formatando data de retirada*/
 				var ano = data1.getFullYear();
 				var mes = data1.getMonth();
 				var dia = data1.getDate();
-				
-				var dataFormatada = dia + "/" + mes + "/" + ano; 
-		
+				var dataFormatada = dia + "/" + mes + "/" + ano;
 				$("#dataRetirada").val(dataFormatada);
-								
-				
 				console.log(dataFormatada);
-				
-				
+
+				/*Formartando data de entrega*/
+				var ano2 = data2.getFullYear();
+				var mes2 = data2.getMonth();
+				var dia2 = data2.getDate();
+
+				var dataFormatada2 = dia2 + "/" + mes2 + "/" + ano2;
+				$("#dataEntrega").val(dataFormatada2);
+				console.log(dataFormatada2);
+
 				var calcMlsdata1 = data1.getTime();
 				var calcMlsdata2 = data2.getTime();
 				var diferenca = calcMlsdata2 - calcMlsdata1;
@@ -153,7 +147,7 @@
 								console.log(valorFinal);
 								$("#valorLocacao").text(valorFinal);
 								$("#valorTotal").val(valorFinal)
-								
+
 							}
 						});
 
