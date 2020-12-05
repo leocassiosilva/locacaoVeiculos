@@ -80,11 +80,16 @@ public class LocacaoveiculosController {
 		
 		System.out.println("Local de devolução: " + veiculo.getLocadoraDevolucao().getLocalLocadora().getNome());
 		
+		
 		double seguro = veiculo.getSeguro().getPreco();
+		double valorLocacao = veiculo.getCategoria().getValor() * diaria;
+		double valorTotal = (valorLocacao + (seguro * diaria) );
 		
 		System.out.println(veiculo.getSeguro().getPreco() + veiculo.getCategoria().getValor());
 		//System.out.println(veiculo.getLocadoraDevolucao().getLocalLocadora().getNome());
 		model.addAttribute("diarias", diaria);
+		model.addAttribute("valorLocacao", valorLocacao);
+		model.addAttribute("valorTotal", valorTotal);
 		model.addAttribute("seguro", seguro);
 		model.addAttribute("dataEntrega", localDate);
 		model.addAttribute("veiculo", veiculo);
