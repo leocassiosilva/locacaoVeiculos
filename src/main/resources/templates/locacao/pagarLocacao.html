@@ -4,34 +4,43 @@
 <meta charset="UTF-8" />
 <section layout:fragment="corpo">
 	<div class="container"
-		style="width: 60%; padding-bottom: 30px; margin-top: 30px;">
+		style=" margin-top: 30px;">
 		<div class="row">
 			<div class="col-sm-6 col-xs-8 mx-auto" id="classePrincipal">
 				<th:block th:include="veiculo/mensagemValidacao"></th:block>
 			</div>
 		</div>
 
+		
 
 		<div class="row">
 
-			<div class="col-sm-6 col-xs-12 mx-auto">
-				<div class="card card-signin flex-row my-5 rounded-0">
+			<div class="col-sm-6 col-md-6">
+				<div class="card card-signin">
 					<div class="card-body">
 						<h5 class="card-title text-center">Informações da Locação</h5>
 						<hr>
-
 						<ul class="list-group list-group-flush">
-						<li class="list-group-item">Diarias - <a th:text="${diarias}"></a></li>
-						<li class="list-group-item">Seguro - <a th:text="${seguro}"></a></li>
-						<li class="list-group-item">Data Retirada - <a th:text="${dataRetirada}"></a></li>
-						<li class="list-group-item">Data Entrega - <a th:text="${dataEntrega}"></a></li>
-						<li class="list-group-item">Local de Retirada - <a th:text="${veiculo.locadora.localLocadora.nome}"></a></li>
-					</ul>
+							<li class="list-group-item">Diarias - <a
+								th:text="${diarias}"></a></li>
+							<li class="list-group-item">Seguro - <a th:text="${seguro}"></a></li>
+							<li class="list-group-item">Data Retirada - <a
+								th:text="${dataRetirada}"></a></li>
+							<li class="list-group-item">Data Entrega - <a
+								th:text="${dataEntrega}"></a></li>
+							<li class="list-group-item">Local de Retirada - <a
+								th:text="${veiculo.locadora.localLocadora.nome}"></a></li>
+						</ul>
 
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-xs-6 mx-auto">
+			<div class="col-sm-6 col-md-6">
+				<div class="card-body">
+					<h5 class="card-title text-center">Pagamento</h5>
+					<hr>
+				</div>
+
 			</div>
 		</div>
 	</div>
