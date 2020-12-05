@@ -14,55 +14,178 @@
 
 		<div class="row">
 
-			<div class="col-sm-6 col-md-6">
-				<div class="card card-signin">
-					<div class="card-body">
-						<h5 class="card-title text-center">Resumo da Locação</h5>
-						<hr>
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item">Diarias - <a
-								th:text="${diarias}"></a></li>
-							<li class="list-group-item">Total do Seguro - R$<a
-								th:text="${seguro} * ${diarias}"></a>
-							</li>
-							<li class="list-group-item">Total do veiculo locação (sem
-								incluir seguro) - R$<a th:text="${valorLocacao}"></a>
-							</li>
-							<li class="list-group-item">Data Retirada - <a
-								th:text="${dataRetirada}"></a></li>
-							<li class="list-group-item">Data Entrega - <a
-								th:text="${dataEntrega}"></a></li>
-							<li class="list-group-item">Local de Retirada - <a
-								th:text="${veiculo.locadora.localLocadora.nome}"></a></li>
-							<li class="list-group-item">Local de Devolução - <a
-								th:text="${veiculo.locadoraDevolucao.localLocadora.nome}"></a></li>
-						</ul>
-
+			<div class="col-sm-6 col-md-6" style="margin-top: 10px;">
+				<div class="row">
+					<div class="col-12 col-md-12">
+						<div class="card mb-3">
+							<img class="card-img-top" th:src="${veiculo.arquivos[0].nome}"
+								alt="Card image cap">
+						</div>
 					</div>
+
+					<div class="col-12 col-md-12" >
+						<div class="card card-signin">
+							<div class="card-body">
+								<h5 class="card-title text-center">Resumo da Locação</h5>
+								<hr>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">Diarias - <a
+										th:text="${diarias}"></a></li>
+									<li class="list-group-item">Total do Seguro - R$<a
+										th:text="${seguro} * ${diarias}"></a>
+									</li>
+									<li class="list-group-item">Total do veiculo locação (sem
+										incluir seguro) - R$<a th:text="${valorLocacao}"></a>
+									</li>
+									<li class="list-group-item">Data Retirada - <a
+										th:text="${dataRetirada}"></a></li>
+									<li class="list-group-item">Data Entrega - <a
+										th:text="${dataEntrega}"></a></li>
+									<li class="list-group-item">Local de Retirada - <a
+										th:text="${veiculo.locadora.localLocadora.nome}"></a></li>
+									<li class="list-group-item">Local de Devolução - <a
+										th:text="${veiculo.locadoraDevolucao.localLocadora.nome}"></a></li>
+								</ul>
+
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
-			<br />
-			<div class="col-sm-6 col-md-6">
-				<div class="card card-signin">
-					<div class="card-body">
-						<h5 class="card-title text-center">Pague com o Cartão de
-							créditos</h5>
-						<hr>
 
-						<a href="#" class="btn btn-primary">Confirmar</a>
+
+			<div class="col-sm-6 col-md-6" style="margin-top: 10px;">
+				<div class="row">
+					<div class="col-12 col-md-12">
+						<div class="card card-signin">
+							<div class="card-body">
+								<h5 class="card-title text-center">Pague com o Cartão de
+									créditos</h5>
+								<hr>
+
+								<form method="POST" th:action=@{/locacao/confirmar}
+									th:object="${locacao}" enctype="multipart/form-data">
+									<div class="form-row">
+
+										<div class="form-group col-md-12">
+											<label for="numero">Numero do cartão</label> <input
+												type="text" class="form-control"
+												placeholder="Numero do cartão*" id="numeroCartao"
+												name="numeroCartao" />
+										</div>
+									</div>
+									<div class="form-row">
+
+										<div class="form-group col-md-12">
+											<label for="nome">Nome do titular (como está gravado
+												no Cartão)</label> <input type="text" class="form-control"
+												placeholder="Numero do cartão*" id="nomeTitular"
+												name="nomeTitular" />
+										</div>
+									</div>
+
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											<label>Mês</label> <select id="mes" data-hj-masked=""
+												name="mes" class="form-control"><option value="">Mês</option>
+												<option value="1">01</option>
+												<option value="2">02</option>
+												<option value="3">03</option>
+												<option value="4">04</option>
+												<option value="5">05</option>
+												<option value="6">06</option>
+												<option value="7">07</option>
+												<option value="8">08</option>
+												<option value="9">09</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+											</select>
+										</div>
+										<div class="form-group col-md-6">
+											<label>Ano</label> <select id="ano" data-hj-masked=""
+												name="ano" class="form-control"><option value="">Ano</option>
+												<option value="2020">20</option>
+												<option value="2021">21</option>
+												<option value="2022">22</option>
+												<option value="2023">23</option>
+												<option value="2024">24</option>
+												<option value="2025">25</option>
+												<option value="2026">26</option>
+												<option value="2027">27</option>
+												<option value="2028">28</option>
+												<option value="2029">29</option>
+												<option value="2030">30</option>
+												<option value="2031">31</option>
+												<option value="2032">32</option>
+												<option value="2033">33</option>
+												<option value="2034">34</option>
+												<option value="2035">35</option>
+												<option value="2036">36</option>
+												<option value="2037">37</option>
+												<option value="2038">38</option>
+												<option value="2039">39</option>
+												<option value="2040">40</option>
+												<option value="2041">41</option>
+												<option value="2042">42</option>
+												<option value="2043">43</option>
+												<option value="2044">44</option>
+												<option value="2045">45</option>
+												<option value="2046">46</option>
+												<option value="2047">47</option>
+												<option value="2048">48</option>
+												<option value="2049">49</option>
+												<option value="2050">50</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-row">
+
+										<div class="form-group col-md-8">
+											<label for="nome">Código de Segurança</label> <input
+												type="number" class="form-control"
+												placeholder="Código de Segurança*" id="codigoSeguranca"
+												name="codigoSeguranca" maxlength="3" />
+										</div>
+									</div>
+
+									<div class="form-row">
+
+										<div class="form-group col-md-8">
+											<label>Mês</label> <select id="parcela" name="parcela"
+												class="form-control"><option value="">Parcelamento
+													(ainda a definir)</option>
+											</select>
+										</div>
+									</div>
+
+								</form>
+
+								<a href="#" class="btn btn-primary">Confirmar</a>
+							</div>
+						</div>
 					</div>
 				</div>
 
-				<div class="card card-signin" style="margin-top: 10px;">
-					<div class="card-body">
-						<h5 class="card-title text-center">Pague com boleto Bancário</h5>
-						<hr>
-						<ul class="list-group list-group-flush" style="margin-top: 10px;">
-							<li class="list-group-item">R$<a th:text="${ valorTotal}"></a>
-							</li>
-						</ul>
-						<p>Você poderá visualizar ou imprimir após a finalização do
-							pedido.</p>
+				<div class="row">
+					<div class="col-12 col-md-12">
+						<div class="card card-signin" style="margin-top: 10px;">
+							<div class="card-body">
+								<h5 class="card-title text-center">Pague com boleto
+									Bancário</h5>
+								<hr>
+								<ul class="list-group list-group-flush"
+									style="margin-top: 10px;">
+									<li class="list-group-item">R$<a th:text="${ valorTotal}"></a>
+									</li>
+								</ul>
+								<p>Você poderá visualizar ou imprimir após a finalização do
+									pedido.</p>
+
+								<a href="#" class="btn btn-primary">Confirmar</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
