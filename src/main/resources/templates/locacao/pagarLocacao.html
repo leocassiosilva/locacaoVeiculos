@@ -67,11 +67,10 @@
 								<form method="POST" th:action=@{/locacaos/confirmar}
 									th:object="${locacao}" enctype="multipart/form-data">
 								
-									<input type="hidden" th:value="${veiculo.id}"	class="form control" th:field="*{veiculo}">
+									<input type="text" th:value="${id}"	class="form control" th:field="*{veiculo}">
 								<input type="text" th:value="${dataRetirada}" class="form control" th:field="*{dataRetirada}">
 								<input type="text" th:value="${dataEntrega}" class="form control" th:field="*{dataEntrega}">
-								<input type="text" th:value="${valorTotal}" class="form control" th:field="*{valorTotal}">
-								
+								<input type="text" th:value="${valorTotal}" id="valorTotal" name="valorTotal" class="form control">
 								
 								
 									<div class="form-row">
@@ -201,6 +200,18 @@
 </section>
 </body>
 </html>
+!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
+<script type="text/javascript">
+$(document).ready(
+		function() {
+			
+			
+		});
+</script>
+
 
 
 

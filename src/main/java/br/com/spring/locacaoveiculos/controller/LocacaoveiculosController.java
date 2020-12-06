@@ -22,6 +22,7 @@ import br.com.spring.locacaoveiculos.model.Locacao;
 import br.com.spring.locacaoveiculos.model.Locadora;
 import br.com.spring.locacaoveiculos.model.Local;
 import br.com.spring.locacaoveiculos.model.Seguro;
+import br.com.spring.locacaoveiculos.model.Usuario;
 import br.com.spring.locacaoveiculos.model.Veiculo;
 import br.com.spring.locacaoveiculos.service.LocacaoService;
 import br.com.spring.locacaoveiculos.service.LocadoraService;
@@ -73,8 +74,10 @@ public class LocacaoveiculosController {
 	@PostMapping("/pagar")
 	public String pagarLocacao(@Valid Locacao locacao, BindingResult result,  String dataRetirada, String dataEntrega,  Veiculo veiculo, ModelMap model) {
 		
-		locacao.setVeiculo(veiculo);
-		model.addAttribute("id", veiculo.getId());
+		
+		Long id = veiculo.getId();
+		
+		model.addAttribute("id", id);
 		
 		
 		
@@ -111,8 +114,6 @@ public class LocacaoveiculosController {
 		
 	@PostMapping("/confirmar")
 	public String pagarLocacao(@Valid Locacao locacao, BindingResult result) {
-		
-	
 		locacaoService.save(locacao);
 		System.out.println(locacao.getDataEntrega());
 		System.out.println(locacao.getDataRetirada());
