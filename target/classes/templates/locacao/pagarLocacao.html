@@ -66,6 +66,14 @@
 
 								<form method="POST" th:action=@{/locacao/confirmar}
 									th:object="${locacao}" enctype="multipart/form-data">
+								<input type="hidden" value="30"	class="form control" th:field="*{usuario}">
+								<input type="hidden" th:value="${dataRetirada}" class="form control" th:field="*{dataRetirada}">
+								<input type="hidden" th:value="${dataEntrega}" class="form control" th:field="*{dataEntrega}">
+								<input type="hidden" th:value="${valorTotal}" class="form control" th:field="*{valorTotal}">
+									
+								
+								
+								
 									<div class="form-row">
 
 										<div class="form-group col-md-12">

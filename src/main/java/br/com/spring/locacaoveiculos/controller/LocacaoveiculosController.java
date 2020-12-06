@@ -66,7 +66,7 @@ public class LocacaoveiculosController {
 	
 	
 	@PostMapping("/pagar")
-	public String pagarLocacao(@Valid Veiculo veiculo, LocalDate dataRetirada, String dataEntrega, BindingResult result,  ModelMap model) {
+	public String pagarLocacao(@Valid Veiculo veiculo,  LocalDate dataRetirada, String dataEntrega, BindingResult result,  ModelMap model) {
 		
         LocalDate localDate = LocalDate.parse(dataEntrega);
         
@@ -84,7 +84,6 @@ public class LocacaoveiculosController {
 		double seguro = veiculo.getSeguro().getPreco();
 		double valorLocacao = veiculo.getCategoria().getValor() * diaria;
 		double valorTotal = (valorLocacao + (seguro * diaria) );
-		
 		System.out.println(veiculo.getSeguro().getPreco() + veiculo.getCategoria().getValor());
 		//System.out.println(veiculo.getLocadoraDevolucao().getLocalLocadora().getNome());
 		model.addAttribute("diarias", diaria);
@@ -94,10 +93,18 @@ public class LocacaoveiculosController {
 		model.addAttribute("dataEntrega", localDate);
 		model.addAttribute("veiculo", veiculo);
 		model.addAttribute("dataRetirada", dataRetirada);
+
 		return "/locacao/pagarLocacao";
 
 	}
 
+		
+	@PostMapping("/confirmar")
+	public String pagarLocacao(Locacao locacao, BindingResult result) {
+		System.out.println("Deu certo!");
+		return "ola";
+	}
+	
 	@ModelAttribute("locadoras")
 	public List<Locadora> listaLocadora() {
 		return locadoraService.buscarTodos();
