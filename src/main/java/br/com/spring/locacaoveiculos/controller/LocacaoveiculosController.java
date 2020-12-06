@@ -30,7 +30,7 @@ import br.com.spring.locacaoveiculos.service.VeiculoService;
 
 
 @Controller
-@RequestMapping("locacao")
+@RequestMapping("locacaos")
 public class LocacaoveiculosController {
 
 	@Autowired
@@ -66,7 +66,7 @@ public class LocacaoveiculosController {
 	
 	
 	@PostMapping("/pagar")
-	public String pagarLocacao(@Valid Veiculo veiculo,  LocalDate dataRetirada, String dataEntrega, BindingResult result,  ModelMap model) {
+	public String pagarLocacao(@Valid Locacao locacao, BindingResult result,  LocalDate dataRetirada, String dataEntrega,  Veiculo veiculo, ModelMap model) {
 		
         LocalDate localDate = LocalDate.parse(dataEntrega);
         
@@ -85,7 +85,6 @@ public class LocacaoveiculosController {
 		double valorLocacao = veiculo.getCategoria().getValor() * diaria;
 		double valorTotal = (valorLocacao + (seguro * diaria) );
 		System.out.println(veiculo.getSeguro().getPreco() + veiculo.getCategoria().getValor());
-		//System.out.println(veiculo.getLocadoraDevolucao().getLocalLocadora().getNome());
 		model.addAttribute("diarias", diaria);
 		model.addAttribute("valorLocacao", valorLocacao);
 		model.addAttribute("valorTotal", valorTotal);
@@ -100,7 +99,7 @@ public class LocacaoveiculosController {
 
 		
 	@PostMapping("/confirmar")
-	public String pagarLocacao(Locacao locacao, BindingResult result) {
+	public String pagarLocacao(Locacao locacao) {
 		System.out.println("Deu certo!");
 		return "ola";
 	}

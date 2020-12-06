@@ -29,12 +29,11 @@
 			<div class="col-12 col-md-6">
 				<div class="card card-signin">
 					<div class="card-body">
-						<h5 class="card-title text-center">Pague com o Cartão de
-							créditos</h5>
+						<h5 class="card-title text-center">Informações necessarias</h5>
 						<hr>
 
 
-						<form method="POST" th:action=@{/locacao/pagar}
+						<form method="POST" th:action=@{/locacaos/pagar}
 							th:object="${veiculo}" enctype="multipart/form-data">
 							<div class="form-group">
 								<label>Seguro(ex:Normal/Vip)</label> <select id="seguro"

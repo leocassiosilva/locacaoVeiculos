@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -17,15 +18,15 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 public class Locacao extends AbstractEntity<Long>{
 
 	
-	
+	@NotNull(message = "Informe o veiculo.")
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_veiculo")
 	private Veiculo veiculo;
 	
+	@NotNull(message = "Informe o veiculo.")
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
-	
 	
 	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name = "data_retirada", nullable = false, columnDefinition = "DATE")
@@ -34,7 +35,6 @@ public class Locacao extends AbstractEntity<Long>{
 	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name = "data_entrega", nullable = false, columnDefinition = "DATE")
 	private LocalDate dataEntrega;
-	
 	
 	private double valorTotal; 
 
