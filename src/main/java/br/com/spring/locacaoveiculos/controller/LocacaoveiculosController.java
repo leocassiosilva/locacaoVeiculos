@@ -74,15 +74,25 @@ public class LocacaoveiculosController {
 	@PostMapping("/pagar")
 	public String pagarLocacao(@Valid Locacao locacao, BindingResult result,  String dataRetirada, String dataEntrega,  Veiculo veiculo, ModelMap model) {
 		
-		
-		Long id = veiculo.getId();
-		
-		model.addAttribute("id", id);
-		
-		
-		
-        LocalDate localDate = LocalDate.parse(dataEntrega);
+		/*Convertendo datas de string para LocalDate*/
+	    LocalDate localDate = LocalDate.parse(dataEntrega);
         LocalDate localDatee = LocalDate.parse(dataRetirada);
+		
+	
+        locacao.setVeiculo(veiculo);
+        locacao.setDataEntrega(localDate);
+        locacao.setDataRetirada(localDatee);
+        
+        
+		System.out.println(locacao.getVeiculo().getNome());
+		
+		model.addAttribute("id", locacao.getVeiculo().getId());
+		
+		
+		Veiculo veic = veiculoService.buscarVeiculo(locacao.getVeiculo().getId());
+		
+		System.out.println(veic.getNome());
+    
         
         long diaria = ChronoUnit.DAYS.between(localDatee, localDate);
         
@@ -99,6 +109,9 @@ public class LocacaoveiculosController {
 		double valorLocacao = veiculo.getCategoria().getValor() * diaria;
 		double valorTotal = (valorLocacao + (seguro * diaria) );
 		System.out.println(veiculo.getSeguro().getPreco() + veiculo.getCategoria().getValor());
+		
+		locacao.setValorTotal(valorTotal);
+		
 		model.addAttribute("diarias", diaria);
 		model.addAttribute("valorLocacao", valorLocacao);
 		model.addAttribute("valorTotal", valorTotal);
@@ -106,7 +119,9 @@ public class LocacaoveiculosController {
 		model.addAttribute("dataEntrega", localDate);
 		model.addAttribute("veiculo", veiculo);
 		model.addAttribute("dataRetirada", localDatee);
+		model.addAttribute("loca", locacao);
 
+		
 		return "/locacao/pagarLocacao";
 
 	}
