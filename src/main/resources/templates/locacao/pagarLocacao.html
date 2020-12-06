@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<html layout:decorate="~{layout}">
 <head>
 <meta charset="UTF-8" />
 <section layout:fragment="corpo">
@@ -24,7 +23,7 @@
 						</div>
 					</div>
 
-					<div class="col-12 col-md-12">
+					<div class="col-12 col-md-12" >
 						<div class="card card-signin">
 							<div class="card-body">
 								<h5 class="card-title text-center">Resumo da Locação</h5>
@@ -67,15 +66,14 @@
 
 								<form method="POST" th:action=@{/locacaos/confirmar}
 									th:object="${locacao}" enctype="multipart/form-data">
-								<input type="hidden" th:value="${veiculo.id}"	class="form control" th:field="*{veiculo}">
-								<input type="hidden" value="30"	class="form control" th:field="*{usuario}">
-								<input type="hidden" th:value="${dataRetirada}" class="form control" th:field="*{dataRetirada}">
-								<input type="hidden" th:value="${dataEntrega}" class="form control" th:field="*{dataEntrega}">
-								<input type="hidden" th:value="${valorTotal}" class="form control" th:field="*{valorTotal}">
-
-
-
-
+								
+									<input type="hidden" th:value="${veiculo.id}"	class="form control" th:field="*{veiculo}">
+								<input type="text" th:value="${dataRetirada}" class="form control" th:field="*{dataRetirada}">
+								<input type="text" th:value="${dataEntrega}" class="form control" th:field="*{dataEntrega}">
+								<input type="text" th:value="${valorTotal}" class="form control" th:field="*{valorTotal}">
+								
+								
+								
 									<div class="form-row">
 
 										<div class="form-group col-md-12">
@@ -169,10 +167,8 @@
 											</select>
 										</div>
 									</div>
-									<button type="submit" class="btn btn-primary"
-										style="margin-top: 10px;" id="btn">Cadastrar</button>
+									<button type="submit" class="btn btn-primary">Confirmar</button>
 								</form>
-
 
 							</div>
 						</div>

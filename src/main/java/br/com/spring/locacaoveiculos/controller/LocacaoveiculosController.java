@@ -23,6 +23,7 @@ import br.com.spring.locacaoveiculos.model.Locadora;
 import br.com.spring.locacaoveiculos.model.Local;
 import br.com.spring.locacaoveiculos.model.Seguro;
 import br.com.spring.locacaoveiculos.model.Veiculo;
+import br.com.spring.locacaoveiculos.service.LocacaoService;
 import br.com.spring.locacaoveiculos.service.LocadoraService;
 import br.com.spring.locacaoveiculos.service.LocalService;
 import br.com.spring.locacaoveiculos.service.SeguroService;
@@ -45,6 +46,10 @@ public class LocacaoveiculosController {
 	@Autowired
 	private LocadoraService locadoraService;
 	
+	@Autowired
+	private LocacaoService locacaoService;
+	
+	
 	@GetMapping("/veiculo/{id}")
 	public String preLocacao(@PathVariable("id") Long id, ModelMap model, Locacao locacao) {
 		System.out.println(id);
@@ -66,11 +71,17 @@ public class LocacaoveiculosController {
 	
 	
 	@PostMapping("/pagar")
-	public String pagarLocacao(@Valid Locacao locacao, BindingResult result,  LocalDate dataRetirada, String dataEntrega,  Veiculo veiculo, ModelMap model) {
+	public String pagarLocacao(@Valid Locacao locacao, BindingResult result,  String dataRetirada, String dataEntrega,  Veiculo veiculo, ModelMap model) {
+		
+		locacao.setVeiculo(veiculo);
+		model.addAttribute("id", veiculo.getId());
+		
+		
 		
         LocalDate localDate = LocalDate.parse(dataEntrega);
+        LocalDate localDatee = LocalDate.parse(dataRetirada);
         
-        long diaria = ChronoUnit.DAYS.between(dataRetirada, localDate);
+        long diaria = ChronoUnit.DAYS.between(localDatee, localDate);
         
         System.out.println("Diarias: " + diaria);
 		System.out.println("Pague a locação rapaz!");
@@ -91,7 +102,7 @@ public class LocacaoveiculosController {
 		model.addAttribute("seguro", seguro);
 		model.addAttribute("dataEntrega", localDate);
 		model.addAttribute("veiculo", veiculo);
-		model.addAttribute("dataRetirada", dataRetirada);
+		model.addAttribute("dataRetirada", localDatee);
 
 		return "/locacao/pagarLocacao";
 
@@ -99,9 +110,16 @@ public class LocacaoveiculosController {
 
 		
 	@PostMapping("/confirmar")
-	public String pagarLocacao(Locacao locacao) {
+	public String pagarLocacao(@Valid Locacao locacao, BindingResult result) {
+		
+	
+		locacaoService.save(locacao);
+		System.out.println(locacao.getDataEntrega());
+		System.out.println(locacao.getDataRetirada());
+		System.out.println(locacao.getUsuario());
+		System.out.println(locacao.getValorTotal());
 		System.out.println("Deu certo!");
-		return "ola";
+		return "/home";
 	}
 	
 	@ModelAttribute("locadoras")

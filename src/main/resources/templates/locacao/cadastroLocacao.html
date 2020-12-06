@@ -62,7 +62,7 @@
 							</div>
 
 
-							<input type="hidden" th:value="${veiculo.id}" name="veiculo"
+							<input type="hidden"  th:value="${veiculo.id}" name="veiculo"
 								id="veiculo" class="form control"> <input type="hidden"
 								id="valorTotal" name="valorTotal" class="form control">
 
@@ -93,7 +93,7 @@
 				var ano = data1.getFullYear();
 				var mes = data1.getMonth();
 				var dia = data1.getDate();
-				var dataFormatada = dia + "/" + mes + "/" + ano;
+				var dataFormatada = ano + "-" + mes + "-" + dia ;
 				$("#dataRetirada").val(dataFormatada);
 				console.log(dataFormatada);
 
