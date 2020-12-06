@@ -22,7 +22,6 @@ import br.com.spring.locacaoveiculos.model.Locacao;
 import br.com.spring.locacaoveiculos.model.Locadora;
 import br.com.spring.locacaoveiculos.model.Local;
 import br.com.spring.locacaoveiculos.model.Seguro;
-import br.com.spring.locacaoveiculos.model.Usuario;
 import br.com.spring.locacaoveiculos.model.Veiculo;
 import br.com.spring.locacaoveiculos.service.LocacaoService;
 import br.com.spring.locacaoveiculos.service.LocadoraService;
@@ -77,12 +76,7 @@ public class LocacaoveiculosController {
 		/*Convertendo datas de string para LocalDate*/
 	    LocalDate localDate = LocalDate.parse(dataEntrega);
         LocalDate localDatee = LocalDate.parse(dataRetirada);
-		
-	
-        locacao.setVeiculo(veiculo);
-        locacao.setDataEntrega(localDate);
-        locacao.setDataRetirada(localDatee);
-        
+		     
         
 		System.out.println(locacao.getVeiculo().getNome());
 		
@@ -111,6 +105,11 @@ public class LocacaoveiculosController {
 		System.out.println(veiculo.getSeguro().getPreco() + veiculo.getCategoria().getValor());
 		
 		locacao.setValorTotal(valorTotal);
+		locacao.setVeiculo(veiculo);
+        locacao.setDataEntrega(localDate);
+        locacao.setDataRetirada(localDatee);
+		
+		
 		
 		model.addAttribute("diarias", diaria);
 		model.addAttribute("valorLocacao", valorLocacao);
@@ -130,10 +129,6 @@ public class LocacaoveiculosController {
 	@PostMapping("/confirmar")
 	public String pagarLocacao(@Valid Locacao locacao, BindingResult result) {
 		locacaoService.save(locacao);
-		System.out.println(locacao.getDataEntrega());
-		System.out.println(locacao.getDataRetirada());
-		System.out.println(locacao.getUsuario());
-		System.out.println(locacao.getValorTotal());
 		System.out.println("Deu certo!");
 		return "/home";
 	}

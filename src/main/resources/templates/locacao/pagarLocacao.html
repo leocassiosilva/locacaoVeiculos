@@ -68,14 +68,14 @@
 								<form method="POST" th:action=@{/locacaos/confirmar}
 									th:object="${locacao}" enctype="multipart/form-data">
 
-									<input type="text" th:value="${veiculo}" id="veic"
+									<input type="hidden" th:value="${veiculo}" id="veic"
 										name="veic" class="form control" >
-										
-										<input type="text" id="veiculo" name="veiculo" class="form control" th:field="*{veiculo}">
-									<input type="text" th:value="${dataRetirada}"
+											
+										<input type="hidden" id="veiculo" name="veiculo" class="form control" th:field="*{veiculo}">
+									<input type="hidden" th:value="${dataRetirada}"
 										class="form control" th:field="*{dataRetirada}"> <input
-										type="text" th:value="${dataEntrega}" class="form control"
-										th:field="*{dataEntrega}"> <input type="text"
+										type="hidden" th:value="${dataEntrega}" class="form control"
+										th:field="*{dataEntrega}"> <input type="hidden"
 										th:value="${loca.valorTotal}" id="valorTotal"
 										name="valorTotal" class="form control">
 
@@ -195,8 +195,26 @@
 								</ul>
 								<p>Você poderá visualizar ou imprimir após a finalização do
 									pedido.</p>
+									
+									
+									<form method="POST" th:action=@{/locacaos/confirmar}
+									th:object="${locacao}" enctype="multipart/form-data">
 
-								<a href="#" class="btn btn-primary">Confirmar</a>
+											<input type="hidden" th:value="${veiculo}" id="veic"
+										name="veic" class="form control" >
+										<input type="hidden" id="veiculoId" name="veiculoId" class="form control" th:field="*{veiculo}">
+									<input type="hidden" th:value="${dataRetirada}"
+										class="form control" th:field="*{dataRetirada}"> <input
+										type="hidden" th:value="${dataEntrega}" class="form control"
+										th:field="*{dataEntrega}"> <input type="hidden"
+										th:value="${loca.valorTotal}" id="valorTotal"
+										name="valorTotal" class="form control">
+
+									
+									<button type="submit" class="btn btn-primary">Confirmar</button>
+								</form>
+									
+
 							</div>
 						</div>
 					</div>
@@ -218,7 +236,9 @@
 		var resultado = vendaMediaMensal.split("=");
 		
 		$("#veiculo").val(resultado[1]);
-		alert(resultado[1]);
+		
+		$("#veiculoId").val(resultado[1]);
+
 
 	});
 </script>
