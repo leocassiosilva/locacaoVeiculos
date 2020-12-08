@@ -1,39 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html layout:decorate="~{layout}">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width" />
-<title>Locação de Veiculos - Cadastro de Veiculo</title>
-<!-- CSS -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css"
-	rel="stylesheet">
 </head>
 <body>
-	<header>
-		<nav class="navbar navbar-expand-lg navbar-dark w3-large"
-			style="background-color: #0275df;">
-			<a class="navbar-brand" href="#"> SLV</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link" href="/home">Home
-							<span class="sr-only">(current)</span>
-					</a></li>
-				</ul>
-			</div>
-		</nav>
-	</header>
-	<section>
+	<section layout:fragment="corpo">
 		<div class="container"
 			style="width: 60%; padding-bottom: 30px; margin-top: 30px;">
 			<div class="row">
