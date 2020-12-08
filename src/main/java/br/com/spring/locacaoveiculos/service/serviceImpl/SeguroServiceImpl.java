@@ -26,4 +26,9 @@ public class SeguroServiceImpl implements SeguroService{
 		return seguroRepository.findById(id);
 	}
 
+	@Override
+	public Seguro buscarSeguro(Long id) {
+		return seguroRepository.buscarSeguro(id);
+	}
+
 }

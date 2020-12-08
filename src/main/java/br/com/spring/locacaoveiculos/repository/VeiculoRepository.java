@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+
 import br.com.spring.locacaoveiculos.model.Veiculo;
 
 public interface VeiculoRepository extends JpaRepository<Veiculo, Long>{
@@ -25,4 +26,5 @@ public interface VeiculoRepository extends JpaRepository<Veiculo, Long>{
 			+ "inner join locadora on(v.id_locadora = locadora.id)\n"
 			+ "where v.id = :id", nativeQuery = true)
 	Veiculo buscarVeiculo(@Param("id") Long id);
+		
 }
