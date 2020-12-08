@@ -5,7 +5,6 @@ package br.com.spring.locacaoveiculos.controller;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -101,7 +100,7 @@ public class LocacaoveiculosController {
 		System.out.println(veiculo.getSeguro().getPreco() + veiculo.getCategoria().getValor());
 		
 		model.addAttribute("seg", veiculo.getSeguro().getId());
-  		
+  		model.addAttribute("locadoraDevolucaoId", veiculo.getLocadoraDevolucao().getId());
 		model.addAttribute("diarias", diaria);
 		model.addAttribute("valorLocacao", valorLocacao);
 		model.addAttribute("valorTotal", valorTotal);
@@ -118,14 +117,23 @@ public class LocacaoveiculosController {
 
 		
 	@PostMapping("/confirmar")
-	public String pagarLocacao(@Valid Locacao locacao, BindingResult result, int seg, Veiculo vei) {
-		long id = seg; 
-		Seguro seguro = seguroService.buscarSeguro(id);
-		System.out.println(seguro);
+	public String pagarLocacao(@Valid Locacao locacao, BindingResult result, Long seg, Veiculo vei, Long locadoraDevolucaoId) {
+		
+		
+		
+		Locadora locadora = locadoraService.buscarLocadora(seg);
+		
+		Seguro seguro = seguroService.buscarSeguro(locadoraDevolucaoId);
+		
+		/*Adiciono no veiculo o seguro e a locadora na qual o usuario vai deixar o veiculo*/
 		vei.setSeguro(seguro);
-		System.out.println(vei.getSeguro().getNome());
+		vei.setLocadoraDevolucao(locadora);
+		
+		/*Aqui dou update para atualizar no banco o veiculo as informaçoes do veiculo!*/
 		veiculoService.save(vei);
-		//locacaoService.save(locacao);
+		
+		/*Salvo a locação!*/
+		locacaoService.save(locacao);
 		System.out.println("Deu certo!");
 		return "/home";
 	}

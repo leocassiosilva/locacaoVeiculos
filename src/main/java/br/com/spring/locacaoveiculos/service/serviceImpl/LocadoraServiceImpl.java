@@ -25,4 +25,9 @@ public class LocadoraServiceImpl implements LocadoraService{
 		return locadoraRepository.findById(id);
 	}
 
+	@Override
+	public Locadora buscarLocadora(Long id) {
+		return locadoraRepository.buscarLocadora(id);
+	}
+
 }
