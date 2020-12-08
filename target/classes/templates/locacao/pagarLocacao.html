@@ -69,17 +69,21 @@
 									th:object="${locacao}" enctype="multipart/form-data">
 
 									<input type="hidden" th:value="${veiculo}" id="veic"
-										name="veic" class="form control" >
-											
-										<input type="hidden" id="veiculo" name="veiculo" class="form control" th:field="*{veiculo}">
-									<input type="hidden" th:value="${dataRetirada}"
-										class="form control" th:field="*{dataRetirada}"> <input
-										type="hidden" th:value="${dataEntrega}" class="form control"
+										name="veic" class="form control"> <input
+										type="hidden" id="veiculo" name="veiculo" class="form control"
+										th:field="*{veiculo}"> <input type="hidden"
+										th:value="${dataRetirada}" class="form control"
+										th:field="*{dataRetirada}"> <input type="hidden"
+										th:value="${dataEntrega}" class="form control"
 										th:field="*{dataEntrega}"> <input type="hidden"
 										th:value="${loca.valorTotal}" id="valorTotal"
 										name="valorTotal" class="form control">
 
-
+										<input type="text" th:value="${seg}" id="seg"
+										name="seg" class="form control">
+										
+										<input type="text" th:value="${locadoraDevolucaoId}" id="locadoraDevolucaoId"
+										name="locadoraDevolucaoId" class="form control">
 									<div class="form-row">
 
 										<div class="form-group col-md-12">
@@ -195,25 +199,26 @@
 								</ul>
 								<p>Você poderá visualizar ou imprimir após a finalização do
 									pedido.</p>
-									
-									
-									<form method="POST" th:action=@{/locacaos/confirmar}
+
+
+								<form method="POST" th:action=@{/locacaos/confirmar}
 									th:object="${locacao}" enctype="multipart/form-data">
 
-											<input type="hidden" th:value="${veiculo}" id="veic"
-										name="veic" class="form control" >
-										<input type="hidden" id="veiculoId" name="veiculoId" class="form control" th:field="*{veiculo}">
-									<input type="hidden" th:value="${dataRetirada}"
-										class="form control" th:field="*{dataRetirada}"> <input
-										type="hidden" th:value="${dataEntrega}" class="form control"
+									<input type="hidden" th:value="${veiculo}" id="veic"
+										name="veic" class="form control"> <input
+										type="hidden" id="veiculoId" name="veiculoId"
+										class="form control" th:field="*{veiculo}"> <input
+										type="hidden" th:value="${dataRetirada}" class="form control"
+										th:field="*{dataRetirada}"> <input type="hidden"
+										th:value="${dataEntrega}" class="form control"
 										th:field="*{dataEntrega}"> <input type="hidden"
 										th:value="${loca.valorTotal}" id="valorTotal"
 										name="valorTotal" class="form control">
 
-									
+
 									<button type="submit" class="btn btn-primary">Confirmar</button>
 								</form>
-									
+
 
 							</div>
 						</div>
@@ -234,11 +239,10 @@
 	$(document).ready(function() {
 		var vendaMediaMensal = $("#veic").val();
 		var resultado = vendaMediaMensal.split("=");
-		
-		$("#veiculo").val(resultado[1]);
-		
-		$("#veiculoId").val(resultado[1]);
 
+		$("#veiculo").val(resultado[1]);
+
+		$("#veiculoId").val(resultado[1]);
 
 	});
 </script>

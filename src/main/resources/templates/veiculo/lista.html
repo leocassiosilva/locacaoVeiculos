@@ -21,6 +21,7 @@
 					<tbody>
 
 						<tr th:each="v : ${veiculos}">
+<<<<<<< HEAD
 							<td style="width: 50px; padding-left: 5px;"><img
 								class="imgbtn" th:src="${v.arquivos[0].nome}"></td>
 							<td style="width: 50px; padding-left: 5px;"></td>
@@ -30,6 +31,15 @@
 							<td th:text="${v.categoria.valor}"></td>
 							<td colspan="2" class="cent"><a class="btn btn-info btn-sm"
 								th:href="@{/locacaos/veiculo/{id} (id=${v.id}) }" role="button">Alugar
+=======
+							<td  th:text="${v.id}"></td>
+							
+							<td th:text="${v.nome}">Auxiliar Contábil</td>
+							<td th:text="${v.renavan}">Auxiliar Contábil</td>
+							<td colspan="2"><a class="btn btn-info btn-sm"
+								th:href="@{/locacaos/veiculo/{id} (id=${v.id}) }"
+								role="button">Locar veiculo
+>>>>>>> 0a6f3ac86f77b1a604f2139cacdb1eb7200ef218
 							</a></td>
 						</tr>
 					</tbody>

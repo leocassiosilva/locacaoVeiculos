@@ -35,5 +35,4 @@ public class VeiculoServiceImpl implements VeiculoService{
 	public Veiculo buscarVeiculo(Long id) {
 		return veiculoRepository.buscarVeiculo(id);
 	}
-
 }

@@ -24,5 +24,10 @@ public class LocalServiceImpl implements LocalService{
 	@Override
 	public Optional<Local> buscarPorId(Long id) {
 		return localRepository.findById(id);
+	}
+
+	@Override
+	public Local buscarLocal(Long id) {
+		return localRepository.buscarLocal(id);
 	} 
 }
