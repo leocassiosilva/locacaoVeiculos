@@ -12,5 +12,5 @@ public interface VeiculoService {
 	List <Veiculo> buscarTodos();
 	Optional<Veiculo> buscarPeloId(Long id);
 	Veiculo buscarVeiculo(Long id);
-	List<Veiculo> buscarPorNome(String nome);
+	List<Veiculo> buscarPorNome(Long id);
 }
