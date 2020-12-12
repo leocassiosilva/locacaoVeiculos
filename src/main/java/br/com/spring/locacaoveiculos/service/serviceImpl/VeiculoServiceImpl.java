@@ -35,4 +35,10 @@ public class VeiculoServiceImpl implements VeiculoService{
 	public Veiculo buscarVeiculo(Long id) {
 		return veiculoRepository.buscarVeiculo(id);
 	}
+
+	@Override
+	public List<Veiculo> buscarPorNome(String nome) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
