@@ -606,8 +606,7 @@ a {
 }
 
 .w3-block {
-    display: block;
-    width: 100%
+    width: 28% 
 }
 
 .w3-responsive {
@@ -1932,7 +1931,7 @@ a {
 }
 
 .btn-topo {
-    padding-top: 5%!important;
+    padding-top: 1%!important;
     padding-bottom: 1px!important;
     border-left: 6px solid #0275df !important;
     color: #fff!important;
@@ -1953,4 +1952,13 @@ a {
 
 .btn{
     margin-left: 5%;
+}
+
+.imgbtn{
+	width: 150%;
+    border-radius: 25%;
+}
+
+.cent{
+	text-align: center;
 }

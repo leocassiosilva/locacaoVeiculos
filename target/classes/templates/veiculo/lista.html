@@ -3,36 +3,33 @@
 <head>
 <meta charset="UTF-8" />
 <section layout:fragment="corpo">
-	<tr th:each="customer : ${veiculos}">
-
-		<td th:text="${customer.id}">001</td>
-		<td th:text="${customer.nome}">Name</td>
-		<td th:text="${customer.renavan}">Name</td>
-
-	</tr>
-	
 	
 		<div class="container" id="listagem">
-
 			<div class="table-responsive">
 				<table class="table table-striped table-hover table-sm">
 					<thead>
 						<tr>
-							<th>#</th>
+							<th>Veículos</th>
+							<th></th>
 							<th>Nome</th>
-							<th>Renavan</th>
-							<th>Ação</th>
+							<th>Marca</th>
+							<th>Categoria</th>
+							<th>Valor</th>
+							<th class="cent">Locar Veículo</th>
 						</tr>
 					</thead>
 					<tbody>
+
 						<tr th:each="v : ${veiculos}">
-							<td  th:text="${v.id}"></td>
-							
-							<td th:text="${v.nome}">Auxiliar Contábil</td>
-							<td th:text="${v.renavan}">Auxiliar Contábil</td>
-							<td colspan="2"><a class="btn btn-info btn-sm"
-								th:href="@{/locacaos/veiculo/{id} (id=${v.id}) }"
-								role="button">Locar veiculo
+							<td style="width: 50px; padding-left: 5px;"><img
+								class="imgbtn" th:src="${v.arquivos[0].nome}"></td>
+							<td style="width: 50px; padding-left: 5px;"></td>
+							<td th:text="${v.nome}"></td>
+							<td th:text="${v.tipoMarca.marca.nome}"></td>
+							<td th:text="${v.categoria.nome}"></td>
+							<td th:text="${v.categoria.valor}"></td>
+							<td colspan="2" class="cent"><a class="btn btn-info btn-sm"
+								th:href="@{/locacaos/veiculo/{id} (id=${v.id}) }" role="button">Alugar
 							</a></td>
 						</tr>
 					</tbody>

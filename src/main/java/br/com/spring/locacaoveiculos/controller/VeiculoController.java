@@ -165,36 +165,17 @@ public class VeiculoController {
 		model.addAttribute("veiculos", veiculo);
 		return "veiculo/lista";
 	}
+	
+	@GetMapping("/buscar/nome")
+	public String getPorNome(@RequestParam("id") Long id, ModelMap model) {
+		model.addAttribute("veiculos", veiculoService.buscarPorNome(id));
+		return "/veiculo/lista";
+	}
 
 	@ModelAttribute("categorias")
 	public List<Categoria> listaDeCategorias() {
 		return categoriaService.buscarTodos();
-	}
-
-	@GetMapping(value = "/newCVIP")
-	public String carroVIP() {
-		return "veiculo/carroVIP";
-
-	}
-
-	@GetMapping(value = "/newCNormal")
-	public String carroNormal() {
-		return "veiculo/carroNormal";
-
-	}
-
-	@GetMapping(value = "/newVIP")
-	public String motoVIP() {
-		return "veiculo/MVIP";
-
-	}
-
-	@GetMapping(value = "/newNormal")
-	public String motoNormal() {
-		return "veiculo/MNormal";
-
-	}
-	
+	}	
 	
 	@ModelAttribute("locadoras")
 	public List<Locadora> listaDeLocadoras() {
