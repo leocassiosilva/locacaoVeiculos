@@ -1,5 +1,7 @@
 package br.com.spring.locacaoveiculos.service.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ public class LocacaoServiceImpl implements LocacaoService{
 	@Override
 	public Locacao save(Locacao locacao) {
 		return locacaoRepository.save(locacao);
+	}
+
+	@Override
+	public List<Locacao> buscarPeloUsuario(String email) {
+		return locacaoRepository.buscarPeloUsuario(email);
 	}
 
 }

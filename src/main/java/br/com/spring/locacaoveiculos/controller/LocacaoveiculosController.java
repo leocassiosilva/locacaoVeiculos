@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.spring.locacaoveiculos.model.Locacao;
 import br.com.spring.locacaoveiculos.model.Locadora;
 import br.com.spring.locacaoveiculos.model.Local;
+import br.com.spring.locacaoveiculos.model.Marca;
 import br.com.spring.locacaoveiculos.model.Seguro;
 import br.com.spring.locacaoveiculos.model.Veiculo;
 import br.com.spring.locacaoveiculos.service.LocacaoService;
@@ -141,5 +143,11 @@ public class LocacaoveiculosController {
 	@ModelAttribute("locadoras")
 	public List<Locadora> listaLocadora() {
 		return locadoraService.buscarTodos();
+	}
+	
+	@GetMapping(value = "/getUsuario/{email}")
+	@ResponseBody
+	public List<Locacao> relatorio(@PathVariable("email") String email) {
+		return locacaoService.buscarPeloUsuario(email);
 	}
 }
