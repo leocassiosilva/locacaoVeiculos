@@ -31,11 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    return new LayoutDialect();
 	}
 
-<<<<<<< HEAD
+
 	private static final String[] AUTH_LIST = { "/", "/home", "/locacaos/veiculo/{id}","/getUsuario/{email}", "/locacaos/locais" ,"/locacaos/pagar", "/locacaos/confirmar" ,"/newUsuario", "/veiculos/newCNormal", "/veiculos/newCVIP", "/veiculos/newNormal", "/veiculos/newVIP", "/veiculos/getVeiculo/{id}", "/veiculos/getVeiculoMarca/{id}&{id_marca}", "/veiculos/getMarcas", "/veiculos/salvar" , "/veiculos/listar", "/veiculos/newVeiculo", "/veiculos/getTipo"};
-=======
-	private static final String[] AUTH_LIST = { "/", "/home", "/locacaos/veiculo/{id}", "/locacaos/locais" ,"/locacaos/pagar", "/locacaos/confirmar" , "veiculos/buscar/nome", "/newUsuario", "/veiculos/getVeiculo/{id}", "/veiculos/getVeiculoMarca/{id}&{id_marca}", "/veiculos/getMarcas", "/veiculos/salvar" , "/veiculos/listar", "/veiculos/newVeiculo", "/veiculos/getTipo"};
->>>>>>> 6d959668fd3107a489e2800381cb134d58b2aa78
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import br.com.spring.locacaoveiculos.model.Locacao;
 import br.com.spring.locacaoveiculos.model.Locadora;
 import br.com.spring.locacaoveiculos.model.Local;
-import br.com.spring.locacaoveiculos.model.Marca;
 import br.com.spring.locacaoveiculos.model.Seguro;
 import br.com.spring.locacaoveiculos.model.Veiculo;
 import br.com.spring.locacaoveiculos.service.LocacaoService;

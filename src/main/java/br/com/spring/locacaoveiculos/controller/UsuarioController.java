@@ -55,7 +55,7 @@ public class UsuarioController {
 		user.setSenha(this.passwordEncoder.encode(user.getPassword()));
         user.setData(LocalDate.now());
 		usuarioService.save(user);
-		System.out.println("user cadastrado com sucesso");
+		System.out.println("usuario cadastrado com sucesso");
 		return "redirect:/home";
 	}
 
