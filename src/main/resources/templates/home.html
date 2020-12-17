@@ -14,7 +14,7 @@
 						</h2>
 					</div>
 					<div class="w3-container w3-white w3-padding-16">
-						<form method="GET" th:action="@{/veiculos/buscar/nome}">
+						
 							<div class="w3-row-padding" style="margin: 0 -16px;">
 								<div class="w3-half w3-margin-bottom">
 									<label><i class="fa fa-calendar-o"></i> Retirar</label> <input
@@ -27,29 +27,20 @@
 										placeholder="DD MM YYYY" name="CheckOut" required>
 								</div>
 							</div>
-							<div class="w3-row-padding" style="margin: 8px -16px;">
-								<div class="w3-half w3-margin-bottom">
-									<label><i class="fa fa-clock-o"></i> Hora de Retirada</label> <input
-										class="w3-input w3-border" type="time" placeholder="00:00"
-										name="hora">
-								</div>
-								<div class="w3-half">
-									<label><i class="fa fa-clock-o"></i> Hora de Devolução</label>
-									<input class="w3-input w3-border" type="time"
-										placeholder="00:00" name="hora">
-								</div>
-
-							</div>
 							<div>
+							<form method="GET" th:action="@{/veiculos/buscar/nome}">
 									<label><i class="fa fa-search"></i> Retirar o veículo
 										em:</label> <input class="w3-input w3-border" type="text"
 										placeholder="Informe a cidade" th:name="nome" required>
-							</div>
-							</br>
-							<button class="w3-button w3-dark-grey" type="submit">
+										</br>
+										<button class="w3-button w3-dark-grey" type="submit">
 								<i class="fa fa-search w3-margin-right"></i>Buscar
 							</button>
-						</form>
+							</form>
+							</div>
+							</br>
+							
+						
 					</div>
 				</div>
 				<img class="w3-image" src="/imagens/cm2.png">
@@ -64,13 +55,13 @@
 						<h1>
 							<i class="fa fa-id-card"></i>
 						</h1>
-						<h3>Idade e tempo de carteira</h3>
+						<h3>Idade e tempo CNH</h3>
 						<p style="margin: 32px 0;" id="about">O responsável pela
 							locação deve ter 21 anos completos, ser habilitado há pelo menos
 							2 anos, e portar CNH dentro da validade (se vencida, mesmo dentro
 							dos 30 dias permitidos pelo DETRAN, não é aceita). Em alguns
 							casos, dependendo da locadora essa regra pode ser flexibilizada,
-							mantenha contato com nossa equipe.</p>
+							mantenha contato com nós.</p>
 					</div>
 				</div>
 				<div class="w3-third w3-margin-bottom">

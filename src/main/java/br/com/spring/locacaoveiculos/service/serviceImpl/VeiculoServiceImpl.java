@@ -37,7 +37,7 @@ public class VeiculoServiceImpl implements VeiculoService{
 	}
 
 	@Override
-	public List<Veiculo> buscarPorNome(Long id) {
-		return veiculoRepository.buscarPorNome(id);
+	public List<Veiculo> buscarPorNome(String nome) {
+		return veiculoRepository.buscarPorNome(nome);
 	}
 }

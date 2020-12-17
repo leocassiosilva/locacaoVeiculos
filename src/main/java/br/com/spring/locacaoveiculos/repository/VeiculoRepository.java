@@ -24,7 +24,12 @@ public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
 			+ "inner join locadora on(v.id_locadora = locadora.id)\n" + "where v.id = :id", nativeQuery = true)
 	Veiculo buscarVeiculo(@Param("id") Long id);
 
-	@Query(name = "buscarPorNome", value = "Select * FROM veiculos as v inner join arquivos as ar on(v.id = ar.id_veiculo)\n"
-			+ "where v.id = :id", nativeQuery = true)
-	List<Veiculo> buscarPorNome(@Param("id") Long id);
+	@Query(name = "buscarPorNome", value = "SELECT * FROM locacao\n" + 
+			"inner join veiculos on (locacao.id_veiculo = veiculos.id)\n" + 
+			"inner join locadora on (veiculos.id_locadora = locadora.id)\n" + 
+			"inner join local on(locadora.id_local = local.id)\n" + 
+			"where local.nome = :nome", nativeQuery = true)
+	List<Veiculo> buscarPorNome(String nome);
+	
+
 }
