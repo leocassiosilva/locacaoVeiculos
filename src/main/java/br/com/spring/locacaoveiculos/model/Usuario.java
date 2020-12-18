@@ -21,7 +21,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Entity
 public class Usuario implements UserDetails, Serializable {
 	
@@ -46,9 +49,11 @@ public class Usuario implements UserDetails, Serializable {
 	
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
+	@JsonIgnore
 	private Set<Role> role;
 	
 	@OneToMany(mappedBy = "usuario")
+	@JsonIgnore
 	private List<Locacao> locacoes;
 	
 	

@@ -10,7 +10,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "VEICULOS")
@@ -28,35 +31,42 @@ public class Veiculo extends AbstractEntity<Long> {
 	
 	
 	@OneToMany(mappedBy = "veiculo")
+	@JsonIgnore
 	private List<Arquivo> arquivos;
 	
 	
 	@OneToMany(mappedBy = "veiculo")
+	@JsonIgnore
 	private List<Locacao> locacoes;
 	
 	
 	@NotNull(message = "Selecione a categoria.")
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_categoria")
+	@JsonIgnore
 	private Categoria categoria;
 	
 	@NotNull(message = "Selecione o tipo e a marca do veiculo.")
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_tipoMarca")
+	@JsonIgnore
 	private TipoMarca tipoMarca;
 	
 	
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_locadora")
+	@JsonIgnore
 	private Locadora locadora; 
 
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_locadora_devolucao")
+	@JsonIgnore
 	private Locadora locadoraDevolucao;
 	
 	
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_seguro")
+	@JsonIgnore
 	private Seguro seguro;
 	
 	
