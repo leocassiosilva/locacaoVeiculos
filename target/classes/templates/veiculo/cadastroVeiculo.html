@@ -59,7 +59,7 @@
 					
 					
 					<div class="form-group">
-						<label>Locadora:</label> <select id="locadora"
+						<label>Locadora</label> <select id="locadora"
 							class="form-control" th:field="*{locadora}">
 							<option value="">Selecione</option>
 							<option th:each="c : ${locadoras}" th:value="${c.id}"
@@ -85,78 +85,5 @@
 </body>
 
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-	crossorigin="anonymous"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		var id;
-		jQuery.ajax({
-			type : "GET",
-			url : "/veiculos/getTipo",
-			data : {},
-			success : function(dados) {
-				$("#tipo").append('<option value="">Selecione</option>');
-				for (var i = 0; i < dados.length; i++) {
-					$("#tipo").append($('<option>', {
-						value : dados[i].id_tipo,
-						text : dados[i].nome
-					}));
-				}
-			}
-		}).done(function() {
 
-		}).fail(function() {
-			console.log("erro ajax");
-		});
-
-		$('#tipo').change(function() {
-			id = $('#tipo').val();
-			$("#marca").empty();
-			jQuery.ajax({
-				type : "GET",
-				url : "/veiculos/getVeiculo/" + id,
-				data : {},
-				success : function(dados) {
-					$("#marca").append('<option value="">Selecione</option>');
-					for (var i = 0; i < dados.length; i++) {
-						$("#marca").append($('<option>', {
-							value : dados[i].id,
-							text : dados[i].nome
-						}));
-					}
-
-				}
-			}).done(function() {
-
-			}).fail(function() {
-				console.log("erro ajax");
-			})
-
-		});
-
-		$('#marca').change(function() {
-
-			var id_marca = $('#marca').val();
-			console.log(id);
-			console.log(id_marca);
-			jQuery.ajax({
-				type : "GET",
-				url : "/veiculos/getVeiculoMarca/" + id + "&" + id_marca,
-				data : {},
-				success : function(dados) {
-
-					console.log("id = " + dados.id);
-					$('#tipoMarca').val(dados.id);
-
-				}
-			}).done(function() {
-
-			}).fail(function() {
-				console.log("erro ajax");
-			})
-
-		});
-	});
-</script>
 </html>

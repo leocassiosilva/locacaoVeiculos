@@ -167,7 +167,7 @@ public class VeiculoController {
 	}
 	
 	@GetMapping("/buscar/nome")
-	public String getPorNome(@RequestParam("id") String nome, ModelMap model) {
+	public String getPorNome(@RequestParam("nome") String nome, ModelMap model) {
 		model.addAttribute("veiculos", veiculoService.buscarPorNome(nome));
 		return "veiculo/lista";
 	}
