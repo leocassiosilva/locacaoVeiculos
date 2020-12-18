@@ -10,9 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Entity
 @Table(name = "TIPO")
 public class Tipo implements Serializable{
@@ -27,6 +30,7 @@ public class Tipo implements Serializable{
 		
 	
 	@OneToMany(mappedBy = "tipo")
+	@JsonIgnore
 	private List<TipoMarca> tipo_marcas;
 
 

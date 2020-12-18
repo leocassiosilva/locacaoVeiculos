@@ -9,6 +9,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+ 
+ 
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Entity
 @Table(name = "ARQUIVOS")
 public class Arquivo {
@@ -23,6 +28,7 @@ public class Arquivo {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_veiculo")
+	@JsonIgnore
 	private Veiculo veiculo;
 
 

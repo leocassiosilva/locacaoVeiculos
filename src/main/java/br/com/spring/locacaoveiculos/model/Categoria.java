@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "CATEGORIA")
@@ -16,6 +20,7 @@ public class Categoria extends AbstractEntity<Long>{
 	private Float valor;
 	
 	@OneToMany(mappedBy = "categoria")
+	@JsonIgnore
 	private List<Veiculo> veiculos;
 
 

@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "SEGURO")
@@ -16,6 +20,7 @@ public class Seguro extends AbstractEntity<Long>{
 	private double preco;
 	
 	@OneToMany(mappedBy = "seguro")
+	@JsonIgnore
 	private List<Veiculo> veiculos;
 
 	public String getNome() {

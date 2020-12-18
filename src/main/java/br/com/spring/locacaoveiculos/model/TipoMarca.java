@@ -8,7 +8,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "TIPOMARCA")
@@ -16,13 +19,16 @@ public class TipoMarca extends AbstractEntity<Long>{
 	
 	@ManyToOne
     @JoinColumn(name = "id_marca")
+	@JsonIgnore
     private Marca marca;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_tipo")
+	@JsonIgnore
 	private Tipo tipo;
 	
 	@OneToMany(mappedBy = "tipoMarca")
+	@JsonIgnore
 	private List<Veiculo> veiculos;
 
 	public Marca getMarca() {

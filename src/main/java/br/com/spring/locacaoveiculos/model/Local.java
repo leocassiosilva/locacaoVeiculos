@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "LOCAL")
@@ -15,6 +19,7 @@ public class Local extends AbstractEntity<Long>{
 	
 
 	@OneToMany(mappedBy = "localLocadora")
+	@JsonIgnore
 	private List<Locadora> localLocadora;
 	
 	
