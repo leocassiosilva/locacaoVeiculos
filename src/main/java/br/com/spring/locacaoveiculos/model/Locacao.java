@@ -23,12 +23,10 @@ public class Locacao extends AbstractEntity<Long>{
 	
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_veiculo")
-	@JsonIgnore
 	private Veiculo veiculo;
 	
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_usuario")
-	@JsonIgnore
 	private Usuario usuario;
 	
 	@DateTimeFormat(iso = ISO.DATE)

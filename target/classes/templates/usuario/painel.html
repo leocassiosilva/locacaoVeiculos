@@ -43,8 +43,8 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="l : ${locacoesUsuario}">
-							<td  th:text="${l.id_locacao}"></td>
+						<tr th:each="l : ${locacaoUser}">
+							<td  th:text="${l.id}"></td>
 							
 							
 						</tr>
@@ -72,7 +72,7 @@
 			url : "/locacaos/getUsuario/"+email,
 			data : {},
 			success : function(dados) {
-				alert("ola");
+				console.log(dados[0].veiculo.id);
 			}
 		}).done(function() {
 

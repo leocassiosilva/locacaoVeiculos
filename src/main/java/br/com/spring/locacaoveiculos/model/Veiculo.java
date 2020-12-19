@@ -36,7 +36,6 @@ public class Veiculo extends AbstractEntity<Long> {
 	
 	
 	@OneToMany(mappedBy = "veiculo")
-	@JsonIgnore
 	private List<Locacao> locacoes;
 	
 	

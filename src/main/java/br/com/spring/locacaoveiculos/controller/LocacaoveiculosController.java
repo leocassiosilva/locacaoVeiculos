@@ -146,7 +146,11 @@ public class LocacaoveiculosController {
 	
 	@GetMapping(value = "/getUsuario/{email}")
 	@ResponseBody
-	public List<Locacao> relatorio(@PathVariable("email") String email) {
+	public List<Locacao> relatorio(@PathVariable("email") String email, ModelMap model) {
+		
+		List<Locacao> locacaoUser = locacaoService.buscarPeloUsuario(email);
+		model.addAttribute("locacaoUser", locacaoUser);
+
 		return locacaoService.buscarPeloUsuario(email);
 	}
 }

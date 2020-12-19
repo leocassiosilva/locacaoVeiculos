@@ -53,7 +53,6 @@ public class Usuario implements UserDetails, Serializable {
 	private Set<Role> role;
 	
 	@OneToMany(mappedBy = "usuario")
-	@JsonIgnore
 	private List<Locacao> locacoes;
 	
 	

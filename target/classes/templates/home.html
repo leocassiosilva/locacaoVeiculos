@@ -28,10 +28,10 @@
 								</div>
 							</div>
 							<div>
-							<form method="GET" th:action="@{/veiculos/buscar/nome}">
+							<form method="GET" th:action="@{/veiculos/buscar}">
 									<label><i class="fa fa-search"></i> Retirar o veículo
 										em:</label> <input class="w3-input w3-border" type="text"
-										placeholder="Informe a cidade" th:name="nome" required>
+										placeholder="Informe a cidade" id="nome" name="nome" required>
 										</br>
 										<button class="w3-button w3-dark-grey" type="submit">
 								<i class="fa fa-search w3-margin-right"></i>Buscar

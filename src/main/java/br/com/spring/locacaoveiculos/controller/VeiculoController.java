@@ -166,8 +166,9 @@ public class VeiculoController {
 		return "veiculo/lista";
 	}
 	
-	@GetMapping("/buscar/nome")
+	@GetMapping("/buscar")
 	public String getPorNome(@RequestParam("nome") String nome, ModelMap model) {
+		System.out.println(nome);
 		model.addAttribute("veiculos", veiculoService.buscarPorNome(nome));
 		return "veiculo/lista";
 	}
