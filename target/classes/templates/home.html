@@ -14,33 +14,33 @@
 						</h2>
 					</div>
 					<div class="w3-container w3-white w3-padding-16">
-						
-							<div class="w3-row-padding" style="margin: 0 -16px;">
-								<div class="w3-half w3-margin-bottom">
-									<label><i class="fa fa-calendar-o"></i> Retirar</label> <input
-										class="w3-input w3-border" type="text"
-										placeholder="DD MM YYYY" name="CheckIn" required>
-								</div>
-								<div class="w3-half">
-									<label><i class="fa fa-calendar-o"></i> Devolução</label> <input
-										class="w3-input w3-border" type="text"
-										placeholder="DD MM YYYY" name="CheckOut" required>
-								</div>
+
+						<div class="w3-row-padding" style="margin: 0 -16px;">
+							<div class="w3-half w3-margin-bottom">
+								<label><i class="fa fa-calendar-o"></i> Retirar</label> <input
+									class="w3-input w3-border" type="text" placeholder="DD MM YYYY"
+									name="CheckIn" required>
 							</div>
-							<div>
+							<div class="w3-half">
+								<label><i class="fa fa-calendar-o"></i> Devolução</label> <input
+									class="w3-input w3-border" type="text" placeholder="DD MM YYYY"
+									name="CheckOut" required>
+							</div>
+						</div>
+						<div>
 							<form method="GET" th:action="@{/veiculos/buscar}">
-									<label><i class="fa fa-search"></i> Retirar o veículo
-										em:</label> <input class="w3-input w3-border" type="text"
-										placeholder="Informe a cidade" id="nome" name="nome" required>
-										</br>
-										<button class="w3-button w3-dark-grey" type="submit">
-								<i class="fa fa-search w3-margin-right"></i>Buscar
-							</button>
+								<label><i class="fa fa-search"></i> Retirar o veículo
+									em:</label> <input class="w3-input w3-border" type="text"
+									placeholder="Informe a cidade" id="nome" name="nome" required>
+								</br>
+								<button class="w3-button w3-dark-grey" type="submit">
+									<i class="fa fa-search w3-margin-right"></i>Buscar
+								</button>
 							</form>
-							</div>
-							</br>
-							
-						
+						</div>
+						</br>
+
+
 					</div>
 				</div>
 				<img class="w3-image" src="/imagens/cm2.png">
@@ -109,71 +109,72 @@
 			</div>
 		</div>
 
-
 		<!-- Page content -->
-		<div class="w3-content" style="max-width: 1532px;">
-			<div class="w3-container w3-margin-top" id="rooms">
-				<h2>Veículos</h2>
-				<p>
-				<h4>Sinta o conforto é o nosso slogan. Oferecemos os melhores
-					veículos de acordo com seu dinheiro. Dirija ou pilote bem no
-					conforto.</h4>
-				</p>
-			</div>
-			<div class="w3-panel w3-red w3-leftbar w3-padding-32">
-				<div class="w3-row-padding w3-padding-16">
-					<div class="w3-third w3-margin-bottom">
-						<img src="/imagens/gol.png" alt="Norway" style="width: 89.9%">
-						<div class="w3-container w3-white">
-							<h3>Veículo Normal</h3>
-							<h5 class="w3-opacity">R$ 100,00</h5>
-							<p>+Seguro</p>
-							<p>R$ 10,00</p>
-							<p class="w3-large">
-								<i class="fa fa-credit-card"></i> <i class="fa fa-money"></i>
-							</p>
-						</div>
+		<div class="btn-ctg">
+			<h2>Veículos</h2>
+			<p>
+			<h4>Sinta o conforto é o nosso slogan. Oferecemos os melhores
+				veículos de acordo com seu dinheiro. Dirija ou pilote bem no
+				conforto.</h4>
+			</p>
+			</br>
+		</div>
+		<div class="w3-panel w3-red w3-leftbar w3-padding-32">
+
+			<div class="w3-row-padding w3-padding-16">
+				<div class="w3-third w3-margin-bottom">
+
+					<img src="/imagens/gol.png" alt="Norway" style="width: 89.9%">
+					<div class="w3-container w3-white">
+						<h3>Veículo Normal</h3>
+						<h5 class="w3-opacity">R$ 100,00</h5>
+						<p>+Seguro</p>
+						<p>R$ 10,00</p>
+						<p class="w3-large">
+							<i class="fa fa-credit-card"></i> <i class="fa fa-money"></i>
+						</p>
 					</div>
-					<div class="w3-third w3-margin-bottom">
-						<img src="/imagens/fiat.png" alt="Norway" style="width: 97%">
-						<div class="w3-container w3-white">
-							<h3>Veículo VIP</h3>
-							<h5 class="w3-opacity">R$ 250,00</h5>
-							<p>+Seguro</p>
-							<p>R$ 20,00</p>
-							<p class="w3-large">
-								<i class="fa fa-credit-card"></i> <i class="fa fa-money"></i>
-							</p>
-						</div>
-					</div>
-					<div class="w3-third w3-margin-bottom">
-						<img src="/imagens/moto.png" alt="Norway" style="width: 90%">
-						<div class="w3-container w3-white">
-							<h3>Moto Normal</h3>
-							<h5 class="w3-opacity">R$ 50,00</h5>
-							<p>+Seguro</p>
-							<p>R$ 10,00</p>
-							<p class="w3-large">
-								<i class="fa fa-credit-card"></i> <i class="fa fa-money"></i>
-							</p>
-						</div>
-					</div>
-					<div class="w3-third w3-margin-bottom">
-						<img src="imagens/moto1.png" alt="Norway" style="width: 85%">
-						<div class="w3-container w3-white">
-							<h3>Moto VIP</h3>
-							<h5 class="w3-opacity">R$ 150,00</h5>
-							<p>+Seguro</p>
-							<p>R$ 20,00</p>
-							<p class="w3-large">
-								<i class="fa fa-credit-card"></i> <i class="fa fa-money"></i>
-							</p>
-						</div>
-					</div>
-					<a href="veiculos/listar"
-						class="w3-button w3-block w3-black w3-margin-bottom">Escolha</a>
 				</div>
+				<div class="w3-third w3-margin-bottom">
+					<img src="/imagens/fiat.png" alt="Norway" style="width: 97%">
+					<div class="w3-container w3-white">
+						<h3>Veículo VIP</h3>
+						<h5 class="w3-opacity">R$ 250,00</h5>
+						<p>+Seguro</p>
+						<p>R$ 20,00</p>
+						<p class="w3-large">
+							<i class="fa fa-credit-card"></i> <i class="fa fa-money"></i>
+						</p>
+					</div>
+				</div>
+				<div class="w3-third w3-margin-bottom">
+					<img src="/imagens/moto.png" alt="Norway" style="width: 90%">
+					<div class="w3-container w3-white">
+						<h3>Moto Normal</h3>
+						<h5 class="w3-opacity">R$ 50,00</h5>
+						<p>+Seguro</p>
+						<p>R$ 10,00</p>
+						<p class="w3-large">
+							<i class="fa fa-credit-card"></i> <i class="fa fa-money"></i>
+						</p>
+					</div>
+				</div>
+				<div class="w3-third w3-margin-bottom">
+					<img src="imagens/moto1.png" alt="Norway" style="width: 85%">
+					<div class="w3-container w3-white">
+						<h3>Moto VIP</h3>
+						<h5 class="w3-opacity">R$ 150,00</h5>
+						<p>+Seguro</p>
+						<p>R$ 20,00</p>
+						<p class="w3-large">
+							<i class="fa fa-credit-card"></i> <i class="fa fa-money"></i>
+						</p>
+					</div>
+				</div>
+				<a href="veiculos/listar"
+					class="w3-button w3-block w3-black w3-margin-bottom">Escolha</a>
 			</div>
+		</div>
 		</div>
 		<div class="btn-ctg">
 			<h2>As categorias preferidas</h2>
@@ -272,7 +273,7 @@
 			dos Feros, RN<br> <i class="fa fa-phone w3-text-red"
 				style="width: 30px"></i> Phone: (84) 99814-2536<br> <i
 				class="fa fa-envelope w3-text-red" style="width: 30px"> </i> Email:
-			locadorafl@gmail.com<br>
+			locadorafl@gmail.com<br> </br>
 			<form action="/action_page.php" target="_blank">
 				<p>
 					<input class="w3-input w3-padding-16 w3-border" type="text"
