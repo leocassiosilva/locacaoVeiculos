@@ -17,20 +17,21 @@
 
 						<div class="w3-row-padding" style="margin: 0 -16px;">
 							<div class="w3-half w3-margin-bottom">
-								<label><i class="fa fa-calendar-o"></i> Retirar</label> <input
-									class="w3-input w3-border" type="text" placeholder="DD MM YYYY"
-									name="CheckIn" required>
+								<label><i class="fa fa-calendar-o"></i> Data de Retirar</label>
+								<input class="form-control" type="date" name="dataRetirar"
+									required>
 							</div>
 							<div class="w3-half">
-								<label><i class="fa fa-calendar-o"></i> Devolução</label> <input
-									class="w3-input w3-border" type="text" placeholder="DD MM YYYY"
-									name="CheckOut" required>
+								<label><i class="fa fa-calendar-o"></i> Data de
+									Devolução</label> <input class="form-control" type="date"
+									name="dataDevolver" required>
 							</div>
 						</div>
+
 						<div>
 							<form method="GET" th:action="@{/veiculos/buscar}">
 								<label><i class="fa fa-search"></i> Retirar o veículo
-									em:</label> <input class="w3-input w3-border" type="text"
+									em:</label> <input class="form-control" type="text"
 									placeholder="Informe a cidade" id="nome" name="nome" required>
 								</br>
 								<button class="w3-button w3-dark-grey" type="submit">
@@ -265,7 +266,7 @@
 				data-slide="next"> <span class="sr-only">Next</span>
 			</a>
 		</div>
-
+		</br>
 		<div class="w3-container" id="contact">
 			<h2>Contato</h2>
 			<p>Se você tiver alguma dúvida, não hesite em perguntar.</p>
@@ -274,23 +275,6 @@
 				style="width: 30px"></i> Phone: (84) 99814-2536<br> <i
 				class="fa fa-envelope w3-text-red" style="width: 30px"> </i> Email:
 			locadorafl@gmail.com<br> </br>
-			<form action="/action_page.php" target="_blank">
-				<p>
-					<input class="w3-input w3-padding-16 w3-border" type="text"
-						placeholder="Name" required name="Name">
-				</p>
-				<p>
-					<input class="w3-input w3-padding-16 w3-border" type="text"
-						placeholder="Email" required name="Email">
-				</p>
-				<p>
-					<input class="w3-input w3-padding-16 w3-border" type="text"
-						placeholder="Message" required name="Message">
-				</p>
-				<p>
-					<button class="w3-button w3-black w3-padding-large" type="submit">Enviar</button>
-				</p>
-			</form>
 		</div>
 		</div>
 	</section>
