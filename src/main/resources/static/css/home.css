@@ -1944,7 +1944,7 @@ a {
 .btn-topo2 {
     padding-top: 5%!important;
     padding-bottom: 1px!important;
-     margin: 100px 0;
+    margin: 100px 0;
     padding: 0.01em 16px;
     margin-top: 16px;
     margin-bottom: 16px;
@@ -1961,4 +1961,17 @@ a {
 
 .cent{
 	text-align: center;
+}
+
+.alinhar{
+	text-align: center;
+    height: 100vh;
+    padding: 50px;
+    width: 100vw;
+}
+
+.alinhar1{
+    height: 100vh;
+    padding: 50px;
+    width: 100vw;
 }
