@@ -17,7 +17,7 @@ public interface MarcaRepository extends JpaRepository<Marca,Long>{
 	
 	Optional<Marca> findById(Long id);
 	
-	@Query(name="buscarMarcaPeloTipo", value = "Select * FROM marca as m inner join tipomarca as tm on(m.id = tm.id_marca)"
+	@Query(name="buscarMarcaPeloTipo", value = "Select * FROM marca as m inner join tipomarca as tm on(m.id_marca = tm.id_marca)"
 			+ " inner join tipo as t on(t.id_tipo = tm.id_tipo)\n" + 
 			"WHERE t.id_tipo = :id", nativeQuery = true)
 	List<Marca> buscarMarcaPeloTipo(@Param("id") Long id);

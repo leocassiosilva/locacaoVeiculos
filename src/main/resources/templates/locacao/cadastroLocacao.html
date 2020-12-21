@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorate="~{layout}">
+<html>
 <head>
 
 <meta charset="UTF-8" />
@@ -41,7 +41,7 @@
 								<label>Seguro(ex:Normal/Vip)</label> <select id="seguro" name="seguro"
 									class="form-control" th:field="*{seguro}">
 									<option value="">Selecione</option>
-									<option th:each="s : ${seguros}" th:value="${s.id}"
+									<option th:each="s : ${seguros}" th:value="${s.id_seguro}"
 										th:text="${s.nome} + ' R$' + ${s.preco}"></option>
 								</select>
 							</div>
@@ -51,7 +51,7 @@
 								<label>Local de Devolucao</label> <select id="locadoraDevolucao"
 									class="form-control" th:field="*{locadoraDevolucao}">
 									<option value="">Selecione</option>
-									<option th:each="l : ${locadoras}" th:value="${l.id}"
+									<option th:each="l : ${locadoras}" th:value="${l.id_locadora}"
 										th:text="${l.localLocadora.nome}"></option>
 								</select>
 							</div>
@@ -65,7 +65,7 @@
 							</div>
 
 
-							<input type="hidden"  th:value="${veiculo.id}" name="veiculo"
+							<input type="hidden"  th:value="${veiculo.id_veiculo}" name="veiculo"
 								id="veiculo" class="form control"> <input type="hidden"
 								id="valorTotal" name="valorTotal" class="form control">
 

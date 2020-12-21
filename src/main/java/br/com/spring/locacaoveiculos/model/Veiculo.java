@@ -1,37 +1,38 @@
 package br.com.spring.locacaoveiculos.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "VEICULOS")
-public class Veiculo extends AbstractEntity<Long> {
+public class Veiculo implements Serializable{
 
    
-	@NotBlank(message = "O nome do veiculo é obrigatório.")
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id_veiculo;
+	
 	private String nome;
 
-	@NotBlank(message = "A placa é obrigatório.")
 	private String placa;
 
-	@NotBlank(message = "O renavan é obrigatório.")
 	private String renavan;
 	
 	
 	@OneToMany(mappedBy = "veiculo")
-	@JsonIgnore
 	private List<Arquivo> arquivos;
 	
 	
@@ -39,37 +40,42 @@ public class Veiculo extends AbstractEntity<Long> {
 	private List<Locacao> locacoes;
 	
 	
-	@NotNull(message = "Selecione a categoria.")
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_categoria")
-	@JsonIgnore
 	private Categoria categoria;
 	
-	@NotNull(message = "Selecione o tipo e a marca do veiculo.")
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_tipoMarca")
-	@JsonIgnore
 	private TipoMarca tipoMarca;
 	
 	
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_locadora")
-	@JsonIgnore
 	private Locadora locadora; 
 
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_locadora_devolucao")
-	@JsonIgnore
 	private Locadora locadoraDevolucao;
 	
 	
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_seguro")
-	@JsonIgnore
 	private Seguro seguro;
 	
 	
 	
+	public Long getId_veiculo() {
+		return id_veiculo;
+	}
+
+	public void setId_veiculo(Long id_veiculo) {
+		this.id_veiculo = id_veiculo;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public Seguro getSeguro() {
 		return seguro;
 	}

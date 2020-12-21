@@ -12,6 +12,6 @@ import br.com.spring.locacaoveiculos.model.Local;
 public interface LocalRepository extends JpaRepository<Local, Long>{
 	
 	@Query(name=" buscarLocal", value = "Select * FROM local \n"
-			+ "where local.id = :id", nativeQuery = true)
+			+ "where local.id_local = :id", nativeQuery = true)
 	Local buscarLocal(@Param("id") Long id);
 }

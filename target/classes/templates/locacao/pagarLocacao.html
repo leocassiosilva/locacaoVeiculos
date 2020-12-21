@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-
-<html layout:decorate="~{layout}">
+<html>
 <head>
 <meta charset="UTF-8" />
 <section layout:fragment="corpo">
@@ -68,10 +67,11 @@
 								<form method="POST" th:action=@{/locacaos/confirmar}
 									th:object="${locacao}" enctype="multipart/form-data">
 
-									<input type="hidden" th:value="${veiculo}" id="veic"
-										name="veic" class="form control"> <input
-										type="hidden" id="veiculo" name="veiculo" class="form control"
-										th:field="*{veiculo}"> <input type="hidden"
+									<input type="text" th:value="${veiculo.id_veiculo}" id="id_veiculo"
+										name="id_veiculo" class="form control"> 
+										<input type="hidden" id="veiculo" name="veiculo" class="form control"
+										th:field="*{veiculo}"> 
+										<input type="hidden"
 										th:value="${dataRetirada}" class="form control"
 										th:field="*{dataRetirada}"> <input type="hidden"
 										th:value="${dataEntrega}" class="form control"

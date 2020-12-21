@@ -12,6 +12,6 @@ import br.com.spring.locacaoveiculos.model.Locadora;
 public interface LocadoraRepository extends JpaRepository<Locadora, Long>{
 
 	@Query(name=" buscarLocadora", value = "Select * FROM locadora \n"
-			+ "where locadora.id = :id", nativeQuery = true)
+			+ "where locadora.id_locadora = :id", nativeQuery = true)
 	Locadora buscarLocadora(@Param("id") Long id);
 }

@@ -1,9 +1,13 @@
 package br.com.spring.locacaoveiculos.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -11,15 +15,19 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "LOCACAO") 
-public class Locacao extends AbstractEntity<Long>{
+public class Locacao implements Serializable{
 
+	
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id_locacao;
+	
 	
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_veiculo")
@@ -39,6 +47,19 @@ public class Locacao extends AbstractEntity<Long>{
 	
 	private double valorTotal; 
 
+	
+	public Long getId_locacao() {
+		return id_locacao;
+	}
+
+	public void setId_locacao(Long id_locacao) {
+		this.id_locacao = id_locacao;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public double getValorTotal() {
 		return valorTotal;
 	}
@@ -46,6 +67,8 @@ public class Locacao extends AbstractEntity<Long>{
 	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
+
+	
 
 	
 

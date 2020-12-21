@@ -11,6 +11,6 @@ import br.com.spring.locacaoveiculos.model.Seguro;
 public interface SeguroRepository extends JpaRepository<Seguro, Long>{
 	
 	@Query(name=" buscarSeguro", value = "Select * FROM seguro \n"
-			+ "where seguro.id = :id", nativeQuery = true)
+			+ "where seguro.id_seguro = :id", nativeQuery = true)
 	Seguro buscarSeguro(@Param("id") Long id);
 }

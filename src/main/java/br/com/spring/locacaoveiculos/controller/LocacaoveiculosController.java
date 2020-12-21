@@ -5,6 +5,7 @@ package br.com.spring.locacaoveiculos.controller;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -56,7 +57,7 @@ public class LocacaoveiculosController {
 		System.out.println(id);
 		model.addAttribute("veiculo", veiculoService.buscarVeiculo(id)); 
 		System.out.println(veiculoService.buscarVeiculo(id));
-		return "/locacao/cadastroLocacao";
+		return "locacao/cadastroLocacao";
 
 	}
 	
@@ -84,24 +85,24 @@ public class LocacaoveiculosController {
 		System.out.println("Pague a locação rapaz!");
 		System.out.println(dataRetirada);
 		System.out.println(localDate);
-		System.out.println(veiculo.getId());
+		System.out.println(veiculo.getId_veiculo());
 		
-		System.out.println("Id - Seguro: " + veiculo.getSeguro().getId());
+		System.out.println("Id - Seguro: " + veiculo.getSeguro().getId_seguro());
 		
-		System.out.println("Id - Local devolução: " + veiculo.getLocadoraDevolucao().getId());
+		System.out.println("Id - Local devolução: " + veiculo.getLocadoraDevolucao().getId_locadora());
 		
 		
 		System.out.println("Local de devolução: " + veiculo.getLocadoraDevolucao().getLocalLocadora().getNome());
 		
-		
+		System.out.println("Categoria = " + veiculo.getCategoria().getId_categoria());
 		/**/
 		double seguro = veiculo.getSeguro().getPreco();
 		double valorLocacao = veiculo.getCategoria().getValor() * diaria;
 		double valorTotal = (valorLocacao + (seguro * diaria) );
 		System.out.println(veiculo.getSeguro().getPreco() + veiculo.getCategoria().getValor());
 		
-		model.addAttribute("seg", veiculo.getSeguro().getId());
-  		model.addAttribute("locadoraDevolucaoId", veiculo.getLocadoraDevolucao().getId());
+		model.addAttribute("seg", veiculo.getSeguro().getId_seguro());
+  		model.addAttribute("locadoraDevolucaoId", veiculo.getLocadoraDevolucao().getId_locadora());
 		model.addAttribute("diarias", diaria);
 		model.addAttribute("valorLocacao", valorLocacao);
 		model.addAttribute("valorTotal", valorTotal);
@@ -118,20 +119,26 @@ public class LocacaoveiculosController {
 
 		
 	@PostMapping("/confirmar")
-	public String pagarLocacao(@Valid Locacao locacao, BindingResult result, Long seg, Veiculo vei, Long locadoraDevolucaoId) {
+	public String pagarLocacao(@Valid Locacao locacao, BindingResult result, Long seg, Long id_veiculo, Long locadoraDevolucaoId) {
 		
+		Veiculo veic = veiculoService.buscarVeiculo(id_veiculo);
 		
+		String nome = veic.getNome();
 		
+		System.out.println("Id: " + nome);
 		Locadora locadora = locadoraService.buscarLocadora(seg);
 		
 		Seguro seguro = seguroService.buscarSeguro(locadoraDevolucaoId);
 		
 		/*Adiciono no veiculo o seguro e a locadora na qual o usuario vai deixar o veiculo*/
-		vei.setSeguro(seguro);
-		vei.setLocadoraDevolucao(locadora);
+		veic.setSeguro(seguro);
+		veic.setLocadoraDevolucao(locadora);
 		
+		System.out.println(veic.getLocadoraDevolucao());
 		/*Aqui dou update para atualizar no banco o veiculo as informaçoes do veiculo!*/
-		veiculoService.save(vei);
+		veiculoService.save(veic);
+		
+		locacao.setVeiculo(veic);
 		
 		/*Salvo a locação!*/
 		locacaoService.save(locacao);
