@@ -16,7 +16,7 @@
 							<th>Categoria</th>
 							<th>Locadora</th>
 							<th>Valor</th>
-							
+
 							<th class="cent">Locar Veículo</th>
 						</tr>
 					</thead>
@@ -31,21 +31,15 @@
 							<td th:text="${v.categoria.nome}"></td>
 							<td th:text="${v.locadora.nome}"></td>
 							<td th:text="${v.categoria.valor}"></td>
-<<<<<<< HEAD
-							<td colspan="2" class="cent"><a class="btn btn-info btn-sm"
-								th:href="@{locacaos/veiculo/{id} (id=${v.id_veiculo}) }" role="button">Alugar
-=======
-							
 							<td colspan="2" class="cent"><a class="btn btn-primary"
-								th:href="@{locacaos/veiculo/{id} (id=${v.id}) }" role="button">Alugar
->>>>>>> c8346d1cb9f152a80a7537720148da2be497447d
-							</a></td>
+								th:href="@{locacaos/veiculo/{id} (id=${v.id_veiculo}) }"
+								role="button">Alugar </a></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
-		</div>
+	</div>
 </section>
 </body>
 </html>
