@@ -1,5 +1,6 @@
 package br.com.spring.locacaoveiculos.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,5 +17,7 @@ public interface VeiculoService {
 	Veiculo buscarVeiculo(Long id);
 
 	List<Veiculo> buscarPorNome(String nome);
+
+	List<Veiculo> buscarPorDatas(LocalDate entrada, LocalDate saida);
 
 }
