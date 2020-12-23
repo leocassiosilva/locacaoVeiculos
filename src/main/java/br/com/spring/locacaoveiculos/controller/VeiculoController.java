@@ -5,12 +5,14 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -60,10 +62,9 @@ public class VeiculoController {
 
 	@Autowired
 	private TipoMarcaService tipoMarcaService;
-	
+
 	@Autowired
 	private LocadoraService locadoraService;
-	
 
 	public static final String uploadingDir = System.getProperty("user.dir") + "/src/main/resources/static/img/";
 
@@ -165,12 +166,24 @@ public class VeiculoController {
 		model.addAttribute("veiculos", veiculo);
 		return "veiculo/lista";
 	}
+<<<<<<< HEAD
 	
 	/*
+=======
+
+>>>>>>> 0eddfb97dde5ad57173cbcc1dace5dd3183489e7
 	@GetMapping("/buscar")
 	public String getPorNome(@RequestParam("nome") String nome, ModelMap model) {
 		System.out.println(nome);
 		model.addAttribute("veiculos", veiculoService.buscarPorNome(nome));
+		return "veiculo/lista";
+
+	}
+
+	@GetMapping("/buscar/data")
+	public String getPorDatas(@RequestParam("entrada") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate entrada,
+			@RequestParam("saida") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate saida, ModelMap model) {
+		model.addAttribute("veiculos", veiculoService.buscarPorDatas(entrada, saida));
 		return "veiculo/lista";
 	}
 	*/
@@ -191,8 +204,8 @@ public class VeiculoController {
 	@ModelAttribute("categorias")
 	public List<Categoria> listaDeCategorias() {
 		return categoriaService.buscarTodos();
-	}	
-	
+	}
+
 	@ModelAttribute("locadoras")
 	public List<Locadora> listaDeLocadoras() {
 		return locadoraService.buscarTodos();
