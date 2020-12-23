@@ -192,6 +192,10 @@ public class VeiculoController {
 		System.out.println("Data da Retirada: " + dataRetirar);
 		System.out.println("Data da Entrega: " + dataDevolver);
 		
+		/*Convertendo datas de string para LocalDate*/
+	    LocalDate dataEntrega = LocalDate.parse(dataDevolver);
+        LocalDate dataRetirada = LocalDate.parse(dataRetirar);
+		
 		model.addAttribute("dataRetirar", dataRetirar);
 		return "veiculo/lista";
 		
