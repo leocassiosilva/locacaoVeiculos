@@ -166,12 +166,27 @@ public class VeiculoController {
 		return "veiculo/lista";
 	}
 	
+	/*
 	@GetMapping("/buscar")
 	public String getPorNome(@RequestParam("nome") String nome, ModelMap model) {
 		System.out.println(nome);
 		model.addAttribute("veiculos", veiculoService.buscarPorNome(nome));
 		return "veiculo/lista";
 	}
+	*/
+	
+	@GetMapping("/buscar")
+	public String getPorDatas(@RequestParam("dataRetirar") String dataRetirar,@RequestParam("dataDevolver") String dataDevolver, ModelMap model) {
+		
+		System.out.println("Data da Retirada: " + dataRetirar);
+		System.out.println("Data da Entrega: " + dataDevolver);
+		
+		model.addAttribute("dataRetirar", dataRetirar);
+		return "veiculo/lista";
+		
+	}
+	
+	
 
 	@ModelAttribute("categorias")
 	public List<Categoria> listaDeCategorias() {

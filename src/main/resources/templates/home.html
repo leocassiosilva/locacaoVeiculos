@@ -13,39 +13,43 @@
 							<i class="fa fa-car"></i> Locadora SLV
 						</h2>
 					</div>
-					<div class="w3-container w3-white w3-padding-16">
+					<form method="GET" th:action="@{/veiculos/buscar}">
+						<div class="w3-container w3-white w3-padding-16">
 
-						<div class="w3-row-padding" style="margin: 0 -16px;">
-							<div class="w3-half w3-margin-bottom">
-								<label><i class="fa fa-calendar-o"></i> Data de Retirar</label>
-								<input class="form-control" type="date" name="dataRetirar"
-									required>
+							<div class="w3-row-padding" style="margin: 0 -16px;">
+								<div class="w3-half w3-margin-bottom">
+									<label><i class="fa fa-calendar-o"></i> Data de Retirar</label>
+									<input class="form-control" type="date" name="dataRetirar"
+										id="dataRetirar" required>
+								</div>
+								<div class="w3-half">
+									<label><i class="fa fa-calendar-o"></i> Data de
+										Devolução</label> <input class="form-control" type="date"
+										name="dataDevolver" id="dataDevolver" required>
+								</div>
 							</div>
-							<div class="w3-half">
-								<label><i class="fa fa-calendar-o"></i> Data de
-									Devolução</label> <input class="form-control" type="date"
-									name="dataDevolver" required>
-							</div>
-						</div>
-
-						<div>
-							<form method="GET" th:action="@{/veiculos/buscar}">
+							
+							<div class="w3-row-padding" style="margin: 0 -16px;">
+								<!--  
 								<label><i class="fa fa-search"></i> Retirar o veículo
 									em:</label> <input class="form-control" type="text"
 									placeholder="Informe a cidade" id="nome" name="nome" required>
-								</br>
-								<button class="w3-button w3-dark-grey" type="submit">
-									<i class="fa fa-search w3-margin-right"></i>Buscar
-								</button>
-							</form>
-						</div>
-						</br>
+								</br>  -->
+							</div>
 
 
-					</div>
+							<button class="w3-button w3-dark-grey" type="submit">
+								<i class="fa fa-search w3-margin-right"></i>Buscar
+							</button>
+					</form>
+
+					</br>
+
+
 				</div>
-				<img class="w3-image" src="/imagens/cm2.png">
 			</div>
+			<img class="w3-image" src="/imagens/cm2.png">
+		</div>
 		</div>
 
 		<div class="btn-topo" style="margin: 32px 0;" id="about">
