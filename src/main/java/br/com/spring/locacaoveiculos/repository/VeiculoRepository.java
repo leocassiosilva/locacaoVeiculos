@@ -45,20 +45,10 @@ public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
 			+ "where local.nome = :nome", nativeQuery = true)
 	List<Veiculo> buscarPorNome(String nome);
 
-	@Query(name = "dataEntradaDataSaida", value = "SELECT * FROM veiculos as v "
-			+ "where v.id NOT IN (SELECT locacao.id_veiculo FROM locacao "
-			+ "where (locacao.data_retirada <= and locacao.data_retirada >= ) "
-			+ "or (locacao.data_entrega >=  and locacao.data_entrega <= ))", nativeQuery = true)
-	List<Veiculo> dataEntradaDataSaida(LocalDate entrada, LocalDate saida);
-
-	@Query(name = "dataEntrada", value = "SELECT * FROM veiculos as v "
-			+ "where v.id NOT IN (SELECT locacao.id_veiculo FROM locacao "
-			+ "where (locacao.data_retirada <= and locacao.data_retirada >= ))", nativeQuery = true)
-	List<Veiculo> dataEntrada(LocalDate entrada);
-
-	@Query(name = "dataSaida", value = "SELECT * FROM veiculos as v "
-			+ "where v.id NOT IN (SELECT locacao.id_veiculo FROM locacao "
-			+ "where (locacao.data_entrega >=  and locacao.data_entrega <= ))", nativeQuery = true)
-	List<Veiculo> dataSaida(LocalDate saida);
+	@Query(name = "buscarPorDatas", value = "SELECT * FROM veiculos as v "
+			+ "where v.id_veiculo NOT IN (SELECT locacao.id_veiculo FROM locacao "
+			+ "where (locacao.data_retirada <= :retirada and locacao.data_retirada >= :retirada) "
+			+ "or (locacao.data_entrega >= :devolucao and locacao.data_entrega <= :devolucao))", nativeQuery = true)
+	List<Veiculo> buscarPorDatas(LocalDate retirada, LocalDate devolucao);
 
 }

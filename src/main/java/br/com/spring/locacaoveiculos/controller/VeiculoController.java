@@ -12,7 +12,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -196,8 +195,13 @@ public class VeiculoController {
 	    LocalDate dataEntrega = LocalDate.parse(dataDevolver);
         LocalDate dataRetirada = LocalDate.parse(dataRetirar);
 		
-		model.addAttribute("dataRetirar", dataRetirar);
-		return "veiculo/lista";
+        
+        
+		model.addAttribute("dataRetirar", dataRetirada);
+		
+		List<Veiculo> veiculo = veiculoService.buscarPorDatas(dataRetirada, dataEntrega);
+		model.addAttribute("veiculos", veiculo);
+		return "veiculo/listar";
 		
 	}
 	

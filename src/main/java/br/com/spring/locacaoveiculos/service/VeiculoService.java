@@ -18,6 +18,6 @@ public interface VeiculoService {
 
 	List<Veiculo> buscarPorNome(String nome);
 
-	List<Veiculo> buscarPorDatas(LocalDate entrada, LocalDate saida);
+	List<Veiculo> buscarPorDatas(LocalDate retirada, LocalDate devolucao);
 
 }

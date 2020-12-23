@@ -1,7 +1,6 @@
 package br.com.spring.locacaoveiculos.service.serviceImpl;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,15 +43,9 @@ public class VeiculoServiceImpl implements VeiculoService {
 	}
 
 	@Override
-	public List<Veiculo> buscarPorDatas(LocalDate entrada, LocalDate saida) {
-		if (entrada != null && saida != null) {
-			return veiculoRepository.dataEntradaDataSaida(entrada, saida);
-		} else if (entrada != null) {
-			return veiculoRepository.dataEntrada(entrada);
-		} else if (saida != null) {
-			return veiculoRepository.dataSaida(saida);
-		} else {
-			return new ArrayList<>();
-		}
+	public List<Veiculo> buscarPorDatas(LocalDate retirada, LocalDate devolucao) {
+		return veiculoRepository.buscarPorDatas(retirada, devolucao);
 	}
+
+
 }
