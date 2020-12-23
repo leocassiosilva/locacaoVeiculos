@@ -166,12 +166,10 @@ public class VeiculoController {
 		model.addAttribute("veiculos", veiculo);
 		return "veiculo/lista";
 	}
-<<<<<<< HEAD
+
 	
 	/*
-=======
 
->>>>>>> 0eddfb97dde5ad57173cbcc1dace5dd3183489e7
 	@GetMapping("/buscar")
 	public String getPorNome(@RequestParam("nome") String nome, ModelMap model) {
 		System.out.println(nome);
