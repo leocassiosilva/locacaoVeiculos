@@ -16,10 +16,10 @@ public interface VeiculoService {
 
 	Veiculo buscarVeiculo(Long id);
 
-	/*List<Veiculo> buscarPorNome(String nome);
+	/*List<Veiculo> buscarPorNome(String nome);*/
 
-	List<Veiculo> buscarPorDatas(LocalDate retirada, LocalDate devolucao);*/
+	List<Veiculo> buscarPorDatasAndNome(LocalDate retirada, LocalDate devolucao, String nome);
 
-	List<Veiculo> buscarPorDatasAndNome(LocalDate dataRetirar, LocalDate dataDevolver, String nome);
+	
 
 }

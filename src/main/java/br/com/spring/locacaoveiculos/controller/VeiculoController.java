@@ -166,56 +166,19 @@ public class VeiculoController {
 		model.addAttribute("veiculos", veiculo);
 		return "veiculo/lista";
 	}
-
 	
-	/*
-
 	@GetMapping("/buscar")
-	public String getPorNome(@RequestParam("nome") String nome, ModelMap model) {
-		System.out.println(nome);
-		model.addAttribute("veiculos", veiculoService.buscarPorNome(nome));
-		return "veiculo/lista";
-
-	}
-
-	@GetMapping("/buscar/data")
-	public String getPorDatas(@RequestParam("entrada") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate entrada,
-			@RequestParam("saida") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate saida, ModelMap model) {
-		model.addAttribute("veiculos", veiculoService.buscarPorDatas(entrada, saida));
-		return "veiculo/lista";
-	}
-	*/
-	
-	/*
-	@GetMapping("/buscar")
-	public String getPorDatas(@RequestParam("dataRetirar") String dataRetirar,@RequestParam("dataDevolver") String dataDevolver, ModelMap model) {
+	public String getPorDatas(@RequestParam("dataRetirar") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataRetirar,@RequestParam("dataDevolver") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataDevolver,  @RequestParam("nome") String nome,  ModelMap model) {
+		   
+		model.addAttribute("dataRetirar", dataRetirar);
+		model.addAttribute("dataDevolver", dataDevolver);
 		
-		System.out.println("Data da Retirada: " + dataRetirar);
-		System.out.println("Data da Entrega: " + dataDevolver);
-		
-
-	    LocalDate dataEntrega = LocalDate.parse(dataDevolver);
-        LocalDate dataRetirada = LocalDate.parse(dataRetirar);
-		
-        
-        
-		model.addAttribute("dataRetirar", dataRetirada);
-		
-		List<Veiculo> veiculo = veiculoService.buscarPorDatas(dataRetirada, dataEntrega);
+		List<Veiculo> veiculo = veiculoService.buscarPorDatasAndNome(dataRetirar, dataDevolver, nome);
 		model.addAttribute("veiculos", veiculo);
 		return "veiculo/listar";
 		
-	}*/
-
-	@GetMapping("/buscar/data/nome")
-	public String getPorDatas(@RequestParam("dataRetirar") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataRetirar,
-	                          @RequestParam("dataDevolver") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataDevolver, 
-	                          @RequestParam("nome") String nome, ModelMap model) {
-	 
-	    model.addAttribute("veiculos", veiculoService.buscarPorDatasAndNome(dataRetirar, dataDevolver, nome));
-	    return "veiculo/lista";
 	}
-	
+
 	@ModelAttribute("categorias")
 	public List<Categoria> listaDeCategorias() {
 		return categoriaService.buscarTodos();

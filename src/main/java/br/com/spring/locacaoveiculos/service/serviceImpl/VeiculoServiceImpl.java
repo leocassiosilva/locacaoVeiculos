@@ -37,20 +37,12 @@ public class VeiculoServiceImpl implements VeiculoService {
 		return veiculoRepository.buscarVeiculo(id);
 	}
 
-	/*@Override
-	public List<Veiculo> buscarPorNome(String nome) {
-		return veiculoRepository.buscarPorNome(nome);
+	
+	@Override
+	public List<Veiculo> buscarPorDatasAndNome(LocalDate retirada, LocalDate devolucao, String nome) {
+		return veiculoRepository.buscarPorDatasAndNome(retirada, devolucao, nome);
 	}
 
-	@Override
-	public List<Veiculo> buscarPorDatas(LocalDate retirada, LocalDate devolucao) {
-		return veiculoRepository.buscarPorDatas(retirada, devolucao);
-	}*/
-
-	@Override
-	public List<Veiculo> buscarPorDatasAndNome(LocalDate dataRetirar, LocalDate dataDevolver, String nome) {
-		return veiculoRepository.buscarPorDatasAndNome(dataRetirar, dataDevolver, nome);
-	}
-
+	
 
 }

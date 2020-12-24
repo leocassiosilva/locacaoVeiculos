@@ -29,15 +29,7 @@ public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
 			+ "where v.id_veiculo = :id", nativeQuery = true)
 	Veiculo buscarVeiculo(@Param("id") Long id);
 
-/*
-	@Query(name = "buscarPorNome", value = "SELECT * FROM veiculos\n" + 
-			"inner join arquivos on (veiculos.id_veiculo = arquivos.id_veiculo)\n"+
-			"inner join locadora on (veiculos.id_locadora = locadora.id_locadora)\n" + 
-			"inner join local on(locadora.id_local = local.id_local)\n" + 
-			"inner join arquivos on (veiculos.id = arquivos.id_veiculo)\n"+
-			"inner join locadora on (veiculos.id_locadora = locadora.id)\n" + 
-			"inner join local on(locadora.id_local = local.id)\n" + 
-			"where local.nome = :nome", nativeQuery = true)*/
+
 	
 	@Query(name = "buscarPorNome", value = "SELECT * FROM veiculos\n"
 			+ "inner join arquivos on (veiculos.id_veiculo = arquivos.id_veiculo)\n"
@@ -47,13 +39,13 @@ public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
 	List<Veiculo> buscarPorNome(String nome);
 
 	@Query(name = "buscarPorDatas", value = "SELECT * FROM veiculos as v "
+			+ "inner join locadora on (locadora.id_locadora = v.id_locadora)"
+			+ "inner join local on (local.id_local = locadora.id_local)"
 			+ "where v.id_veiculo NOT IN (SELECT locacao.id_veiculo FROM locacao "
 			+ "where (locacao.data_retirada <= :retirada and locacao.data_retirada >= :retirada) "
-			+ "or (locacao.data_entrega >= :devolucao and locacao.data_entrega <= :devolucao))", nativeQuery = true)
-	List<Veiculo> buscarPorDatas(LocalDate retirada, LocalDate devolucao);
+			+ "or (locacao.data_entrega >= :devolucao and locacao.data_entrega <= :devolucao)) and local.nome = :nome", nativeQuery = true)
+	List<Veiculo> buscarPorDatasAndNome(LocalDate retirada, LocalDate devolucao, String nome);
 
 	
-	
-	List<Veiculo> buscarPorDatasAndNome(LocalDate dataRetirar, LocalDate dataDevolver, String nome);
 
 }
