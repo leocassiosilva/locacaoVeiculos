@@ -8,9 +8,9 @@
 		<div class="btn-topo2" style="margin: 32px 0;" id="about">
 			<div class="container">
 				<div class="w3-display-left w3-padding ">
-					<div class="w3-container w3-red">
+					<div class="w3-container w3-red" style="text-align: center;">
 						<h2>
-							<i class="fa fa-car"></i> Locadora SLV
+							<i class="fa fa-car" ></i> Locadora SLV
 						</h2>
 					</div>
 					<form method="GET" th:action="@{/veiculos/buscar}">
@@ -28,25 +28,20 @@
 										name="dataDevolver" id="dataDevolver" required>
 								</div>
 							</div>
-							
-							<div class="w3-row-padding" style="margin: 0 -16px;">
-								<!--  
-								<label><i class="fa fa-search"></i> Retirar o veículo
-									em:</label> <input class="form-control" type="text"
-									placeholder="Informe a cidade" id="nome" name="nome" required>
-								</br>  -->
-							</div>
 
+							<label><i class="fa fa-search"></i> Retirar o veículo em:</label>
+							<input class="form-control" type="text"
+								placeholder="Informe a cidade" id="nome" name="nome" required>
+							</br>
 
 							<button class="w3-button w3-dark-grey" type="submit">
 								<i class="fa fa-search w3-margin-right"></i>Buscar
 							</button>
+						</div>
 					</form>
-
-
+				</div>
+				<img class="w3-image" src="/imagens/cm2.png">
 			</div>
-			<img class="w3-image" src="/imagens/cm2.png">
-		</div>
 		</div>
 
 		<div class="btn-topo" style="margin: 32px 0;" id="about">

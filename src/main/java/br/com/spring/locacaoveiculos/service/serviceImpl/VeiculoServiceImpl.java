@@ -37,7 +37,7 @@ public class VeiculoServiceImpl implements VeiculoService {
 		return veiculoRepository.buscarVeiculo(id);
 	}
 
-	@Override
+	/*@Override
 	public List<Veiculo> buscarPorNome(String nome) {
 		return veiculoRepository.buscarPorNome(nome);
 	}
@@ -45,6 +45,11 @@ public class VeiculoServiceImpl implements VeiculoService {
 	@Override
 	public List<Veiculo> buscarPorDatas(LocalDate retirada, LocalDate devolucao) {
 		return veiculoRepository.buscarPorDatas(retirada, devolucao);
+	}*/
+
+	@Override
+	public List<Veiculo> buscarPorDatasAndNome(LocalDate dataRetirar, LocalDate dataDevolver, String nome) {
+		return veiculoRepository.buscarPorDatasAndNome(dataRetirar, dataDevolver, nome);
 	}
 
 

@@ -12,6 +12,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -185,13 +186,14 @@ public class VeiculoController {
 	}
 	*/
 	
+	/*
 	@GetMapping("/buscar")
 	public String getPorDatas(@RequestParam("dataRetirar") String dataRetirar,@RequestParam("dataDevolver") String dataDevolver, ModelMap model) {
 		
 		System.out.println("Data da Retirada: " + dataRetirar);
 		System.out.println("Data da Entrega: " + dataDevolver);
 		
-		/*Convertendo datas de string para LocalDate*/
+
 	    LocalDate dataEntrega = LocalDate.parse(dataDevolver);
         LocalDate dataRetirada = LocalDate.parse(dataRetirar);
 		
@@ -203,10 +205,17 @@ public class VeiculoController {
 		model.addAttribute("veiculos", veiculo);
 		return "veiculo/listar";
 		
+	}*/
+
+	@GetMapping("/buscar/data/nome")
+	public String getPorDatas(@RequestParam("dataRetirar") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataRetirar,
+	                          @RequestParam("dataDevolver") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataDevolver, 
+	                          @RequestParam("nome") String nome, ModelMap model) {
+	 
+	    model.addAttribute("veiculos", veiculoService.buscarPorDatasAndNome(dataRetirar, dataDevolver, nome));
+	    return "veiculo/lista";
 	}
 	
-	
-
 	@ModelAttribute("categorias")
 	public List<Categoria> listaDeCategorias() {
 		return categoriaService.buscarTodos();
