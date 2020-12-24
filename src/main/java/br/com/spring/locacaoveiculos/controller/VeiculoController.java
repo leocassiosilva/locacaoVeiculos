@@ -175,7 +175,7 @@ public class VeiculoController {
 		
 		List<Veiculo> veiculo = veiculoService.buscarPorDatasAndNome(dataRetirar, dataDevolver, nome);
 		model.addAttribute("veiculos", veiculo);
-		return "veiculo/listar";
+		return "veiculo/lista";
 		
 	}
 
