@@ -34,9 +34,14 @@
 							<td th:text="${v.categoria.nome}"></td>
 							<td th:text="${v.locadora.nome}"></td>
 							<td th:text="${v.categoria.valor}"></td>
-							<td colspan="2" class="cent"><a class="btn btn-primary"
-								th:href="@{locacaos/veiculo/{id} (id=${v.id_veiculo}) }"
-								role="button">Alugar </a></td>
+							<td colspan="2" class="cent">
+							
+							<form method="GET" th:action="@{/locacaos/veiculo/{id} (id=${v.id_veiculo}) }"
+							enctype="multipart/form-data">
+								<td th:text="${dataRetirar}"></td>
+							<button type="submit" class="btn btn-primary" th:text="${v.id_veiculo}">Alugar</button>
+							
+							</form></td>
 						</tr>
 					</tbody>
 				</table>
