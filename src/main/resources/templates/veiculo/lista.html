@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout}">
 <head>
@@ -35,13 +35,23 @@
 							<td th:text="${v.locadora.nome}"></td>
 							<td th:text="${v.categoria.valor}"></td>
 							<td colspan="2" class="cent">
-							
-							<form method="GET" th:action="@{/locacaos/veiculo/{id} (id=${v.id_veiculo}) }"
-							enctype="multipart/form-data">
-								<td th:text="${dataRetirar}"></td>
-							<button type="submit" class="btn btn-primary" th:text="${v.id_veiculo}">Alugar</button>
-							
-							</form></td>
+
+								<form method="GET"
+									th:action="@{/locacaos/veiculo/{id} (id=${v.id_veiculo}) }"
+									enctype="multipart/form-data">
+																	
+										<input class="form-control"
+										type="hidden" th:value="${dataRetirar}" id="dataRetirar"
+										name="dataRetirar"/>
+										
+										<input class="form-control"
+										type="hidden" th:value="${dataDevolver}" id="dataDevolver"
+										name="dataDevolver"/>
+										
+									<button type="submit" class="btn btn-primary">Alugar</button>
+
+								</form>
+							</td>
 						</tr>
 					</tbody>
 				</table>

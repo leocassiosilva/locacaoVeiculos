@@ -56,14 +56,13 @@
 								</select>
 							</div>
 
-							<input type="hidden" name="dataRetirada" id="dataRetirada"
-								class="form control">
-							<div class="form-group">
-								<label for="dataEntrega">Data Entrega</label> <input type="date"
-									class="form-control" id="dataEntrega" name="dataEntrega" />
-								<div class="invalid-feedback"></div>
-							</div>
-
+							<input class="form-control"
+										type="hidden" th:value="${dataRetirar}" id="dataRetirar"
+										name="dataRetirar"/>
+										
+							<input class="form-control"
+										type="hidden" th:value="${dataDevolver}" id="dataDevolver"
+										name="dataDevolver"/>
 
 							<input type="hidden" th:value="${veiculo.id_veiculo}"
 								name="veiculo"> <input type="hidden"
@@ -81,8 +80,6 @@
 			</div>
 		</div>
 </section>
-</body>
-</html>
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
 	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -157,6 +154,9 @@
 			});
 </script>
 </script>
+
+</body>
+</html>
 
 
 

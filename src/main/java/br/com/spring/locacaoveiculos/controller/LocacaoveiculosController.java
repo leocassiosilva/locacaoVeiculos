@@ -9,6 +9,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.spring.locacaoveiculos.model.Locacao;
@@ -52,8 +54,11 @@ public class LocacaoveiculosController {
 	
 	
 	@GetMapping("/veiculo/{id}")
-	public String preLocacao(@PathVariable("id") Long id, ModelMap model, Locacao locacao) {
+	public String preLocacao(@PathVariable("id") Long id, ModelMap model, Locacao locacao, @RequestParam("dataRetirar") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataRetirar, @RequestParam("dataDevolver") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataDevolver) {
 		System.out.println(id);
+		model.addAttribute("dataRetirar", dataRetirar);
+		model.addAttribute("dataDevolver", dataDevolver);
+		
 		model.addAttribute("veiculo", veiculoService.buscarVeiculo(id)); 
 		System.out.println(veiculoService.buscarVeiculo(id));
 		return "locacao/cadastroLocacao";
@@ -72,17 +77,17 @@ public class LocacaoveiculosController {
 	
 	
 	@PostMapping("/pagar")
-	public String pagarLocacao(@Valid Locacao locacao, BindingResult result,  String dataRetirada, String dataEntrega,  Veiculo veiculo, ModelMap model) {
+	public String pagarLocacao(@Valid Locacao locacao, BindingResult result,  String dataRetirar, String dataDevolver,  Veiculo veiculo, ModelMap model) {
 		
 		/*Convertendo datas de string para LocalDate*/
-	    LocalDate localDate = LocalDate.parse(dataEntrega);
-        LocalDate localDatee = LocalDate.parse(dataRetirada);
+	    LocalDate localDate = LocalDate.parse(dataDevolver);
+        LocalDate localDatee = LocalDate.parse(dataRetirar);
         /*Serve para calcular quantidade de dias entre datas*/
         long diaria = ChronoUnit.DAYS.between(localDatee, localDate);  
         	  
         System.out.println("Diarias: " + diaria);
 		System.out.println("Pague a locação rapaz!");
-		System.out.println(dataRetirada);
+		System.out.println(dataRetirar);
 		System.out.println(localDate);
 		System.out.println(veiculo.getId_veiculo());
 		
