@@ -159,18 +159,19 @@ public class VeiculoController {
 		return tipoService.buscarTodosTipos();
 	}
 
-	
-	
 	@GetMapping("/buscar")
-	public String getPorDatas(@RequestParam("dataRetirar") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataRetirar,@RequestParam("dataDevolver") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataDevolver,  @RequestParam("nome") String nome,  ModelMap model) {
-		   
+	public String getPorDatas(
+			@RequestParam("dataRetirar") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataRetirar,
+			@RequestParam("dataDevolver") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataDevolver,
+			@RequestParam("nome") String nome, ModelMap model) {
+
 		model.addAttribute("dataRetirar", dataRetirar);
 		model.addAttribute("dataDevolver", dataDevolver);
-		
+
 		List<Veiculo> veiculo = veiculoService.buscarPorDatasAndNome(dataRetirar, dataDevolver, nome);
 		model.addAttribute("veiculos", veiculo);
 		return "veiculo/lista";
-		
+
 	}
 
 	@ModelAttribute("categorias")

@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private static final String[] AUTH_LIST = { "/", "/home", "/locacaos/veiculo/{id}", "/getUsuario/{email}",
 			"/locacaos/locais", "/locacaos/pagar", "/locacaos/confirmar", "/newUsuario", "/veiculos/getVeiculo/{id}",
 			"/veiculos/getVeiculoMarca/{id}&{id_marca}", "/veiculos/getMarcas", "/veiculos/salvar", "/veiculos/listar",
-			"/veiculos/buscar", "/veiculos/buscar/data/nome", "/veiculos/newVeiculo", "/veiculos/getTipo" };
+			"/veiculos/buscar", "/veiculos/newVeiculo", "/veiculos/getTipo" };
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

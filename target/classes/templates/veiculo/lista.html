@@ -19,12 +19,10 @@
 							<th>Categoria</th>
 							<th>Locadora</th>
 							<th>Valor</th>
-
 							<th class="cent">Locar Veículo</th>
 						</tr>
 					</thead>
 					<tbody>
-
 						<tr th:each="v : ${veiculos}">
 							<td style="width: 50px; padding-left: 5px;"><img
 								class="imgbtn" th:src="${v.arquivos[0].nome}"></td>
@@ -35,21 +33,15 @@
 							<td th:text="${v.locadora.nome}"></td>
 							<td th:text="${v.categoria.valor}"></td>
 							<td colspan="2" class="cent">
-
 								<form method="GET"
 									th:action="@{/locacaos/veiculo/{id} (id=${v.id_veiculo}) }"
 									enctype="multipart/form-data">
-																	
-										<input class="form-control"
-										type="hidden" th:value="${dataRetirar}" id="dataRetirar"
-										name="dataRetirar"/>
-										
-										<input class="form-control"
-										type="hidden" th:value="${dataDevolver}" id="dataDevolver"
-										name="dataDevolver"/>
-										
+									<input class="form-control" type="hidden"
+										th:value="${dataRetirar}" id="dataRetirar" name="dataRetirar" />
+									<input class="form-control" type="hidden"
+										th:value="${dataDevolver}" id="dataDevolver"
+										name="dataDevolver" />
 									<button type="submit" class="btn btn-primary">Alugar</button>
-
 								</form>
 							</td>
 						</tr>

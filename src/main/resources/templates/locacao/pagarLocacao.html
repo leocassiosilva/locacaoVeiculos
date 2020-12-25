@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html layout:decorate="~{layout}">
 <head>
 <meta charset="UTF-8" />
 <section layout:fragment="corpo">
@@ -9,11 +9,7 @@
 				<th:block th:include="veiculo/mensagemValidacao"></th:block>
 			</div>
 		</div>
-
-
-
 		<div class="row">
-
 			<div class="col-sm-6 col-md-6" style="margin-top: 10px;">
 				<div class="row">
 					<div class="col-12 col-md-12">
@@ -22,7 +18,6 @@
 								alt="Card image cap">
 						</div>
 					</div>
-
 					<div class="col-12 col-md-12">
 						<div class="card card-signin">
 							<div class="card-body">
@@ -46,15 +41,11 @@
 									<li class="list-group-item">Local de Devolução - <a
 										th:text="${veiculo.locadoraDevolucao.localLocadora.nome}"></a></li>
 								</ul>
-
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
-
-
 			<div class="col-sm-6 col-md-6" style="margin-top: 10px;">
 				<div class="row">
 					<div class="col-12 col-md-12">
@@ -63,50 +54,42 @@
 								<h5 class="card-title text-center">Pague com o Cartão de
 									créditos</h5>
 								<hr>
-
 								<form method="POST" th:action=@{/locacaos/confirmar}
 									th:object="${locacao}" enctype="multipart/form-data">
-
-									<input type="text" th:value="${veiculo.id_veiculo}" id="id_veiculo"
-										name="id_veiculo" class="form control"> 
-										<input type="hidden" id="veiculo" name="veiculo" class="form control"
-										th:field="*{veiculo}"> 
-										<input type="hidden"
-										th:value="${dataRetirada}" class="form control"
+									<input type="text" th:value="${veiculo.id_veiculo}"
+										id="id_veiculo" name="id_veiculo" class="form control">
+									<input type="hidden" id="veiculo" name="veiculo"
+										class="form control" th:field="*{veiculo}"> <input
+										type="hidden" th:value="${dataRetirada}" class="form control"
 										th:field="*{dataRetirada}"> <input type="hidden"
 										th:value="${dataEntrega}" class="form control"
 										th:field="*{dataEntrega}"> <input type="hidden"
 										th:value="${loca.valorTotal}" id="valorTotal"
-										name="valorTotal" class="form control">
-
-										<input type="text" th:value="${seg}" id="seg"
-										name="seg" class="form control">
-										
-										<input type="text" th:value="${locadoraDevolucaoId}" id="locadoraDevolucaoId"
+										name="valorTotal" class="form control"> <input
+										type="text" th:value="${seg}" id="seg" name="seg"
+										class="form control"> <input type="text"
+										th:value="${locadoraDevolucaoId}" id="locadoraDevolucaoId"
 										name="locadoraDevolucaoId" class="form control">
 									<div class="form-row">
-
 										<div class="form-group col-md-12">
 											<label for="numero">Numero do cartão</label> <input
 												type="text" class="form-control"
 												placeholder="Numero do cartão*" id="numeroCartao"
-												name="numeroCartao" />
+												name="numeroCartao" required/>
 										</div>
 									</div>
 									<div class="form-row">
-
 										<div class="form-group col-md-12">
 											<label for="nome">Nome do titular (como está gravado
 												no Cartão)</label> <input type="text" class="form-control"
 												placeholder="Numero do cartão*" id="nomeTitular"
-												name="nomeTitular" />
+												name="nomeTitular" required/>
 										</div>
 									</div>
-
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											<label>Mês</label> <select id="mes" data-hj-masked=""
-												name="mes" class="form-control"><option value="">Mês</option>
+												name="mes" class="form-control" required><option value="">Mês</option>
 												<option value="1">01</option>
 												<option value="2">02</option>
 												<option value="3">03</option>
@@ -123,7 +106,7 @@
 										</div>
 										<div class="form-group col-md-6">
 											<label>Ano</label> <select id="ano" data-hj-masked=""
-												name="ano" class="form-control"><option value="">Ano</option>
+												name="ano" class="form-control" required><option value="">Ano</option>
 												<option value="2020">20</option>
 												<option value="2021">21</option>
 												<option value="2022">22</option>
@@ -159,32 +142,28 @@
 										</div>
 									</div>
 									<div class="form-row">
-
 										<div class="form-group col-md-8">
 											<label for="nome">Código de Segurança</label> <input
 												type="number" class="form-control"
 												placeholder="Código de Segurança*" id="codigoSeguranca"
-												name="codigoSeguranca" maxlength="3" />
+												name="codigoSeguranca" maxlength="3" required/>
 										</div>
 									</div>
-
 									<div class="form-row">
 
 										<div class="form-group col-md-8">
 											<label>Mês</label> <select id="parcela" name="parcela"
-												class="form-control"><option value="">Parcelamento
+												class="form-control" required><option value="">Parcelamento
 													(ainda a definir)</option>
 											</select>
 										</div>
 									</div>
 									<button type="submit" class="btn btn-primary">Confirmar</button>
 								</form>
-
 							</div>
 						</div>
 					</div>
 				</div>
-
 				<div class="row">
 					<div class="col-12 col-md-12">
 						<div class="card card-signin" style="margin-top: 10px;">
@@ -199,27 +178,20 @@
 								</ul>
 								<p>Você poderá visualizar ou imprimir após a finalização do
 									pedido.</p>
-
-
 								<form method="POST" th:action=@{/locacaos/confirmar}
 									th:object="${locacao}" enctype="multipart/form-data">
-
 									<input type="hidden" th:value="${veiculo}" id="veic"
-										name="veic" class="form control"> <input
-										type="hidden" id="veiculoId" name="veiculoId"
-										class="form control" th:field="*{veiculo}"> <input
-										type="hidden" th:value="${dataRetirada}" class="form control"
+										name="veic" class="form control"> <input type="hidden"
+										id="veiculoId" name="veiculoId" class="form control"
+										th:field="*{veiculo}"> <input type="hidden"
+										th:value="${dataRetirada}" class="form control"
 										th:field="*{dataRetirada}"> <input type="hidden"
 										th:value="${dataEntrega}" class="form control"
 										th:field="*{dataEntrega}"> <input type="hidden"
 										th:value="${loca.valorTotal}" id="valorTotal"
 										name="valorTotal" class="form control">
-
-
 									<button type="submit" class="btn btn-primary">Confirmar</button>
 								</form>
-
-
 							</div>
 						</div>
 					</div>
@@ -230,19 +202,3 @@
 </section>
 </body>
 </html>
-
-!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-	crossorigin="anonymous"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		var vendaMediaMensal = $("#veic").val();
-		var resultado = vendaMediaMensal.split("=");
-
-		$("#veiculo").val(resultado[1]);
-
-		$("#veiculoId").val(resultado[1]);
-
-	});
-</script>

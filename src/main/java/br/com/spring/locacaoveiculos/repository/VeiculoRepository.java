@@ -29,8 +29,6 @@ public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
 			+ "where v.id_veiculo = :id", nativeQuery = true)
 	Veiculo buscarVeiculo(@Param("id") Long id);
 
-
-	
 	@Query(name = "buscarPorNome", value = "SELECT * FROM veiculos\n"
 			+ "inner join arquivos on (veiculos.id_veiculo = arquivos.id_veiculo)\n"
 			+ "inner join locadora on (veiculos.id_locadora = locadora.id_locadora)\n"
@@ -49,7 +47,5 @@ public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
 			+ "where (locacao.data_retirada <= :retirada and locacao.data_retirada >= :retirada) "
 			+ "or (locacao.data_entrega >= :devolucao and locacao.data_entrega <= :devolucao)) and local.nome = :nome", nativeQuery = true)
 	List<Veiculo> buscarPorDatasAndNome(LocalDate retirada, LocalDate devolucao, String nome);
-
-	
 
 }
