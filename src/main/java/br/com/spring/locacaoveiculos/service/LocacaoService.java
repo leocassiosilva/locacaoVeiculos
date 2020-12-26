@@ -9,4 +9,6 @@ public interface LocacaoService {
 	Locacao save(Locacao locacao);
 	List<Locacao> buscarPeloUsuario(String email);
 	
+	List<Locacao> buscarPeloId(Long id);
+	
 }

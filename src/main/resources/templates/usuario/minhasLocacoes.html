@@ -1,0 +1,15 @@
+<table class="table table-striped table-hover table-sm">
+	<thead>
+		<tr>
+			<th>ID_Loca��o</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="v : ${locacao}">
+
+			<td th:text="${v.veiculo.id_veiculo}"></td>
+
+		</tr>
+	</tbody>
+</table>

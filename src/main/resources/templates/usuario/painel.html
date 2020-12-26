@@ -6,57 +6,73 @@
 <meta name="viewport" content="width=device-width" />
 <title>Locação de Veiculos - Cadastro de Veiculo</title>
 <!-- CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css"
+	rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 
 
 </head>
 <body>
-	
-	<header th:replace="fragments/header :: cabecalho">
-		<div>header</div>
-	</header>
-	
-	<section layout:fragment="corpo">
-		<span sec:authorize="isAuthenticated()"> Usuario: 
-			 <div sec:authentication="name" id="nome" name="nome">
-			 </div>
-		</span>
-		
-		
-		<div class="container" id="listagem">
 
-			<div class="table-responsive">
-				<table class="table table-striped table-hover table-sm">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Nome</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="l : ${locacaoUser}">
-							<td  th:text="${l.id}"></td>
-							
-							
-						</tr>
-					</tbody>
-				</table>
+	<header class="navbar navbar-expand-lg navbar-dark w3-large"
+		style="background-color: #0275df;" th:fragment="cabecalho">
+		<a class="navbar-brand" href="/home"><i class="fa fa-car"></i> SLV</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="/home">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item active"><div
+					id="listar" name="listar"></div></li>
+
+			</ul>
+			<div class="form-inline my-2 my-lg-0">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a class="nav-link" href="/login">Área
+							do cliente</a></li>
+				</ul>
 			</div>
 		</div>
-		
+	</header>
 
-		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Sign Out" />
-		</form>
+	<section layout:fragment="corpo">
+		<span sec:authorize="isAuthenticated()"> Usuario:
+			<div sec:authentication="name" id="nome" name="nome"></div>
+		</span>
+
+
+		<div class="container" id="listagem">
+
+
+			<a th:text="${id}"></a>
+
+
+
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out" />
+			</form>
 	</section>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -64,23 +80,33 @@
 	crossorigin="anonymous"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+
 		var email = $('#nome').text();
 		console.log(email);
+
+		var id_user;
+		
+		//$("#listar").append('<a class="nav-link" href="/locacaos/getUsuario/'+ email +'">Título</a1>');
+		//alert(link);
 		
 		jQuery.ajax({
 			type : "GET",
-			url : "/locacaos/getUsuario/"+email,
+			url : "/locacaos/getUsuario/" + email,
 			data : {},
 			success : function(dados) {
-				console.log(dados[0].veiculo.id);
+				console.log(dados.id_usuario);
+				id_user = dados.id_usuario;
+				$("#listar").append('<a class="nav-link" href="/locacaos/getLocacoesUsuario/'+ id_user +'">Título</a>');
 			}
 		}).done(function() {
 
 		}).fail(function() {
 			console.log("erro ajax");
 		});
+		
+		
 	});
-	</script>
+</script>
 </html>
 
 

@@ -25,4 +25,9 @@ public class LocacaoServiceImpl implements LocacaoService{
 		return locacaoRepository.buscarPeloUsuario(email);
 	}
 
+	@Override
+	public List<Locacao> buscarPeloId(Long id) {
+		return locacaoRepository.buscarPeloId(id);
+	}
+
 }

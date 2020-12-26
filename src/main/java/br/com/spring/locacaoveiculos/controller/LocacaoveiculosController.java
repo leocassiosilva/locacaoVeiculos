@@ -25,11 +25,13 @@ import br.com.spring.locacaoveiculos.model.Locacao;
 import br.com.spring.locacaoveiculos.model.Locadora;
 import br.com.spring.locacaoveiculos.model.Local;
 import br.com.spring.locacaoveiculos.model.Seguro;
+import br.com.spring.locacaoveiculos.model.Usuario;
 import br.com.spring.locacaoveiculos.model.Veiculo;
 import br.com.spring.locacaoveiculos.service.LocacaoService;
 import br.com.spring.locacaoveiculos.service.LocadoraService;
 import br.com.spring.locacaoveiculos.service.LocalService;
 import br.com.spring.locacaoveiculos.service.SeguroService;
+import br.com.spring.locacaoveiculos.service.UsuarioService;
 import br.com.spring.locacaoveiculos.service.VeiculoService;
 
 
@@ -51,6 +53,10 @@ public class LocacaoveiculosController {
 	
 	@Autowired
 	private LocacaoService locacaoService;
+	
+	
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	
 	@GetMapping("/veiculo/{id}")
@@ -157,11 +163,15 @@ public class LocacaoveiculosController {
 	
 	@GetMapping(value = "/getUsuario/{email}")
 	@ResponseBody
-	public List<Locacao> relatorio(@PathVariable("email") String email, ModelMap model) {
-		
-		List<Locacao> locacaoUser = locacaoService.buscarPeloUsuario(email);
-		model.addAttribute("locacaoUser", locacaoUser);
-
-		return locacaoService.buscarPeloUsuario(email);
+	public Usuario buscarUsuario(@PathVariable("email") String email, ModelMap model) {
+		Usuario usuario = usuarioService.buscarPeloEmail(email); 
+		return usuario;
+	}
+	
+	@GetMapping(value = "/getLocacoesUsuario/{id}")
+	public String listarLocacoesUsuario(@PathVariable("id") Long id, ModelMap model) {
+		List<Locacao> locacao = locacaoService.buscarPeloId(id);
+		model.addAttribute("locacao", locacao); 
+		return "usuario/minhasLocacoes";
 	}
 }
