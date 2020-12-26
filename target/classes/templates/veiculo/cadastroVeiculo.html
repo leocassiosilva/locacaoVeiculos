@@ -5,82 +5,85 @@
 </head>
 <body>
 	<section layout:fragment="corpo">
-		<div class="container"
-			style="width: 60%; padding-bottom: 30px; margin-top: 30px;">
-			<div class="row">
-				<div class="col-sm-6 col-xs-8 mx-auto" id="classePrincipal">
-					<th:block th:include="veiculo/mensagemValidacao"></th:block>
+		<div class="alinhar1">
+			<div class="container"
+				style="width: 60%; padding-bottom: 30px; margin-top: 30px;">
+				<div class="row">
+					<div class="col-sm-6 col-xs-8 mx-auto" id="classePrincipal">
+						<th:block th:include="veiculo/mensagemValidacao"></th:block>
+					</div>
 				</div>
-			</div>
-			<div>
+				<div>
 
-				<form method="POST" th:action=@{/veiculos/salvar}
-					th:object="${veiculo}" enctype="multipart/form-data">
-					<div class="form-group">
-						<label for="veiculo">Nome</label> <input type="text"
-							class="form-control" placeholder="Nome *" th:field="*{nome}" />
-					</div>
+					<form method="POST" th:action=@{/veiculos/salvar}
+						th:object="${veiculo}" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="veiculo">Nome</label> <input type="text"
+								class="form-control" placeholder="Nome *" th:field="*{nome}" />
+						</div>
 
-					<div class="form-group">
-						<label>Tipo(ex:Moto/Carro)</label> <select id="tipo"
-							class="form-control">
-						</select>
-					</div>
+						<div class="form-group">
+							<label>Tipo(ex:Moto/Carro)</label> <select id="tipo"
+								class="form-control">
+							</select>
+						</div>
 
-					<div class="form-group">
-						<label>Marca</label> <select id="marca" class="form-control">
-							<option value="">Selecione</option>
-						</select>
-					</div>
+						<div class="form-group">
+							<label>Marca</label> <select id="marca" class="form-control">
+								<option value="">Selecione</option>
+							</select>
+						</div>
 
-					<input type="hidden" id="tipoMarca" th:field="*{tipoMarca}" />
+						<input type="hidden" id="tipoMarca" th:field="*{tipoMarca}" />
 
-					<div class="form-group">
-						<label>Categoria(ex:NORMAL/VIP)</label> <select id="categoria"
-							class="form-control" th:field="*{categoria}">
-							<option value="">Selecione</option>
-							<option th:each="c : ${categorias}" th:value="${c.id_categoria}"
-								th:text="${c.nome}"></option>
+						<div class="form-group">
+							<label>Categoria(ex:NORMAL/VIP)</label> <select id="categoria"
+								class="form-control" th:field="*{categoria}">
+								<option value="">Selecione</option>
+								<option th:each="c : ${categorias}" th:value="${c.id_categoria}"
+									th:text="${c.nome}"></option>
 
-						</select>
-					</div>
-
-
-					<div class="form-group">
-						<label for="placa">Placa</label> <input type="text"
-							class="form-control" placeholder="Placa *" th:field="*{placa}" />
-					</div>
-
-					<div class="form-group">
-						<label for="renavan">Renavan</label> <input type="text"
-							class="form-control" placeholder="Renavan *"
-							th:field="*{renavan}" />
-					</div>
+							</select>
+						</div>
 
 
-					<div class="form-group">
-						<label>Locadora</label> <select id="locadora" class="form-control"
-							th:field="*{locadora}">
-							<option value="">Selecione</option>
-							<option th:each="c : ${locadoras}" th:value="${c.id_locadora}"
-								th:text="${c.nome}"></option>
+						<div class="form-group">
+							<label for="placa">Placa</label> <input type="text"
+								class="form-control" placeholder="Placa *" th:field="*{placa}" />
+						</div>
 
-						</select>
-					</div>
+						<div class="form-group">
+							<label for="renavan">Renavan</label> <input type="text"
+								class="form-control" placeholder="Renavan *"
+								th:field="*{renavan}" />
+						</div>
 
-					<div class="form-group">
-						<p>
-							<input id="fileInput" type="file" name="uploadingFiles" multiple>
-							selected files: <span id="fileNum">0</span>; total size: <span
-								id="fileSize">0</span>
-						</p>
-					</div>
 
-					<button type="submit" class="btn btn-primary"
-						style="margin-top: 10px;" id="btn">Cadastrar</button>
-				</form>
+						<div class="form-group">
+							<label>Locadora</label> <select id="locadora"
+								class="form-control" th:field="*{locadora}">
+								<option value="">Selecione</option>
+								<option th:each="c : ${locadoras}" th:value="${c.id_locadora}"
+									th:text="${c.nome}"></option>
+
+							</select>
+						</div>
+
+						<div class="form-group">
+							<p>
+								<input id="fileInput" type="file" name="uploadingFiles" multiple>
+								selected files: <span id="fileNum">0</span>; total size: <span
+									id="fileSize">0</span>
+							</p>
+						</div>
+
+						<button type="submit" class="btn btn-primary"
+							style="margin-top: 10px;" id="btn">Cadastrar</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	</section>
 </body>
 </html>
+<script th:src="@{/js/arquivo.js}"></script>
