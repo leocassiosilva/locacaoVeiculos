@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width" />
-<title>Locação de Veiculos - Cadastro de Veiculo</title>
-<!-- CSS -->
+<title>Minhas Locações</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -23,9 +23,6 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
-
-
 </head>
 <body>
 
@@ -41,71 +38,76 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="/home">Home
-						<span class="sr-only">(current)</span>
+				<li class="nav-item active"><a class="nav-link" href="#"> <span
+						class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item active"><div
-					id="listar" name="listar"></div></li>
 
 			</ul>
 			<div class="form-inline my-2 my-lg-0">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link" href="/login">Área
-							do cliente</a></li>
+
+
+					<li class="nav-item active"><a class="nav-link"><span
+							sec:authorize="isAuthenticated()"><div
+									sec:authentication="name" id="nome" name="nome"></div> </span></a></li>
+					<li class="nav-item active"><a class="nav-link" href="logout">Sair</a></li>
 				</ul>
 			</div>
 		</div>
 	</header>
+	<!-- Sidebar -->
+	<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 25%">
+		<h3 class="w3-bar-item">Menu</h3>
+		<a href="/painel" class="w3-bar-item w3-button">Home</a>
+		<div id="listar" name="listar"></div>
+	</div>
 
-	<section layout:fragment="corpo">
-		<span sec:authorize="isAuthenticated()"> Usuario:
-			<div sec:authentication="name" id="nome" name="nome"></div>
-		</span>
-
-
-		<div class="container" id="listagem">
-
-
-			<a th:text="${id}"></a>
+	<!-- Page Content -->
+	<div style="margin-left: 25%; margin-top: 20px;">
 
 
 
-			<form th:action="@{/logout}" method="post">
-				<input type="submit" value="Sign Out" />
-			</form>
-	</section>
+
+		<div class="w3-container"></div>
+	</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
 	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 	crossorigin="anonymous"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
+	$(document)
+			.ready(
+					function() {
 
-		var email = $('#nome').text();
-		console.log(email);
+						var email = $('#nome').text();
+						console.log(email);
 
-		var id_user;
-		
-		//$("#listar").append('<a class="nav-link" href="/locacaos/getUsuario/'+ email +'">Título</a1>');
-		//alert(link);
-		
-		jQuery.ajax({
-			type : "GET",
-			url : "/locacaos/getUsuario/" + email,
-			data : {},
-			success : function(dados) {
-				console.log(dados.id_usuario);
-				id_user = dados.id_usuario;
-				$("#listar").append('<a class="nav-link" href="/locacaos/getLocacoesUsuario/'+ id_user +'">Título</a>');
-			}
-		}).done(function() {
+						var id_user;
 
-		}).fail(function() {
-			console.log("erro ajax");
-		});
-		
-		
-	});
+						//$("#listar").append('<a class="nav-link" href="/locacaos/getUsuario/'+ email +'">Título</a1>');
+						//alert(link);
+
+						jQuery
+								.ajax(
+										{
+											type : "GET",
+											url : "/locacaos/getUsuario/"
+													+ email,
+											data : {},
+											success : function(dados) {
+												console.log(dados.id_usuario);
+												id_user = dados.id_usuario;
+												$("#listar")
+														.append(
+																'<a class="w3-bar-item w3-button" href="/locacaos/getLocacoesUsuario/'+ id_user +'">Minhas Locações</a>');
+											}
+										}).done(function() {
+
+								}).fail(function() {
+									console.log("erro ajax");
+								});
+
+					});
 </script>
 </html>
 

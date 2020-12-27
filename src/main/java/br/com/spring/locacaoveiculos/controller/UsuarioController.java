@@ -2,6 +2,7 @@ package br.com.spring.locacaoveiculos.controller;
 
 import java.time.LocalDate;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +73,12 @@ public class UsuarioController {
 	@PostMapping("/login_success_handler")
 	public String loginSuccessHandler() {
 		System.out.println("Logging user login success...");
-
 		return "redirect:/painel";
+	}
+	
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login";
 	}
 }

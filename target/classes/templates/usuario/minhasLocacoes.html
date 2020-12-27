@@ -1,15 +1,141 @@
-<table class="table table-striped table-hover table-sm">
-	<thead>
-		<tr>
-			<th>ID_Loca��o</th>
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Minhas Locações</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css"
+	rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-		</tr>
-	</thead>
-	<tbody>
-		<tr th:each="v : ${locacao}">
+</head>
+<body>
 
-			<td th:text="${v.veiculo.id_veiculo}"></td>
+	<header class="navbar navbar-expand-lg navbar-dark w3-large"
+		style="background-color: #0275df;" th:fragment="cabecalho">
+		<a class="navbar-brand" href="/home"><i class="fa fa-car"></i> SLV</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-		</tr>
-	</tbody>
-</table>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="#"> <span
+						class="sr-only">(current)</span>
+				</a></li>
+
+			</ul>
+			<div class="form-inline my-2 my-lg-0">
+				<ul class="navbar-nav mr-auto">
+
+
+					<li class="nav-item active"><a class="nav-link"><span
+							sec:authorize="isAuthenticated()"><div
+									sec:authentication="name" id="nome" name="nome"></div> </span></a></li>
+					<li class="nav-item active"><a class="nav-link" href="/login">Sair</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<!-- Sidebar -->
+	<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 25%">
+		<h3 class="w3-bar-item">Menu</h3>
+		<a href="/painel" class="w3-bar-item w3-button">Home</a>
+		<div id="listar" name="listar"></div>
+	</div>
+
+	<!-- Page Content -->
+	<div style="margin-left: 25%; margin-top: 20px;">
+
+
+
+
+		<div class="w3-container">
+			<div class="table-responsive">
+				<table class="table table-striped table-hover table-sm">
+					<thead>
+						<tr>
+							<th>Veículos</th>
+							<th>Nome</th>
+							<th>Marca</th>
+							<th>Categoria</th>
+							<th>Local Retirada</th>
+							<th>Local Devolução</th>
+							<th>Seguro</th>
+							<th>Valor</th>
+							<th>Situação</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="l : ${locacao}">
+							<td><img style="width: 100px; padding-left: 5px;"
+								class="imgbtn" th:src="${l.veiculo.arquivos[0].nome}"></td>
+								<td th:text="${l.veiculo.nome}"></td>
+							<td th:text="${l.veiculo.tipoMarca.marca.nome}"></td>
+							<td th:text="${l.veiculo.categoria.nome}"></td>
+							<td th:text="${l.veiculo.locadora.nome}"></td>
+							<td th:text="${l.veiculo.locadoraDevolucao.nome}"></td>
+							<td th:text="${l.veiculo.seguro.nome}"></td>
+							<td th:text="${l.valorTotal}"></td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		var email = $('#nome').text();
+		console.log(email);
+
+		var id_user;
+		
+		//$("#listar").append('<a class="nav-link" href="/locacaos/getUsuario/'+ email +'">Título</a1>');
+		//alert(link);
+		
+		jQuery.ajax({
+			type : "GET",
+			url : "/locacaos/getUsuario/" + email,
+			data : {},
+			success : function(dados) {
+				console.log(dados.id_usuario);
+				id_user = dados.id_usuario;
+				$("#listar").append('<a class="w3-bar-item w3-button" href="/locacaos/getLocacoesUsuario/'+ id_user +'">Minhas Locações</a>');
+			}
+		}).done(function() {
+
+		}).fail(function() {
+			console.log("erro ajax");
+		});
+		
+		
+	});
+</script>
+</html>
+
+
