@@ -30,15 +30,6 @@ public class VeiculoServiceImpl implements VeiculoService {
 	}
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public Veiculo save(Veiculo veiculo) {
 		return null;

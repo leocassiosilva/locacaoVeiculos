@@ -1,7 +1,6 @@
 package br.com.spring.locacaoveiculos.model;
 
 import java.time.LocalDate;
-import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
@@ -9,22 +8,18 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Usuario { 
-	
-	private long id_usuario; 
-	
-	
-	private String nome;
-	
-	private String email;
-	
-	private String senha;
-	
-	
-	@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
-	private LocalDate data;
-	
+public class Usuario {
 
+	private long id_usuario;
+
+	private String nome;
+
+	private String email;
+
+	private String senha;
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	private LocalDate data;
 
 	public long getId_usuario() {
 		return id_usuario;
@@ -57,8 +52,7 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
+
 	public LocalDate getData() {
 		return data;
 	}
@@ -66,5 +60,5 @@ public class Usuario {
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
-	
+
 }
