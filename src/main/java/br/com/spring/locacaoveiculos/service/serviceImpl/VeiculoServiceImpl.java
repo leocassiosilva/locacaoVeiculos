@@ -6,41 +6,58 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import br.com.spring.locacaoveiculos.model.Veiculo;
-import br.com.spring.locacaoveiculos.repository.VeiculoRepository;
 import br.com.spring.locacaoveiculos.service.VeiculoService;
+import reactor.core.publisher.Mono;
 
 @Service
 public class VeiculoServiceImpl implements VeiculoService {
 
 	@Autowired
-	VeiculoRepository veiculoRepository;
+	private WebClient  webClientVeiculos;
+	
+	public Veiculo [] buscarTodos() {
+		
+		Mono<Veiculo []> mono = this. webClientVeiculos.get().uri("/api/veiculos").retrieve()
+				.bodyToMono(Veiculo [].class);
+		
+		Veiculo [] veiculos =  mono.block();
 
+		return veiculos;
+
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public Veiculo save(Veiculo veiculo) {
-		return veiculoRepository.save(veiculo);
+		return null;
 	}
-
-	public List<Veiculo> buscarTodos() {
-		return veiculoRepository.buscarTodos();
-
-	}
-
+	
 	@Override
 	public Optional<Veiculo> buscarPeloId(Long id) {
-		return veiculoRepository.buscarPeloId(id);
+		return null;
 	}
 
 	@Override
 	public Veiculo buscarVeiculo(Long id) {
-		return veiculoRepository.buscarVeiculo(id);
+		return null;
 	}
 
 	
 	@Override
 	public List<Veiculo> buscarPorDatasAndNome(LocalDate retirada, LocalDate devolucao, String nome) {
-		return veiculoRepository.buscarPorDatasAndNome(retirada, devolucao, nome);
+		return null;
 	}
 
 	

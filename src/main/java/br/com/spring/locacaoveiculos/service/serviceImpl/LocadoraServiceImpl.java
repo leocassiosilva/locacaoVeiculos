@@ -3,31 +3,27 @@ package br.com.spring.locacaoveiculos.service.serviceImpl;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.spring.locacaoveiculos.model.Locadora;
-import br.com.spring.locacaoveiculos.repository.LocadoraRepository;
 import br.com.spring.locacaoveiculos.service.LocadoraService;
 @Service
 public class LocadoraServiceImpl implements LocadoraService{
 
-	@Autowired
-	LocadoraRepository locadoraRepository;
 	
 	@Override
 	public List<Locadora> buscarTodos() {
-		return locadoraRepository.findAll();
+		return null;
 	}
 
 	@Override
 	public Optional<Locadora> buscarPorId(Long id) {
-		return locadoraRepository.findById(id);
+		return null;
 	}
 
 	@Override
 	public Locadora buscarLocadora(Long id) {
-		return locadoraRepository.buscarLocadora(id);
+		return null;
 	}
 
 }
