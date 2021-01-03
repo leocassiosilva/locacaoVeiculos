@@ -17,7 +17,15 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+<<<<<<< HEAD
 		
+=======
+<<<<<<< HEAD
+		
+=======
+
+>>>>>>> efdf022296d7cf2d068707579b1194bd5b81f320
+>>>>>>> 7f74d8d8a40eefce89417b5e607c061ae7f3e27d
 	</properties>
 
 	<dependencies>
@@ -25,6 +33,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 7f74d8d8a40eefce89417b5e607c061ae7f3e27d
 		
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -37,12 +49,26 @@
 		</dependency>
 		
 		
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> efdf022296d7cf2d068707579b1194bd5b81f320
+>>>>>>> 7f74d8d8a40eefce89417b5e607c061ae7f3e27d
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+<<<<<<< HEAD
 		 
 			<dependency>
+=======
+<<<<<<< HEAD
+		 
+			<dependency>
+=======
+		<dependency>
+>>>>>>> efdf022296d7cf2d068707579b1194bd5b81f320
+>>>>>>> 7f74d8d8a40eefce89417b5e607c061ae7f3e27d
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
@@ -86,6 +112,10 @@
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator-annotation-processor</artifactId>
 		</dependency>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 7f74d8d8a40eefce89417b5e607c061ae7f3e27d
 		<!-- 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -99,26 +129,71 @@
 		 -->
 		
 
+<<<<<<< HEAD
+=======
+=======
+		
+
+		
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+>>>>>>> efdf022296d7cf2d068707579b1194bd5b81f320
+>>>>>>> 7f74d8d8a40eefce89417b5e607c061ae7f3e27d
 		<dependency>
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring5</artifactId>
 		</dependency>
+<<<<<<< HEAD
 
 
+=======
+<<<<<<< HEAD
+
+
+=======
+		
+>>>>>>> efdf022296d7cf2d068707579b1194bd5b81f320
+>>>>>>> 7f74d8d8a40eefce89417b5e607c061ae7f3e27d
 		<dependency>
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf</artifactId>
 		</dependency>
 		
+<<<<<<< HEAD
 		
 
 
+=======
+<<<<<<< HEAD
+		
+
+
+=======
+>>>>>>> efdf022296d7cf2d068707579b1194bd5b81f320
+>>>>>>> 7f74d8d8a40eefce89417b5e607c061ae7f3e27d
 		<dependency>
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
+<<<<<<< HEAD
 		
 	
+=======
+<<<<<<< HEAD
+		
+	
+=======
+
+>>>>>>> efdf022296d7cf2d068707579b1194bd5b81f320
+>>>>>>> 7f74d8d8a40eefce89417b5e607c061ae7f3e27d
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -191,7 +266,15 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
 		</dependency>
+<<<<<<< HEAD
 	
+=======
+<<<<<<< HEAD
+	
+=======
+
+>>>>>>> efdf022296d7cf2d068707579b1194bd5b81f320
+>>>>>>> 7f74d8d8a40eefce89417b5e607c061ae7f3e27d
 		<!-- Web Jars -->
 		<dependency>
 			<groupId>org.webjars</groupId>
@@ -212,6 +295,10 @@
 		</dependency>
 
 		<dependency>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 7f74d8d8a40eefce89417b5e607c061ae7f3e27d
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
             <version>2.2.4</version>
@@ -222,6 +309,21 @@
             <artifactId>bootstrap</artifactId>
             <version>3.3.7</version>
         </dependency>
+<<<<<<< HEAD
+=======
+=======
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>2.2.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.3.7</version>
+		</dependency>
+>>>>>>> efdf022296d7cf2d068707579b1194bd5b81f320
+>>>>>>> 7f74d8d8a40eefce89417b5e607c061ae7f3e27d
 
 	</dependencies>
 	<build>

@@ -5,8 +5,17 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
+<<<<<<< HEAD
 public class Tipo  {
 
+=======
+<<<<<<< HEAD
+public class Tipo  {
+
+=======
+public class Tipo {
+>>>>>>> efdf022296d7cf2d068707579b1194bd5b81f320
+>>>>>>> 7f74d8d8a40eefce89417b5e607c061ae7f3e27d
 	private Long id_tipo;
 
 	private String nome;
