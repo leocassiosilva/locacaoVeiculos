@@ -29,6 +29,28 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="col-12 col-md-6">
+			<div class="card card-signin">
+				<div class="card-body">
+					<h5 class="card-title text-center">Informações necessarias</h5>
+					<hr>
+					<form method="POST" th:action=@{/locacaos/pagar}
+						th:object="${veiculo}" enctype="multipart/form-data">
+						<div class="form-group">
+							<label>Seguro(ex:Normal/Vip)</label> <select id="seguro"
+								name="seguro" class="form-control" th:field="*{seguro}" required>
+								<option value="">Selecione</option>
+								<option th:each="s : ${seguros}" th:value="${s.id_seguro}"
+									th:text="${s.nome} + ' R$' + ${s.preco}"></option>
+							</select>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 <script th:src="@{/js/arquivo.js}"></script>
 </body>

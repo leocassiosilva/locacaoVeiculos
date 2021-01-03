@@ -1,19 +1,21 @@
 package br.com.spring.locacaoveiculos.controller;
 
 import java.time.LocalDate;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.spring.locacaoveiculos.model.Veiculo;
+import br.com.spring.locacaoveiculos.service.SeguroService;
 import br.com.spring.locacaoveiculos.service.VeiculoService;
+import br.com.spring.locacaoveiculos.model.Seguro;
 
 @Controller
 @RequestMapping("/veiculos")
@@ -21,6 +23,10 @@ public class VeiculoController {
 
 	@Autowired
 	private VeiculoService veiculoService;
+	
+	@Autowired
+	private SeguroService seguroService;
+	
 
 	@GetMapping("/buscar///")
 	public ResponseEntity<Veiculo[]> veiculos() {
@@ -48,13 +54,19 @@ public class VeiculoController {
 	}
 
 	@GetMapping("/{id}")
-	public String preLocacao(@PathVariable("id") Long id, ModelMap model,
+	public String infoVeiculos(@PathVariable("id") Long id, ModelMap model,
 			@RequestParam("dataRetirar") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataRetirar,
 			@RequestParam("dataDevolver") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataDevolver) {
 		Veiculo veiculo = veiculoService.buscarVeiculo(id);
 		System.out.println(dataRetirar);
 		model.addAttribute("veiculo", veiculo);
 		return "veiculo/informacoes-veiculo";
+	}
+	
+	@ModelAttribute("seguros")
+	public void seguro(ModelMap model) {
+		Seguro [] seguros = seguroService.buscarTodos();
+		model.addAttribute("seguros", seguros);
 	}
 	
 }
