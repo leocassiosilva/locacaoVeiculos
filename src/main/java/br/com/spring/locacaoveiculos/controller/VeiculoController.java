@@ -56,4 +56,5 @@ public class VeiculoController {
 		model.addAttribute("veiculo", veiculo);
 		return "veiculo/informacoes-veiculo";
 	}
+	
 }
