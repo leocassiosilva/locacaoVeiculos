@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<section layout:fragment="corpo">
+	<div class="alinhar1">
+		<div class="container" style="margin-top: 30px;">
+			<!-- Stack the columns on mobile by making one full-width and the other half-width -->
+			<div class="row">
+				<div class="col-12 col-md-6">
+					<div class="card mb-3">
+						<img class="card-img-top" th:src="${veiculo.nomeArquivo}"
+							alt="Card image cap">
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">Nome: <a
+								th:text="${veiculo.nome}"></a></li>
+							<li class="list-group-item">Marca:<a
+								th:text="${veiculo.tipoMarca.marca.nome}"></a></li>
+							<li class="list-group-item">Categoria: <a
+								th:text="${veiculo.categoria.nome}"></a></li>
+							<li class="list-group-item">Preço: <a id="preco"
+								th:text="${veiculo.categoria.valor}"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+</section>
+<script th:src="@{/js/arquivo.js}"></script>
+</body>
+</html>

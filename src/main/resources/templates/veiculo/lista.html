@@ -25,7 +25,7 @@
 					<tbody>
 						<tr th:each="v : ${veiculos}">
 							<td style="width: 50px; padding-left: 5px;"><img
-								class="imgbtn" th:src="${v.arquivos[0].nome}"></td>
+								class="imgbtn" th:src="${v.nomeArquivo}"></td>
 							<td style="width: 50px; padding-left: 5px;"></td>
 							<td th:text="${v.nome}"></td>
 							<td th:text="${v.tipoMarca.marca.nome}"></td>
@@ -34,9 +34,9 @@
 							<td th:text="${v.categoria.valor}"></td>
 							<td colspan="2" class="cent">
 								<form method="GET"
-									th:action="@{/locacaos/veiculo/{id} (id=${v.id_veiculo}) }"
+									th:action="@{/veiculos/{id} (id=${v.id_veiculo}) }"
 									enctype="multipart/form-data">
-									<input class="form-control" type="hidden"
+									<input class="form-control" type="text"
 										th:value="${dataRetirar}" id="dataRetirar" name="dataRetirar" />
 									<input class="form-control" type="hidden"
 										th:value="${dataDevolver}" id="dataDevolver"

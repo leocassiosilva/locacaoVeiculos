@@ -1,34 +1,19 @@
 package br.com.spring.locacaoveiculos.model;
 
-import java.io.Serializable;
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-@Entity
-@Table(name = "CATEGORIA")
-public class Categoria implements Serializable{
+@Data
+@AllArgsConstructor
+public class Categoria {
 	
 	
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id_categoria;
 	
 	private String nome;
 	
 	private Float valor;
 	
-	@OneToMany(mappedBy = "categoria")
-	private List<Veiculo> veiculo;
 
 	public Long getId_categoria() {
 		return id_categoria;
@@ -54,16 +39,4 @@ public class Categoria implements Serializable{
 		this.valor = valor;
 	}
 
-	public List<Veiculo> getVeiculo() {
-		return veiculo;
-	}
-
-	public void setVeiculo(List<Veiculo> veiculo) {
-		this.veiculo = veiculo;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
 }

@@ -4,6 +4,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout}">
 <head>
+</head>
 <meta charset="UTF-8" />
 <section layout:fragment="corpo">
 	<div class="alinhar">
@@ -24,12 +25,9 @@
 
 						<tr th:each="v : ${veiculos}">
 							<td style="width: 50px; padding-left: 5px;"><img
-								class="imgbtn" th:src="${v.arquivos[0].nome}"></td>
+								class="imgbtn" th:src="${v.nomeArquivo}"></td>
 							<td style="width: 50px; padding-left: 5px;"></td>
 							<td th:text="${v.nome}"></td>
-							<td colspan="2" class="cent"><a class="btn btn-primary"
-								th:href="@{locacaos/veiculo/{id} (id=${v.id_veiculo}) }"
-								role="button">Alugar </a></td>
 						</tr>
 					</tbody>
 				</table>

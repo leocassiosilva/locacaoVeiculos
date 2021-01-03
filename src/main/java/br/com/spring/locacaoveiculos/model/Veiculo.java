@@ -1,82 +1,58 @@
 package br.com.spring.locacaoveiculos.model;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-@Entity
-@Table(name = "VEICULOS")
+@Data
+@AllArgsConstructor
 public class Veiculo implements Serializable{
 
    
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id_veiculo;
 	
+	private Long id_veiculo;
+
 	private String nome;
 
 	private String placa;
 
 	private String renavan;
-	
-	
-	@OneToMany(mappedBy = "veiculo")
-	private List<Arquivo> arquivos;
-	
-	
-	@OneToMany(mappedBy = "veiculo")
-	private List<Locacao> locacoes;
-	
-	
-	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_categoria")
-	private Categoria categoria;
-	
-	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_tipoMarca")
-	private TipoMarca tipoMarca;
-	
-	
-	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_locadora")
-	private Locadora locadora; 
 
-	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_locadora_devolucao")
+	private Categoria categoria;
+
+	private TipoMarca tipoMarca;
+
+	private Locadora locadora;
+
 	private Locadora locadoraDevolucao;
-	
-	
-	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_seguro")
+
 	private Seguro seguro;
 	
+<<<<<<< HEAD
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_opc")
 	private Opcionais opcionais;
+=======
+	private String nomeArquivo;
+>>>>>>> 9017891d3326050e8d73375c71a12e52f6094c4b
 	
-	
+
+	public String getNomeArquivo() {
+		return nomeArquivo;
+	}
+
+	public void setNomeArquivo(String nomeArquivo) {
+		this.nomeArquivo = nomeArquivo;
+	}
+
 	public Long getId_veiculo() {
 		return id_veiculo;
 	}
 
 	public void setId_veiculo(Long id_veiculo) {
 		this.id_veiculo = id_veiculo;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	public Seguro getSeguro() {
@@ -86,6 +62,7 @@ public class Veiculo implements Serializable{
 	public void setSeguro(Seguro seguro) {
 		this.seguro = seguro;
 	}
+<<<<<<< HEAD
 	
 	public Opcionais getOpcionais() {
 		return opcionais;
@@ -94,6 +71,8 @@ public class Veiculo implements Serializable{
 	public void setOpcionais(Opcionais opcionais) {
 		this.opcionais = opcionais;
 	}
+=======
+>>>>>>> 9017891d3326050e8d73375c71a12e52f6094c4b
 
 	public Locadora getLocadora() {
 		return locadora;
@@ -102,7 +81,7 @@ public class Veiculo implements Serializable{
 	public void setLocadora(Locadora locadora) {
 		this.locadora = locadora;
 	}
-	
+
 	public Locadora getLocadoraDevolucao() {
 		return locadoraDevolucao;
 	}
@@ -135,13 +114,6 @@ public class Veiculo implements Serializable{
 		this.renavan = renavan;
 	}
 
-	public List<Arquivo> getArquivos() {
-		return arquivos;
-	}
-
-	public void setArquivos(List<Arquivo> arquivos) {
-		this.arquivos = arquivos;
-	}
 
 	public Categoria getCategoria() {
 		return categoria;
