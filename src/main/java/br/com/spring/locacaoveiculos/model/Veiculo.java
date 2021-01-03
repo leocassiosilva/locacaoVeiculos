@@ -2,6 +2,9 @@ package br.com.spring.locacaoveiculos.model;
 
 import java.io.Serializable;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -29,15 +32,12 @@ public class Veiculo implements Serializable{
 	private Locadora locadoraDevolucao;
 
 	private Seguro seguro;
-	
-<<<<<<< HEAD
+
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "id_opc")
 	private Opcionais opcionais;
-=======
+
 	private String nomeArquivo;
->>>>>>> 9017891d3326050e8d73375c71a12e52f6094c4b
-	
 
 	public String getNomeArquivo() {
 		return nomeArquivo;
@@ -62,7 +62,7 @@ public class Veiculo implements Serializable{
 	public void setSeguro(Seguro seguro) {
 		this.seguro = seguro;
 	}
-<<<<<<< HEAD
+
 	
 	public Opcionais getOpcionais() {
 		return opcionais;
@@ -71,8 +71,6 @@ public class Veiculo implements Serializable{
 	public void setOpcionais(Opcionais opcionais) {
 		this.opcionais = opcionais;
 	}
-=======
->>>>>>> 9017891d3326050e8d73375c71a12e52f6094c4b
 
 	public Locadora getLocadora() {
 		return locadora;

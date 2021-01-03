@@ -167,7 +167,7 @@ public class LocacaoveiculosController {
 		return locadoraService.buscarTodos();
 	}
 	
-	@GetMapping(value = "/getUsuario/{email}")
+/*	@GetMapping(value = "/getUsuario/{email}")
 	@ResponseBody
 	public List<Locacao> relatorio(@PathVariable("email") String email, ModelMap model) {
 		
@@ -175,5 +175,5 @@ public class LocacaoveiculosController {
 		model.addAttribute("locacaoUser", locacaoUser);
 
 		return locacaoService.buscarPeloUsuario(email);
-	}
+	}*/
 }
