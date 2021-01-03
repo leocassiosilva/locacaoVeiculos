@@ -34,9 +34,9 @@
 							<td th:text="${v.categoria.valor}"></td>
 							<td colspan="2" class="cent">
 								<form method="GET"
-									th:action="@{/locacaos/veiculo/{id} (id=${v.id_veiculo}) }"
+									th:action="@{/veiculos/{id} (id=${v.id_veiculo}) }"
 									enctype="multipart/form-data">
-									<input class="form-control" type="hidden"
+									<input class="form-control" type="text"
 										th:value="${dataRetirar}" id="dataRetirar" name="dataRetirar" />
 									<input class="form-control" type="hidden"
 										th:value="${dataDevolver}" id="dataDevolver"

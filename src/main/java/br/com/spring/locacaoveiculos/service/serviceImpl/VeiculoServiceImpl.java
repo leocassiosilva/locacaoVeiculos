@@ -39,8 +39,12 @@ public class VeiculoServiceImpl implements VeiculoService {
 
 	@Override
 	public Veiculo buscarVeiculo(Long id) {
-		return null;
+		Mono<Veiculo> mono = this.webClientVeiculos.get().uri("/api/veiculo/{id}", id).retrieve()
+				.bodyToMono(Veiculo.class);
+		Veiculo veiculo = mono.block();
+		return veiculo;
 	}
+
 
 	@Override
 	public Veiculo[] buscarPorDatasAndNome(LocalDate retirada, LocalDate devolucao, String nome) {
