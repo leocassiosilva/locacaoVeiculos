@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -8,10 +9,29 @@
 <section layout:fragment="corpo">
 	<div class="alinhar">
 		<div class="container" id="listagem">
+=======
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+<section layout:fragment="corpo">
+	<tr th:each="customer : ${veiculos}">
+
+		<td th:text="${customer.id}">001</td>
+		<td th:text="${customer.nome}">Name</td>
+		<td th:text="${customer.renavan}">Name</td>
+
+
+	</tr>
+	
+	
+		<div class="container" id="listagem">
+
+>>>>>>> efdf022296d7cf2d068707579b1194bd5b81f320
 			<div class="table-responsive">
 				<table class="table table-striped table-hover table-sm">
 					<thead>
 						<tr>
+<<<<<<< HEAD
 							<th>Veículos</th>
 							<th></th>
 							<th>Nome</th>
@@ -20,10 +40,17 @@
 							<th>Locadora</th>
 							<th>Valor</th>
 							<th class="cent">Locar Veículo</th>
+=======
+							<th>#</th>
+							<th>Nome</th>
+							<th>Renavan</th>
+							<th>Ação</th>
+>>>>>>> efdf022296d7cf2d068707579b1194bd5b81f320
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="v : ${veiculos}">
+<<<<<<< HEAD
 							<td style="width: 50px; padding-left: 5px;"><img
 								class="imgbtn" th:src="${v.nomeArquivo}"></td>
 							<td style="width: 50px; padding-left: 5px;"></td>
@@ -44,12 +71,24 @@
 									<button type="submit" class="btn btn-primary">Alugar</button>
 								</form>
 							</td>
+=======
+							<td th:text="${v.id}">1</td>
+							<td th:text="${v.nome}">Auxiliar Contábil</td>
+							<td th:text="${v.renavan}">Auxiliar Contábil</td>
+							<td colspan="2"><a class="btn btn-info btn-sm"
+								th:href="@{/locacao/veiculo/{id} (id=${v.id}) }"
+								role="button">Locar veiculo
+							</a></td>
+>>>>>>> efdf022296d7cf2d068707579b1194bd5b81f320
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
+<<<<<<< HEAD
 	</div>
+=======
+>>>>>>> efdf022296d7cf2d068707579b1194bd5b81f320
 </section>
 </body>
 </html>

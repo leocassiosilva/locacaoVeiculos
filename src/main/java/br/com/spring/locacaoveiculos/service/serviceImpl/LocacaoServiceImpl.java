@@ -21,9 +21,16 @@ public class LocacaoServiceImpl implements LocacaoService {
 
 	@Override
 	public Locacao[] buscarPeloUsuarioEmail(String email) {
+<<<<<<< HEAD
 		Mono<Locacao[]> mono = this.webClientVeiculos.get().uri("/api/locacoes/" + email).retrieve()
 				.bodyToMono(Locacao[].class);
 		Locacao[] locacoes = mono.block();
+=======
+		Mono<Locacao[]> mono = this.webClientVeiculos.get().uri("/api/locacoes/{email}").retrieve()
+				.bodyToMono(Locacao[].class);
+		Locacao[] locacoes = mono.block();
+
+>>>>>>> efdf022296d7cf2d068707579b1194bd5b81f320
 		return locacoes;
 	}
 

@@ -29,6 +29,7 @@ public class Veiculo implements Serializable{
 	private Locadora locadoraDevolucao;
 
 	private Seguro seguro;
+<<<<<<< HEAD
 	
 	private String nomeArquivo;
 	
@@ -40,6 +41,8 @@ public class Veiculo implements Serializable{
 	public void setNomeArquivo(String nomeArquivo) {
 		this.nomeArquivo = nomeArquivo;
 	}
+=======
+>>>>>>> efdf022296d7cf2d068707579b1194bd5b81f320
 
 	public Long getId_veiculo() {
 		return id_veiculo;
