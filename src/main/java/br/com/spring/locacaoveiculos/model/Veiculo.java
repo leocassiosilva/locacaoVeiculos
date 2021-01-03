@@ -62,6 +62,9 @@ public class Veiculo implements Serializable{
 	@JoinColumn(name = "id_seguro")
 	private Seguro seguro;
 	
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "id_opc")
+	private Opcionais opcionais;
 	
 	
 	public Long getId_veiculo() {
@@ -83,8 +86,15 @@ public class Veiculo implements Serializable{
 	public void setSeguro(Seguro seguro) {
 		this.seguro = seguro;
 	}
-
 	
+	public Opcionais getOpcionais() {
+		return opcionais;
+	}
+
+	public void setOpcionais(Opcionais opcionais) {
+		this.opcionais = opcionais;
+	}
+
 	public Locadora getLocadora() {
 		return locadora;
 	}
@@ -148,4 +158,5 @@ public class Veiculo implements Serializable{
 	public void setTipoMarca(TipoMarca tipoMarca) {
 		this.tipoMarca = tipoMarca;
 	}
+
 }

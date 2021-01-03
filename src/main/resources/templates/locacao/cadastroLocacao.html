@@ -32,8 +32,9 @@
 							<form method="POST" th:action=@{/locacaos/pagar}
 								th:object="${veiculo}" enctype="multipart/form-data">
 								<div class="form-group">
-									<label>Seguro(ex:Normal/Vip)</label> <select id="seguro"
-										name="seguro" class="form-control" th:field="*{seguro}" required>
+									<label>Seguro</label> <select id="seguro"
+										name="seguro" class="form-control" th:field="*{seguro}"
+										required>
 										<option value="">Selecione</option>
 										<option th:each="s : ${seguros}" th:value="${s.id_seguro}"
 											th:text="${s.nome} + ' R$' + ${s.preco}"></option>
@@ -46,6 +47,15 @@
 										<option value="">Selecione</option>
 										<option th:each="l : ${locadoras}" th:value="${l.id_locadora}"
 											th:text="${l.localLocadora.nome}"></option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Opcionais</label> <select id="opc"
+										name="opc" class="form-control" th:field="*{opcionais}"
+										required>
+										<option value="">Selecione</option>
+										<option th:each="opc : ${opcional}" th:value="${opc.id_opc}"
+											th:text="${opc.nome}"></option>
 									</select>
 								</div>
 								<input class="form-control" type="hidden"

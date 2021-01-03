@@ -24,11 +24,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import br.com.spring.locacaoveiculos.model.Locacao;
 import br.com.spring.locacaoveiculos.model.Locadora;
 import br.com.spring.locacaoveiculos.model.Local;
+import br.com.spring.locacaoveiculos.model.Opcionais;
 import br.com.spring.locacaoveiculos.model.Seguro;
 import br.com.spring.locacaoveiculos.model.Veiculo;
 import br.com.spring.locacaoveiculos.service.LocacaoService;
 import br.com.spring.locacaoveiculos.service.LocadoraService;
 import br.com.spring.locacaoveiculos.service.LocalService;
+import br.com.spring.locacaoveiculos.service.OpcionaisService;
 import br.com.spring.locacaoveiculos.service.SeguroService;
 import br.com.spring.locacaoveiculos.service.VeiculoService;
 
@@ -42,6 +44,9 @@ public class LocacaoveiculosController {
 	
 	@Autowired
 	private SeguroService seguroService;
+	
+	@Autowired
+	private OpcionaisService opcionaisService;
 	
 	@Autowired
 	private LocalService localService;
@@ -70,6 +75,11 @@ public class LocacaoveiculosController {
 		return seguroService.buscarTodos();
 	}
 	
+	@ModelAttribute("opcional")
+	public List<Opcionais> listaOpcionais() {
+		return opcionaisService.buscarTodos();
+	}
+	
 	@ModelAttribute("locais")
 	public List<Local> listaLocais() {
 		return localService.buscarTodos();
@@ -93,8 +103,9 @@ public class LocacaoveiculosController {
 		
 		System.out.println("Id - Seguro: " + veiculo.getSeguro().getId_seguro());
 		
-		System.out.println("Id - Local devolução: " + veiculo.getLocadoraDevolucao().getId_locadora());
+		System.out.println("Id - Opcionais: " + veiculo.getOpcionais().getId_opc());
 		
+		System.out.println("Id - Local devolução: " + veiculo.getLocadoraDevolucao().getId_locadora());
 		
 		System.out.println("Local de devolução: " + veiculo.getLocadoraDevolucao().getLocalLocadora().getNome());
 		
@@ -106,6 +117,7 @@ public class LocacaoveiculosController {
 		System.out.println(veiculo.getSeguro().getPreco() + veiculo.getCategoria().getValor());
 		
 		model.addAttribute("seg", veiculo.getSeguro().getId_seguro());
+		model.addAttribute("opc", veiculo.getOpcionais().getId_opc());
   		model.addAttribute("locadoraDevolucaoId", veiculo.getLocadoraDevolucao().getId_locadora());
 		model.addAttribute("diarias", diaria);
 		model.addAttribute("valorLocacao", valorLocacao);
