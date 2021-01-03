@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section layout:fragment="corpo">
+	<div class="alinhar1">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-sm-6 col-xs-8 mx-auto" id="classePrincipal">
+					<th:block th:include="veiculo/mensagemValidacao"></th:block>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6 col-xs-8 mx-auto">
+					<div class="card card-signin flex-row my-5 rounded-0">
+						<div class="card-body">
+							<h5 class="card-title text-center">Cadastro de Usuário</h5>
+							<hr>
+							<form method="POST" class="form-signin">
+								<div class="form-label-group col-md-12 mb-4">
+									<label for="nome" id="label">Nome</label> <input type="text"
+										class="form-control rounded-0" value="" name="nome"
+										placeholder="Nome *">
+								</div>
+
+								<div class="form-label-group col-md-12 mb-4">
+									<label for="email" id="label">E-mail</label> <input
+										type="email" class="form-control rounded-0" value=""
+										name="email" placeholder="Email *">
+								</div>
+
+
+								<div class="form-label-group col-md-12 mb-4">
+									<div class="form-group">
+										<label id="label">Senha</label> <input type="password"
+											class="form-control rounded-0" value="" name="senha"
+											placeholder="Senha *">
+									</div>
+								</div>
+
+
+								<hr>
+								<div class="form-label-group col-md-12" align="center">
+
+									<button type="submit" class="btn btn-primary"
+										style="margin-top: 10px; width: 45%;">Cadastrar</button>
+									<a href="/home" class="btn btn-danger" role="button"
+										style="margin-top: 10px; width: 45%;">Cancelar</a>
+
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+</body>
+</html>
