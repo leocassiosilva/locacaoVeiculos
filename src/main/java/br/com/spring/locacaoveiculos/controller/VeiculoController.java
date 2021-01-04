@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.spring.locacaoveiculos.model.Veiculo;
+import br.com.spring.locacaoveiculos.service.LocadoraService;
 import br.com.spring.locacaoveiculos.service.SeguroService;
 import br.com.spring.locacaoveiculos.service.VeiculoService;
+import br.com.spring.locacaoveiculos.model.Locadora;
 import br.com.spring.locacaoveiculos.model.Seguro;
 
 @Controller
@@ -26,6 +28,9 @@ public class VeiculoController {
 	
 	@Autowired
 	private SeguroService seguroService;
+	
+	@Autowired
+	private LocadoraService locadoraService;
 	
 
 	@GetMapping("/buscar///")
@@ -69,4 +74,11 @@ public class VeiculoController {
 		model.addAttribute("seguros", seguros);
 	}
 	
+	@ModelAttribute("locadoras")
+	public void locadora(ModelMap model) {
+		Locadora [] locadoras = locadoraService.buscarTodos();
+		model.addAttribute("locadoras", locadoras);
+	}
+	
+
 }

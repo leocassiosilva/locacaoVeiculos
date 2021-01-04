@@ -46,6 +46,15 @@
 							</select>
 						</div>
 
+						<div class="form-group">
+							<label>Local de Devolucao</label> <select id="locadoraDevolucao"
+								class="form-control" th:field="*{locadoraDevolucao}" required>
+								<option value="">Selecione</option>
+								<option th:each="l : ${locadoras}" th:value="${l.id_locadora}"
+									th:text="${l.localLocadora.nome}"></option>
+							</select>
+						</div>
+
 					</form>
 				</div>
 			</div>
