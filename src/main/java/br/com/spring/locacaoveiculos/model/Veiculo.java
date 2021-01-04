@@ -1,20 +1,12 @@
 package br.com.spring.locacaoveiculos.model;
 
-import java.io.Serializable;
-
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Veiculo implements Serializable{
+public class Veiculo {
 
-   
-	private static final long serialVersionUID = 1L;
-	
 	private Long id_veiculo;
 
 	private String nome;
@@ -33,19 +25,9 @@ public class Veiculo implements Serializable{
 
 	private Seguro seguro;
 
-	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_opc")
 	private Opcionais opcionais;
 
 	private String nomeArquivo;
-
-	public String getNomeArquivo() {
-		return nomeArquivo;
-	}
-
-	public void setNomeArquivo(String nomeArquivo) {
-		this.nomeArquivo = nomeArquivo;
-	}
 
 	public Long getId_veiculo() {
 		return id_veiculo;
@@ -53,39 +35,6 @@ public class Veiculo implements Serializable{
 
 	public void setId_veiculo(Long id_veiculo) {
 		this.id_veiculo = id_veiculo;
-	}
-
-	public Seguro getSeguro() {
-		return seguro;
-	}
-
-	public void setSeguro(Seguro seguro) {
-		this.seguro = seguro;
-	}
-
-	
-	public Opcionais getOpcionais() {
-		return opcionais;
-	}
-
-	public void setOpcionais(Opcionais opcionais) {
-		this.opcionais = opcionais;
-	}
-
-	public Locadora getLocadora() {
-		return locadora;
-	}
-
-	public void setLocadora(Locadora locadora) {
-		this.locadora = locadora;
-	}
-
-	public Locadora getLocadoraDevolucao() {
-		return locadoraDevolucao;
-	}
-
-	public void setLocadoraDevolucao(Locadora locadoraDevolucao) {
-		this.locadoraDevolucao = locadoraDevolucao;
 	}
 
 	public String getNome() {
@@ -112,7 +61,6 @@ public class Veiculo implements Serializable{
 		this.renavan = renavan;
 	}
 
-
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -127,6 +75,46 @@ public class Veiculo implements Serializable{
 
 	public void setTipoMarca(TipoMarca tipoMarca) {
 		this.tipoMarca = tipoMarca;
+	}
+
+	public Locadora getLocadora() {
+		return locadora;
+	}
+
+	public void setLocadora(Locadora locadora) {
+		this.locadora = locadora;
+	}
+
+	public Locadora getLocadoraDevolucao() {
+		return locadoraDevolucao;
+	}
+
+	public void setLocadoraDevolucao(Locadora locadoraDevolucao) {
+		this.locadoraDevolucao = locadoraDevolucao;
+	}
+
+	public Seguro getSeguro() {
+		return seguro;
+	}
+
+	public void setSeguro(Seguro seguro) {
+		this.seguro = seguro;
+	}
+
+	public Opcionais getOpcionais() {
+		return opcionais;
+	}
+
+	public void setOpcionais(Opcionais opcionais) {
+		this.opcionais = opcionais;
+	}
+
+	public String getNomeArquivo() {
+		return nomeArquivo;
+	}
+
+	public void setNomeArquivo(String nomeArquivo) {
+		this.nomeArquivo = nomeArquivo;
 	}
 
 }

@@ -6,61 +6,80 @@
 <head>
 <meta charset="UTF-8" />
 </head>
-<section layout:fragment="corpo">
-	<div class="alinhar1">
-		<div class="container" style="margin-top: 30px;">
-			<!-- Stack the columns on mobile by making one full-width and the other half-width -->
-			<div class="row">
-				<div class="col-12 col-md-6">
-					<div class="card mb-3">
-						<img class="card-img-top" th:src="${veiculo.nomeArquivo}"
-							alt="Card image cap">
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item">Nome: <a
-								th:text="${veiculo.nome}"></a></li>
-							<li class="list-group-item">Marca:<a
-								th:text="${veiculo.tipoMarca.marca.nome}"></a></li>
-							<li class="list-group-item">Categoria: <a
-								th:text="${veiculo.categoria.nome}"></a></li>
-							<li class="list-group-item">Preço: <a id="preco"
-								th:text="${veiculo.categoria.valor}"></a></li>
-						</ul>
+<body>
+	<section layout:fragment="corpo">
+		<div class="alinhar1">
+			<div class="container" style="margin-top: 30px;">
+				<!-- Stack the columns on mobile by making one full-width and the other half-width -->
+				<div class="row">
+					<div class="col-12 col-md-6">
+						<div class="card mb-3">
+							<img class="card-img-top" th:src="${veiculo.nomeArquivo}"
+								alt="Card image cap">
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">Nome: <a
+									th:text="${veiculo.nome}"></a></li>
+								<li class="list-group-item">Marca:<a
+									th:text="${veiculo.tipoMarca.marca.nome}"></a></li>
+								<li class="list-group-item">Categoria: <a
+									th:text="${veiculo.categoria.nome}"></a></li>
+								<li class="list-group-item">Preço: <a id="preco"
+									th:text="${veiculo.categoria.valor}"></a></li>
+							</ul>
+						</div>
+					</div>
+
+
+
+					<div class="col-12 col-md-6">
+						<div class="card card-signin">
+							<div class="card-body">
+								<h5 class="card-title text-center">Informações necessarias</h5>
+								<hr>
+								<form method="POST" th:action=@{/locacaos/pagar}
+									th:object="${veiculo}" enctype="multipart/form-data">
+									<div class="form-group">
+										<label>Seguro</label> <select id="seguro" name="seguro"
+											class="form-control" th:field="*{seguro}" required>
+											<option value="">Selecione</option>
+											<option th:each="s : ${seguros}" th:value="${s.id_seguro}"
+												th:text="${s.nome} + ' R$' + ${s.preco}"></option>
+										</select>
+									</div>
+
+									<div class="form-group">
+										<label>Local de Devolucao</label> <select
+											id="locadoraDevolucao" class="form-control"
+											th:field="*{locadoraDevolucao}" required>
+											<option value="">Selecione</option>
+											<option th:each="l : ${locadoras}"
+												th:value="${l.id_locadora}"
+												th:text="${l.localLocadora.nome}"></option>
+										</select>
+									</div>
+
+									<div class="form-group">
+										<label>Opcionais</label> <select id="opcional"
+											class="form-control" th:field="*{opcionais}" required>
+											<option value="">Selecione</option>
+											<option th:each="o : ${opcionais}" th:value="${o.id_opc}"
+												th:text="${o.nome}"></option>
+										</select>
+									</div>
+
+									<div class="form-group" style="text-align: right;">
+										<button type="submit" class="btn btn-primary">Pagar
+											Locação</button>
+									</div>
+
+								</form>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<div class="col-12 col-md-6">
-			<div class="card card-signin">
-				<div class="card-body">
-					<h5 class="card-title text-center">Informações necessarias</h5>
-					<hr>
-					<form method="POST" th:action=@{/locacaos/pagar}
-						th:object="${veiculo}" enctype="multipart/form-data">
-						<div class="form-group">
-							<label>Seguro(ex:Normal/Vip)</label> <select id="seguro"
-								name="seguro" class="form-control" th:field="*{seguro}" required>
-								<option value="">Selecione</option>
-								<option th:each="s : ${seguros}" th:value="${s.id_seguro}"
-									th:text="${s.nome} + ' R$' + ${s.preco}"></option>
-							</select>
-						</div>
-
-						<div class="form-group">
-							<label>Local de Devolucao</label> <select id="locadoraDevolucao"
-								class="form-control" th:field="*{locadoraDevolucao}" required>
-								<option value="">Selecione</option>
-								<option th:each="l : ${locadoras}" th:value="${l.id_locadora}"
-									th:text="${l.localLocadora.nome}"></option>
-							</select>
-						</div>
-
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<script th:src="@{/js/arquivo.js}"></script>
+	</section>
+	<script th:src="@{/js/arquivo.js}"></script>
 </body>
 </html>

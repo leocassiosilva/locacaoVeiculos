@@ -1,20 +1,6 @@
 package br.com.spring.locacaoveiculos.model;
 
-import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-
-public class Opcionais implements Serializable{
+public class Opcionais{
 
 
 	private Long id_opc;
@@ -22,10 +8,7 @@ public class Opcionais implements Serializable{
 	private String nome;
 	
 	private String adicionais;
-	
-	
-	private List<Veiculo> veiculos;
-	
+		
 	public Long getId_opc() {
 		return id_opc;
 	}
