@@ -70,6 +70,8 @@ public class VeiculoController {
 		Veiculo veiculo = veiculoService.buscarVeiculo(id);
 		System.out.println(dataRetirar);
 		model.addAttribute("veiculo", veiculo);
+		model.addAttribute("dataRetirar", dataRetirar);
+		model.addAttribute("dataDevolver", dataDevolver);
 		return "veiculo/informacoes-veiculo";
 	}
 	
