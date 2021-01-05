@@ -95,5 +95,15 @@ public class VeiculoController {
 		Opcionais [] opcionais = opcionaisService.buscarTodosOpcionais();
 		model.addAttribute("opcionais", opcionais);
 	}
+	
+	/*
+	@GetMapping("/opcional/{id}")
+	public ResponseEntity<Optional<Opcionais>> opcionalUnico(@PathVariable("id") Long id) {
+
+		Optional<Opcionais> opcionais = opcionaisService.buscarPorId(id);
+		System.out.println("Deu certo");
+
+		return ResponseEntity.ok(opcionais);
+	}*/
 
 }
