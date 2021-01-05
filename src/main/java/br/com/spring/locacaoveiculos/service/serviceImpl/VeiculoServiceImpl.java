@@ -16,6 +16,10 @@ public class VeiculoServiceImpl implements VeiculoService {
 
 	@Autowired
 	private WebClient webClientVeiculos;
+	
+	
+	@Autowired
+	VeiculoService veiculoService;
 
 	public Veiculo[] buscarTodos() {
 
@@ -34,7 +38,7 @@ public class VeiculoServiceImpl implements VeiculoService {
 
 	@Override
 	public Optional<Veiculo> buscarPeloId(Long id) {
-		return null;
+		return veiculoService.buscarPeloId(id);
 	}
 
 	@Override

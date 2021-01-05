@@ -17,7 +17,8 @@ public class SeguroServiceImpl implements SeguroService {
 	@Override
 	public Seguro[] buscarTodos() {
 
-		Mono<Seguro[]> mono = this.webClientVeiculos.get().uri("/api/veiculos/seguros").retrieve().bodyToMono(Seguro[].class);
+		Mono<Seguro[]> mono = this.webClientVeiculos.get().uri("/api/veiculos/seguros").retrieve()
+				.bodyToMono(Seguro[].class);
 
 		Seguro[] seguros = mono.block();
 
@@ -27,12 +28,11 @@ public class SeguroServiceImpl implements SeguroService {
 
 	@Override
 	public Optional<Seguro> buscarPorId(Long id) {
-		return null;
-	}
+		Mono<Seguro> mono = this.webClientVeiculos.get().uri("/api/seguro/{id}", id).retrieve()
+				.bodyToMono(Seguro.class);
+		Optional<Seguro> seguros = Optional.ofNullable(mono.block());
 
-	@Override
-	public Seguro buscarSeguro(Long id) {
-		return null;
+		return seguros;
 	}
 
 }

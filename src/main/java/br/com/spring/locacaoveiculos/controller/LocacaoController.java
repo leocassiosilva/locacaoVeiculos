@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.spring.locacaoveiculos.model.Locacao;
+import br.com.spring.locacaoveiculos.model.Seguro;
 import br.com.spring.locacaoveiculos.model.Veiculo;
 import br.com.spring.locacaoveiculos.service.LocacaoService;
+import br.com.spring.locacaoveiculos.service.VeiculoService;
 
 @Controller
 @RequestMapping("/locacaos")
@@ -27,6 +29,9 @@ public class LocacaoController {
 	@Autowired
 	private LocacaoService locacaoService;
 
+	@Autowired
+	private VeiculoService veiculoService;
+	
 	@GetMapping(value = "/getLocacoesUsuarioEmail/{email}")
 	public ResponseEntity<Locacao[]> listarLocacoesEmailUser(@PathVariable("email") String email) {
 		System.out.println(email);
@@ -42,7 +47,9 @@ public class LocacaoController {
 	}
 
 	@PostMapping("/pagar")
-	public String pagarLocacao (String dataRetirar, String dataDevolver, Veiculo veiculo, ModelMap model) {
+	public String pagarLocacao(ModelMap model,
+			@RequestParam("dataRetirar") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataRetirar,
+			@RequestParam("dataDevolver") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataDevolver) {
 		System.out.println(dataDevolver);
 		// veiculoService.save(veiculo);
 		return "/locacao/pagarLocacao";
