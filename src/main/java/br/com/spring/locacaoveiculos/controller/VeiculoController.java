@@ -68,7 +68,7 @@ public class VeiculoController {
 
 		LocalDate localDate = LocalDate.parse(dataRetirar);
 		LocalDate localDatee = LocalDate.parse(dataDevolver);
-		
+
 		Veiculo veiculo = veiculoService.buscarVeiculo(id);
 		model.addAttribute("veiculo", veiculo);
 		model.addAttribute("dataRetirar", localDate);
@@ -94,4 +94,10 @@ public class VeiculoController {
 		model.addAttribute("opcionais", opcionais);
 	}
 
+	/*
+	 * @GetMapping("/locadora/{id}") public ResponseEntity<Optional<Locadora>>
+	 * locadoraUnico(@PathVariable("id") Long id) { Optional<Locadora> locadora =
+	 * locadoraService.buscarPorId(id); System.out.println("Deu certo"); return
+	 * ResponseEntity.ok(locadora); }
+	 */
 }

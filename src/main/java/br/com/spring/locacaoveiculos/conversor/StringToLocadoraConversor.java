@@ -21,7 +21,7 @@ public class StringToLocadoraConversor implements Converter<String, Locadora>{
 		}
 		
 		Long id = Long.valueOf(text);
-		Optional<Locadora> locadora = service.buscarPorId(id);
+		Optional<Locadora> locadora = service.buscar(id);
 		return locadora.get();
 	}
 }
