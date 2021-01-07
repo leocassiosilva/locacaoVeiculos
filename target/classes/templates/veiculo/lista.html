@@ -36,7 +36,7 @@
 								<form method="GET"
 									th:action="@{/veiculos/{id} (id=${v.id_veiculo}) }"
 									enctype="multipart/form-data">
-									<input class="form-control" type="text"
+									<input class="form-control" type="hidden"
 										th:value="${dataRetirar}" id="dataRetirar" name="dataRetirar" />
 									<input class="form-control" type="hidden"
 										th:value="${dataDevolver}" id="dataDevolver"

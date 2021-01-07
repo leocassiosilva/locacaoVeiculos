@@ -3,7 +3,6 @@ package br.com.spring.locacaoveiculos.controller;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -28,16 +27,15 @@ public class VeiculoController {
 
 	@Autowired
 	private VeiculoService veiculoService;
-	
+
 	@Autowired
 	private SeguroService seguroService;
-	
+
 	@Autowired
 	private LocadoraService locadoraService;
-	
+
 	@Autowired
 	private OpcionaisService opcionaisService;
-	
 
 	@GetMapping("/buscar///")
 	public ResponseEntity<Veiculo[]> veiculos() {
@@ -51,13 +49,13 @@ public class VeiculoController {
 	}
 
 	@GetMapping("/buscar")
-	public String BuscarVeiculosDisponiveis(
-			@RequestParam("dataRetirar") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataRetirar,
-			@RequestParam("dataDevolver") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataDevolver,
-			@RequestParam("nome") String nome, ModelMap model) {
-		System.out.println(nome);
-		Veiculo[] veiculo = veiculoService.buscarPorDatasAndNome(dataRetirar, dataDevolver, nome);
-		System.out.println("Deu certo");
+	public String BuscarVeiculosDisponiveis(@RequestParam("dataRetirar") String dataRetirar,
+			@RequestParam("dataDevolver") String dataDevolver, @RequestParam("nome") String nome, ModelMap model) {
+
+		LocalDate localDate = LocalDate.parse(dataRetirar);
+		LocalDate localDatee = LocalDate.parse(dataDevolver);
+
+		Veiculo[] veiculo = veiculoService.buscarPorDatasAndNome(localDate, localDatee, nome);
 		model.addAttribute("veiculos", veiculo);
 		model.addAttribute("dataRetirar", dataRetirar);
 		model.addAttribute("dataDevolver", dataDevolver);
@@ -66,43 +64,34 @@ public class VeiculoController {
 
 	@GetMapping("/{id}")
 	public String infoVeiculos(@PathVariable("id") Long id, ModelMap model,
-			@RequestParam("dataRetirar") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataRetirar,
-			@RequestParam("dataDevolver") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataDevolver) {
+			@RequestParam("dataRetirar") String dataRetirar, @RequestParam("dataDevolver") String dataDevolver) {
+
+		LocalDate localDate = LocalDate.parse(dataRetirar);
+		LocalDate localDatee = LocalDate.parse(dataDevolver);
+		
 		Veiculo veiculo = veiculoService.buscarVeiculo(id);
-		System.out.println(dataRetirar);
 		model.addAttribute("veiculo", veiculo);
-		model.addAttribute("dataRetirar", dataRetirar);
-		model.addAttribute("dataDevolver", dataDevolver);
+		model.addAttribute("dataRetirar", localDate);
+		model.addAttribute("dataDevolver", localDatee);
 		return "veiculo/informacoes-veiculo";
 	}
-	
+
 	@ModelAttribute("seguros")
 	public void seguro(ModelMap model) {
-		Seguro [] seguros = seguroService.buscarTodos();
-		System.out.println("Deu ceeerto!");
+		Seguro[] seguros = seguroService.buscarTodos();
 		model.addAttribute("seguros", seguros);
 	}
-	
+
 	@ModelAttribute("locadoras")
 	public void locadora(ModelMap model) {
-		Locadora [] locadoras = locadoraService.buscarTodos();
+		Locadora[] locadoras = locadoraService.buscarTodos();
 		model.addAttribute("locadoras", locadoras);
 	}
-	
+
 	@ModelAttribute("opcionais")
 	public void opcionais(ModelMap model) {
-		Opcionais [] opcionais = opcionaisService.buscarTodosOpcionais();
+		Opcionais[] opcionais = opcionaisService.buscarTodosOpcionais();
 		model.addAttribute("opcionais", opcionais);
 	}
-	
-	/*
-	@GetMapping("/opcional/{id}")
-	public ResponseEntity<Optional<Opcionais>> opcionalUnico(@PathVariable("id") Long id) {
-
-		Optional<Opcionais> opcionais = opcionaisService.buscarPorId(id);
-		System.out.println("Deu certo");
-
-		return ResponseEntity.ok(opcionais);
-	}*/
 
 }

@@ -41,7 +41,7 @@
 								</div>
 								<div class="form-group">
 									<label>Local de Devolucao</label> <select
-										id="locadoraDevolucao" class="form-control" required>
+										id="locadoraDevolucao" name="locadoraDevolucao" class="form-control" required>
 										<option value="">Selecione</option>
 										<option th:each="l : ${locadoras}" th:value="${l.id_locadora}"
 											th:text="${l.localLocadora.nome}"></option>
@@ -49,23 +49,21 @@
 								</div>
 
 								<div class="form-group">
-									<label>Opcionais</label> <select id="opcional"
-										class="form-control" th:field="*{opcionais}" required>
+									<label>Opcionais</label> <select id="opcional" name="opcional"
+										class="form-control"  required>
 										<option value="">Selecione</option>
 										<option th:each="o : ${opcionais}" th:value="${o.id_opc}"
 											th:text="${o.nome}"></option>
 									</select>
 								</div>
 
-								<input class="form-control" type="hidden"
+								<input class="form-control" type="text"
 									th:value="${dataRetirar}" id="dataRetirar" name="dataRetirar" />
-								<input class="form-control" type="hidden"
+								<input class="form-control" type="text"
 									th:value="${dataDevolver}" id="dataDevolver"
 									name="dataDevolver" /> <input type="hidden"
-									th:value="${veiculo}" name="veiculo"
-									id="veiculo" class="form control"> <input
-									type="hidden" id="valorTotal" name="valorTotal"
-									class="form control">
+									th:value="${veiculo.id_veiculo}" name="veiculo"
+									id="veiculo" class="form control"> 
 									
 									
 								<div class="form-group" style="text-align: right;">

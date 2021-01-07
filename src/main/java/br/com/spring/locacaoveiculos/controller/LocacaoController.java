@@ -1,6 +1,8 @@
 package br.com.spring.locacaoveiculos.controller;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -14,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.spring.locacaoveiculos.model.Locacao;
+import br.com.spring.locacaoveiculos.model.Seguro;
 import br.com.spring.locacaoveiculos.model.Veiculo;
 import br.com.spring.locacaoveiculos.service.LocacaoService;
+import br.com.spring.locacaoveiculos.service.OpcionaisService;
+import br.com.spring.locacaoveiculos.service.SeguroService;
 import br.com.spring.locacaoveiculos.service.VeiculoService;
 
 @Controller
@@ -28,9 +33,14 @@ public class LocacaoController {
 	@Autowired
 	private VeiculoService veiculoService;
 
+	@Autowired
+	private SeguroService seguroService;
+
+	@Autowired
+	private OpcionaisService optionalService;
+
 	@GetMapping(value = "/getLocacoesUsuarioEmail/{email}")
 	public ResponseEntity<Locacao[]> listarLocacoesEmailUser(@PathVariable("email") String email) {
-		System.out.println(email);
 		Locacao[] locacao = locacaoService.buscarPeloUsuarioEmail(email);
 		return ResponseEntity.ok(locacao);
 	}
@@ -43,11 +53,45 @@ public class LocacaoController {
 	}
 
 	@PostMapping("/pagar")
-	public String pagarLocacao(ModelMap model,
-			@RequestParam("dataRetirar") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataRetirar,
-			@RequestParam("dataDevolver") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataDevolver) {
-		System.out.println(dataDevolver);
+	public String pagarLocacao(ModelMap model, String dataRetirar, String dataDevolver, String seguro,
+			String locadoraDevolucao, String opcional, String veiculo) {
 		// veiculoService.save(veiculo);
+
+		LocalDate localDate = LocalDate.parse(dataRetirar);
+		LocalDate localDatee = LocalDate.parse(dataDevolver);
+		/* Serve para calcular quantidade de dias entre datas */
+		long diaria = ChronoUnit.DAYS.between(localDate, localDatee);
+		long v = Long.parseLong(veiculo);
+		long s = Long.parseLong(seguro);
+		long o = Long.parseLong(opcional);
+
+		Optional<Seguro> seg = seguroService.buscarPorId(s);
+
+		Veiculo veic = veiculoService.buscarVeiculo(v);
+
+		System.out.println(o);
+		model.addAttribute("veiculo", veic);
+		model.addAttribute("optional", optionalService.buscarPorId(o));
+
+		double valorSeguro = (seg.get().getPreco() * diaria);
+		double valorLocacao = (veic.getCategoria().getValor() * diaria);
+		double valorTotal = (valorLocacao + valorSeguro);
+
+		System.out.println("Diaria: " + diaria);
+		System.out.println("Valor veiculo: " + veic.getCategoria().getValor());
+		
+		
+		
+  		model.addAttribute("locadoraDevolucaoId", locadoraDevolucao);
+		model.addAttribute("diarias", diaria);
+		model.addAttribute("valorLocacao", valorLocacao);
+		model.addAttribute("valorTotal", valorTotal);
+		model.addAttribute("seguro", valorSeguro);
+		model.addAttribute("dataEntrega", localDate);
+		model.addAttribute("dataRetirada", localDatee);
+		
+		System.out.println(valorTotal);
+		
 		return "/locacao/pagarLocacao";
 
 	}
