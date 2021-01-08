@@ -48,6 +48,7 @@ public class VeiculoController {
 		return ResponseEntity.ok(veiculo);
 	}
 
+	/*Busca e lista os veiculos*/
 	@GetMapping("/buscar")
 	public String BuscarVeiculosDisponiveis(@RequestParam("dataRetirar") String dataRetirar,
 			@RequestParam("dataDevolver") String dataDevolver, @RequestParam("nome") String nome, ModelMap model) {
@@ -62,6 +63,7 @@ public class VeiculoController {
 		return "veiculo/lista";
 	}
 
+	/*apresenta as informções do veiculo ao clicar no botão */
 	@GetMapping("/{id}")
 	public String infoVeiculos(@PathVariable("id") Long id, ModelMap model,
 			@RequestParam("dataRetirar") String dataRetirar, @RequestParam("dataDevolver") String dataDevolver) {
@@ -70,6 +72,7 @@ public class VeiculoController {
 		LocalDate localDatee = LocalDate.parse(dataDevolver);
 
 		Veiculo veiculo = veiculoService.buscarVeiculo(id);
+		System.out.println("ID: " + id);
 		model.addAttribute("veiculo", veiculo);
 		model.addAttribute("dataRetirar", localDate);
 		model.addAttribute("dataDevolver", localDatee);
