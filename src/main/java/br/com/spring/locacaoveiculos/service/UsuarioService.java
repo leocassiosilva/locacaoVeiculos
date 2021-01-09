@@ -5,6 +5,6 @@ import br.com.spring.locacaoveiculos.model.Usuario;
 public interface UsuarioService {
 
 	Usuario save(Usuario usuario);
-	Usuario buscarPeloEmail(String email);
+	Usuario login(Usuario usuario);
 	
 }
