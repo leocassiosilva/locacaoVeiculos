@@ -22,22 +22,21 @@
 							<h5 class="card-title text-center">Login</h5>
 							<hr>
 
-							<form method="POST">
+							<form method="POST" th:action=@{/logar} th:object="${usuario}">
 								<div class="form-row">
 									<div class="form-group col-md-12">
 										<label for="inputEmail" id="label">E-mail</label> <input
 											type="email" class="form-control rounded-0" value=""
-											name="username" placeholder="Email *">
+											name="username" placeholder="Email *" th:field="*{email}">
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-group col-md-12">
 										<label for="inputSenha" id="label">Senha</label> <input
 											type="password" class="form-control rounded-0" value=""
-											name="password" placeholder="Senha *">
+											name="password" placeholder="Senha *" th:field="*{senha}">
 									</div>
 								</div>
-
 
 								<hr>
 								<div class="form-label-group col-md-12" align="center">

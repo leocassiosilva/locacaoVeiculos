@@ -1,8 +1,5 @@
 package br.com.spring.locacaoveiculos.model;
 
-import java.time.LocalDate;
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -10,7 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Usuario {
 
-	private long id_usuario;
+	private long id;
 
 	private String nome;
 
@@ -18,14 +15,16 @@ public class Usuario {
 
 	private String senha;
 
-	
+	private String tokenUser;
 
-	public long getId_usuario() {
-		return id_usuario;
+	private String link;
+
+	public long getId() {
+		return id;
 	}
 
-	public void setId_usuario(long id_usuario) {
-		this.id_usuario = id_usuario;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -50,6 +49,22 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getTokenUser() {
+		return tokenUser;
+	}
+
+	public void setTokenUser(String tokenUser) {
+		this.tokenUser = tokenUser;
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
 	}
 
 }

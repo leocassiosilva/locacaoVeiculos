@@ -25,19 +25,32 @@ public class UsuarioController {
 	}
 
 	
-
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
-	public String painel(Usuario usuario) {
+	public String cadastrando(Usuario usuario) {
 		usuarioService.save(usuario);
 		return "usuario/painel";
 	}
 
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Usuario usuario) {
+		return "usuario/login";
+	}
 
-	@PostMapping("/login_success_handler")
-	public String loginSuccessHandler() {
-		System.out.println("Logging user login success...");
+	@PostMapping("/logar")
+	public String logar(Usuario usuario) {
+		Usuario userLogado = usuarioService.login(usuario);
+		System.out.println(userLogado.getId());
 		return "redirect:/painel";
 	}
 	
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login";
+	}
 	
+	@RequestMapping(value = "/painel", method = RequestMethod.GET)
+	public String painel(Usuario usuario) {
+		return "usuario/painel";
+	}
 }
