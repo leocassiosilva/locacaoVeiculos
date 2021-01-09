@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import br.com.spring.locacaoveiculos.model.Usuario;
 import br.com.spring.locacaoveiculos.service.UsuarioService;
 
 @Controller
@@ -19,21 +20,18 @@ public class UsuarioController {
 
 	
 	@RequestMapping(value = "/newUsuario", method = RequestMethod.GET)
-	public String form() {
+	public String form(Usuario usuario) {
 		return "usuario/cadastroUsuario";
 	}
 
 	
 
-	@RequestMapping(value = "/painel", method = RequestMethod.GET)
-	public String painel() {
+	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
+	public String painel(Usuario usuario) {
+		usuarioService.save(usuario);
 		return "usuario/painel";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login() {
-		return "usuario/login";
-	}
 
 	@PostMapping("/login_success_handler")
 	public String loginSuccessHandler() {
@@ -41,9 +39,5 @@ public class UsuarioController {
 		return "redirect:/painel";
 	}
 	
-	@RequestMapping("logout")
-	public String logout(HttpSession session) {
-		session.invalidate();
-		return "redirect:/login";
-	}
+	
 }

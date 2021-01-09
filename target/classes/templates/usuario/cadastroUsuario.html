@@ -19,17 +19,17 @@
 						<div class="card-body">
 							<h5 class="card-title text-center">Cadastro de Usuário</h5>
 							<hr>
-							<form method="POST" class="form-signin">
+							<form method="POST" th:action=@{/salvar} th:object="${usuario}"class="form-signin">
 								<div class="form-label-group col-md-12 mb-4">
-									<label for="nome" id="label">Nome</label> <input type="text"
+									<label for="nome">Nome</label> <input type="text"
 										class="form-control rounded-0" value="" name="nome"
-										placeholder="Nome *">
+										placeholder="Nome *" th:field="*{nome}">
 								</div>
 
 								<div class="form-label-group col-md-12 mb-4">
 									<label for="email" id="label">E-mail</label> <input
 										type="email" class="form-control rounded-0" value=""
-										name="email" placeholder="Email *">
+										name="email" placeholder="Email *" th:field="*{email}">
 								</div>
 
 
@@ -37,7 +37,7 @@
 									<div class="form-group">
 										<label id="label">Senha</label> <input type="password"
 											class="form-control rounded-0" value="" name="senha"
-											placeholder="Senha *">
+											placeholder="Senha *" th:field="*{senha}">
 									</div>
 								</div>
 

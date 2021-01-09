@@ -18,8 +18,7 @@ public class Usuario {
 
 	private String senha;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-	private LocalDate data;
+	
 
 	public long getId_usuario() {
 		return id_usuario;
@@ -51,14 +50,6 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public LocalDate getData() {
-		return data;
-	}
-
-	public void setData(LocalDate data) {
-		this.data = data;
 	}
 
 }

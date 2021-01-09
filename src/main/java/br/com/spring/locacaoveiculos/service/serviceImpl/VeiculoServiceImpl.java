@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import br.com.spring.locacaoveiculos.model.Veiculo;
@@ -32,10 +33,13 @@ public class VeiculoServiceImpl implements VeiculoService {
 	}
 
 	@Override
-	public Veiculo save(Veiculo veiculo) {
-		return null;
+	public void save(Veiculo veiculo) {
+		Mono<Veiculo> mono = this.webClientVeiculos.post().uri("/api/veiculos/")
+				.body(BodyInserters.fromValue(veiculo)).retrieve().bodyToMono(Veiculo.class);
+		mono.block();
 	}
 
+	
 	@Override
 	public Optional<Veiculo> buscarPeloId(Long id) {
 		return veiculoService.buscarPeloId(id);
