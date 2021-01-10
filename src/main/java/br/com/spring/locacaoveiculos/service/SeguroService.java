@@ -6,5 +6,6 @@ import br.com.spring.locacaoveiculos.model.Seguro;
 
 public interface SeguroService {
 	Seguro [] buscarTodos();
-	Optional<Seguro> buscarPorId(Long id);
+	Optional<Seguro> buscarPeloId(Long id);
+	Seguro buscarPorId(Long id);
 }

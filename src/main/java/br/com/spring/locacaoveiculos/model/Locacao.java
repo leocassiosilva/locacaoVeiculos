@@ -26,6 +26,8 @@ public class Locacao {
 	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate dataEntrega;
 	
+	private Seguro seguro;
+	
 	private double valorTotal; 
 
 	
@@ -75,6 +77,14 @@ public class Locacao {
 
 	public void setDataEntrega(LocalDate dataEntrega) {
 		this.dataEntrega = dataEntrega;
+	}
+
+	public Seguro getSeguro() {
+		return seguro;
+	}
+
+	public void setSeguro(Seguro seguro) {
+		this.seguro = seguro;
 	}
 	
 	

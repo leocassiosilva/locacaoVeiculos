@@ -22,7 +22,7 @@ public class StringToSeguroConversor implements Converter<String, Seguro>{
 		}
 		
 		Long id = Long.valueOf(text);
-		 Optional<Seguro> seguro = seguroService.buscarPorId(id); 
+		 Optional<Seguro> seguro = seguroService.buscarPeloId(id); 
 		return seguro.get();
 	}
 

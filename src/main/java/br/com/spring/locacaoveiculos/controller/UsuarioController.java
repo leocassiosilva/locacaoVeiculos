@@ -39,7 +39,6 @@ public class UsuarioController {
 	@PostMapping("/logar")
 	public String logar(Usuario usuario) {
 		Usuario userLogado = usuarioService.login(usuario);
-		System.out.println(userLogado.getId());
 		return "redirect:/painel";
 	}
 	

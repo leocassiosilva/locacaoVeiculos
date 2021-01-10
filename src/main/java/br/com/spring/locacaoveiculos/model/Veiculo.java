@@ -23,7 +23,6 @@ public class Veiculo {
 
 	private Locadora locadoraDevolucao;
 
-	private Seguro seguro;
 
 	private Opcionais opcionais;
 
@@ -91,14 +90,6 @@ public class Veiculo {
 
 	public void setLocadoraDevolucao(Locadora locadoraDevolucao) {
 		this.locadoraDevolucao = locadoraDevolucao;
-	}
-
-	public Seguro getSeguro() {
-		return seguro;
-	}
-
-	public void setSeguro(Seguro seguro) {
-		this.seguro = seguro;
 	}
 
 	public Opcionais getOpcionais() {

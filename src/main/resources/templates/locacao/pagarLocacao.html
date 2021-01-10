@@ -38,7 +38,7 @@
 										th:text="${dataDevolver}"></a></li>
 									<li class="list-group-item">Local de Retirada - <a
 										th:text="${locadoraDevolucao.localLocadora.nome}"></a></li>
-									
+
 								</ul>
 							</div>
 						</div>
@@ -54,139 +54,20 @@
 									créditos</h5>
 								<hr>
 								<form method="POST" th:action=@{/locacaos/confirmar}
-									th:object="${locacao}" enctype="multipart/form-data">
+									enctype="multipart/form-data" >
 									<input type="text" th:value="${veiculo.id_veiculo}"
-										id="id_veiculo" name="id_veiculo" class="form control">
-									<input
-										type="hidden" th:value="${dataRetirar}" class="form control"> <input type="hidden"
-										th:value="${dataDevolver}" class="form control"> <input type="hidden"
-										th:value="${valorTotal}" id="valorTotal"
-										name="valorTotal" class="form control"> <input
-										type="text" th:value="${seg}" id="seg" name="seg"
+										id="veiculo" name="veiculo" class="form control"> <input
+										class="form-control" type="text" th:value="${dataRetirar}"
+										id="dataRetirar" name="dataRetirar" /> <input
+										class="form-control" type="text" th:value="${dataDevolver}"
+										id="dataDevolver" name="dataDevolver" /> <input type="text"
+										th:value="${valorTotal}" id="valorTotal" name="valorTotal"
 										class="form control"> <input type="text"
-										th:value="${locadoraDevolucao.id_locadora}" id="locadoraDevolucaoId"
-										name="locadoraDevolucaoId" class="form control">
-									<div class="form-row">
-										<div class="form-group col-md-12">
-											<label for="numero">Numero do cartão</label> <input
-												type="text" class="form-control"
-												placeholder="Numero do cartão*" id="numeroCartao"
-												name="numeroCartao" required/>
-										</div>
-									</div>
-									<div class="form-row">
-										<div class="form-group col-md-12">
-											<label for="nome">Nome do titular (como está gravado
-												no Cartão)</label> <input type="text" class="form-control"
-												placeholder="Numero do cartão*" id="nomeTitular"
-												name="nomeTitular" required/>
-										</div>
-									</div>
-									<div class="form-row">
-										<div class="form-group col-md-6">
-											<label>Mês</label> <select id="mes" data-hj-masked=""
-												name="mes" class="form-control" required><option value="">Mês</option>
-												<option value="1">01</option>
-												<option value="2">02</option>
-												<option value="3">03</option>
-												<option value="4">04</option>
-												<option value="5">05</option>
-												<option value="6">06</option>
-												<option value="7">07</option>
-												<option value="8">08</option>
-												<option value="9">09</option>
-												<option value="10">10</option>
-												<option value="11">11</option>
-												<option value="12">12</option>
-											</select>
-										</div>
-										<div class="form-group col-md-6">
-											<label>Ano</label> <select id="ano" data-hj-masked=""
-												name="ano" class="form-control" required><option value="">Ano</option>
-												<option value="2020">20</option>
-												<option value="2021">21</option>
-												<option value="2022">22</option>
-												<option value="2023">23</option>
-												<option value="2024">24</option>
-												<option value="2025">25</option>
-												<option value="2026">26</option>
-												<option value="2027">27</option>
-												<option value="2028">28</option>
-												<option value="2029">29</option>
-												<option value="2030">30</option>
-												<option value="2031">31</option>
-												<option value="2032">32</option>
-												<option value="2033">33</option>
-												<option value="2034">34</option>
-												<option value="2035">35</option>
-												<option value="2036">36</option>
-												<option value="2037">37</option>
-												<option value="2038">38</option>
-												<option value="2039">39</option>
-												<option value="2040">40</option>
-												<option value="2041">41</option>
-												<option value="2042">42</option>
-												<option value="2043">43</option>
-												<option value="2044">44</option>
-												<option value="2045">45</option>
-												<option value="2046">46</option>
-												<option value="2047">47</option>
-												<option value="2048">48</option>
-												<option value="2049">49</option>
-												<option value="2050">50</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-row">
-										<div class="form-group col-md-8">
-											<label for="nome">Código de Segurança</label> <input
-												type="number" class="form-control"
-												placeholder="Código de Segurança*" id="codigoSeguranca"
-												name="codigoSeguranca" maxlength="3" required/>
-										</div>
-									</div>
-									<div class="form-row">
+										th:value="${locadoraDevolucao.id_locadora}"
+										id="locadoraDevolucao" name="locadoraDevolucao"
+										class="form control">
 
-										<div class="form-group col-md-8">
-											<label>Mês</label> <select id="parcela" name="parcela"
-												class="form-control" required><option value="">Parcelamento
-													(ainda a definir)</option>
-											</select>
-										</div>
-									</div>
-									<button type="submit" class="btn btn-primary">Confirmar</button>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12 col-md-12">
-						<div class="card card-signin" style="margin-top: 10px;">
-							<div class="card-body">
-								<h5 class="card-title text-center">Pague com boleto
-									Bancário</h5>
-								<hr>
-								<ul class="list-group list-group-flush"
-									style="margin-top: 10px;">
-									<li class="list-group-item">R$<a th:text="${ valorTotal}"></a>
-									</li>
-								</ul>
-								<p>Você poderá visualizar ou imprimir após a finalização do
-									pedido.</p>
-								<form method="POST" th:action=@{/locacaos/confirmar}
-									th:object="${locacao}" enctype="multipart/form-data">
-										<input type="text" th:value="${veiculo.id_veiculo}"
-										id="id_veiculo" name="id_veiculo" class="form control">
-									<input
-										type="hidden" th:value="${dataRetirar}" class="form control"> <input type="hidden"
-										th:value="${dataDevolver}" class="form control"> <input type="hidden"
-										th:value="${valorTotal}" id="valorTotal"
-										name="valorTotal" class="form control"> <input
-										type="text" th:value="${seg}" id="seg" name="seg"
-										class="form control"> <input type="text"
-										th:value="${locadoraDevolucao.id_locadora}" id="locadoraDevolucaoId"
-										name="locadoraDevolucaoId" class="form control">
+
 									<button type="submit" class="btn btn-primary">Confirmar</button>
 								</form>
 							</div>

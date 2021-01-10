@@ -27,12 +27,18 @@ public class SeguroServiceImpl implements SeguroService {
 	}
 
 	@Override
-	public Optional<Seguro> buscarPorId(Long id) {
+	public Seguro buscarPorId(Long id) {
 		Mono<Seguro> mono = this.webClientVeiculos.get().uri("/api/seguro/{id}", id).retrieve()
 				.bodyToMono(Seguro.class);
-		Optional<Seguro> seguros = Optional.ofNullable(mono.block());
+		Seguro seguro = mono.block();
 
-		return seguros;
+		return seguro;
+	}
+
+	@Override
+	public Optional<Seguro> buscarPeloId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

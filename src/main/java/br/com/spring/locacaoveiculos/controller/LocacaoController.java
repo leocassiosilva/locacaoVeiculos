@@ -71,7 +71,7 @@ public class LocacaoController {
 		long l = Long.parseLong(locadoraDevolucao);
 
 		
-		Optional<Seguro> seg = seguroService.buscarPorId(s);
+		Seguro seg = seguroService.buscarPorId(s);
 
 		Veiculo veic = veiculoService.buscarVeiculo(v);
 
@@ -79,7 +79,7 @@ public class LocacaoController {
 		model.addAttribute("veiculo", veic);
 		model.addAttribute("optional", optionalService.buscarPorId(o));
 
-		double valorSeguro = (seg.get().getPreco() * diaria);
+		double valorSeguro = (seg.getPreco() * diaria);
 		double valorLocacao = (veic.getCategoria().getValor() * diaria);
 		double valorTotal = (valorLocacao + valorSeguro);
 
@@ -96,13 +96,41 @@ public class LocacaoController {
 		model.addAttribute("seguro", valorSeguro);
 		model.addAttribute("dataRetirar", localDate);
 		model.addAttribute("dataDevolver", localDatee);
-		model.addAttribute("seg", seg.get().getId_seguro());
-		System.out.println(valorTotal);
+		model.addAttribute("seg", seg.getId_seguro());
 		
 		return "/locacao/pagarLocacao";
 
 	}
 	
-	
+	@PostMapping("/confirmar")
+	public String confirmarPagamento(String dataRetirar, String dataDevolver, String seguro,
+			String locadoraDevolucao, String opcional, String veiculo, double valorTotal, Locacao locacao) {
+		System.out.println(valorTotal);
+		
+		LocalDate localDate = LocalDate.parse(dataRetirar);
+		LocalDate localDatee = LocalDate.parse(dataDevolver);
+		
+		long v = Long.parseLong(veiculo);
+		long s = Long.parseLong(seguro);
+		long o = Long.parseLong(opcional);
+		long l = Long.parseLong(locadoraDevolucao);
+		
+		Seguro seg = seguroService.buscarPorId(s);
+
+		Veiculo veic = veiculoService.buscarVeiculo(v);
+		
+		Locadora locadora = locadoraService.buscarPorId(l);
+		
+		veic.setLocadoraDevolucao(locadora);
+		locacao.setDataEntrega(localDatee);
+		locacao.setDataRetirada(localDate);
+		locacao.setVeiculo(veic);
+		locacao.setSeguro(seg);
+		locacao.setValorTotal(valorTotal);
+		
+		System.out.println(locacao.getValorTotal());
+		return "/home";
+		
+	}
 
 }
