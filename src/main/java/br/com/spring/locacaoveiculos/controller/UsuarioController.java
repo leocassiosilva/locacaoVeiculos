@@ -28,7 +28,7 @@ public class UsuarioController {
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public String cadastrando(Usuario usuario) {
 		usuarioService.save(usuario);
-		return "usuario/painel";
+		return "usuario/login";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
