@@ -56,7 +56,7 @@
 								<form method="POST" th:action=@{/locacaos/confirmar}
 									enctype="multipart/form-data" >
 									<input type="text" th:value="${veiculo.id_veiculo}"
-										id="veiculo" name="veiculo" class="form control"> <input
+										id="id_veiculo" name="id_veiculo" class="form control"> <input
 										class="form-control" type="text" th:value="${dataRetirar}"
 										id="dataRetirar" name="dataRetirar" /> <input
 										class="form-control" type="text" th:value="${dataDevolver}"
@@ -66,7 +66,10 @@
 										th:value="${locadoraDevolucao.id_locadora}"
 										id="locadoraDevolucao" name="locadoraDevolucao"
 										class="form control">
-
+										<input
+										type="text" th:value="${seg}" id="id_seguro" name="id_seguro">
+										<input
+										type="text" th:value="${opcional}" id="opcional" name="opcional">
 
 									<button type="submit" class="btn btn-primary">Confirmar</button>
 								</form>

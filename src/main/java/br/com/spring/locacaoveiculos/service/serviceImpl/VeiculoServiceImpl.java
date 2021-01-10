@@ -31,12 +31,19 @@ public class VeiculoServiceImpl implements VeiculoService {
 		return veiculos;
 
 	}
-
+	
+	
+	
+	
 	@Override
-	public void save(Veiculo veiculo) {
-		Mono<Veiculo> mono = this.webClientVeiculos.post().uri("/api/veiculos/")
+	public Veiculo save(Veiculo veiculo) {
+		
+		
+		Mono<Veiculo> mono = this.webClientVeiculos.post().uri("/api/veiculos/salvar")
 				.body(BodyInserters.fromValue(veiculo)).retrieve().bodyToMono(Veiculo.class);
-		mono.block();
+		Veiculo veicul = mono.block();
+		
+		return veicul;
 	}
 
 	

@@ -22,7 +22,7 @@ public class StringToOpcionaisConversor implements Converter<String, Opcionais>{
 		}
 		
 		Long id = Long.valueOf(text);
-		 Optional<Opcionais> opcionais = opcionaisService.buscarPorId(id); 
+		 Optional<Opcionais> opcionais = opcionaisService.buscarPeloId(id); 
 		return opcionais.get();
 	}
 

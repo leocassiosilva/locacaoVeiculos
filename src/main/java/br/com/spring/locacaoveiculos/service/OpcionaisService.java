@@ -6,5 +6,6 @@ import br.com.spring.locacaoveiculos.model.Opcionais;
 
 public interface OpcionaisService {
 	Opcionais [] buscarTodosOpcionais();
-	Optional<Opcionais> buscarPorId(Long id);
+	Optional<Opcionais> buscarPeloId(Long id);
+	Opcionais  buscarPorId(Long id);
 }

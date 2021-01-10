@@ -17,10 +17,10 @@ public class OpcionaisServiceImpl implements OpcionaisService {
 	private WebClient webClientVeiculos;
 
 	@Override
-	public Optional<Opcionais> buscarPorId(Long id) {
+	public Opcionais buscarPorId(Long id) {
 		Mono<Opcionais> mono = this.webClientVeiculos.get().uri("/api/opcional/{id}", id).retrieve()
 				.bodyToMono(Opcionais.class);
-		Optional<Opcionais> opcionais = Optional.ofNullable(mono.block());
+		Opcionais opcionais = mono.block();
 
 		return opcionais;
 	}
@@ -33,6 +33,12 @@ public class OpcionaisServiceImpl implements OpcionaisService {
 		Opcionais[] opcionais = mono.block();
 
 		return opcionais;
+	}
+
+	@Override
+	public Optional<Opcionais> buscarPeloId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

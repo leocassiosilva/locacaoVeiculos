@@ -2,7 +2,6 @@ package br.com.spring.locacaoveiculos.controller;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.spring.locacaoveiculos.model.Locacao;
 import br.com.spring.locacaoveiculos.model.Locadora;
+import br.com.spring.locacaoveiculos.model.Opcionais;
 import br.com.spring.locacaoveiculos.model.Seguro;
 import br.com.spring.locacaoveiculos.model.Veiculo;
 import br.com.spring.locacaoveiculos.service.LocacaoService;
@@ -69,7 +69,8 @@ public class LocacaoController {
 		long s = Long.parseLong(seguro);
 		long o = Long.parseLong(opcional);
 		long l = Long.parseLong(locadoraDevolucao);
-
+		
+		System.out.println("Opcionais = "  + opcional);
 		
 		Seguro seg = seguroService.buscarPorId(s);
 
@@ -77,8 +78,10 @@ public class LocacaoController {
 
 		System.out.println(o);
 		model.addAttribute("veiculo", veic);
-		model.addAttribute("optional", optionalService.buscarPorId(o));
+		model.addAttribute("opcional", opcional);
 
+		
+		
 		double valorSeguro = (seg.getPreco() * diaria);
 		double valorLocacao = (veic.getCategoria().getValor() * diaria);
 		double valorTotal = (valorLocacao + valorSeguro);
@@ -103,15 +106,23 @@ public class LocacaoController {
 	}
 	
 	@PostMapping("/confirmar")
-	public String confirmarPagamento(String dataRetirar, String dataDevolver, String seguro,
-			String locadoraDevolucao, String opcional, String veiculo, double valorTotal, Locacao locacao) {
+	public String confirmarPagamento(String dataRetirar, String dataDevolver, String id_seguro,
+			String locadoraDevolucao, String opcional, String id_veiculo, double valorTotal, Locacao locacao) {
 		System.out.println(valorTotal);
 		
 		LocalDate localDate = LocalDate.parse(dataRetirar);
 		LocalDate localDatee = LocalDate.parse(dataDevolver);
 		
-		long v = Long.parseLong(veiculo);
-		long s = Long.parseLong(seguro);
+		
+
+		System.out.println(localDate);
+		System.out.println(opcional);
+		System.out.println(id_seguro);
+		System.out.println(locadoraDevolucao);
+		
+		
+		long v = Long.parseLong(id_veiculo);
+		long s = Long.parseLong(id_seguro);
 		long o = Long.parseLong(opcional);
 		long l = Long.parseLong(locadoraDevolucao);
 		
@@ -120,15 +131,17 @@ public class LocacaoController {
 		Veiculo veic = veiculoService.buscarVeiculo(v);
 		
 		Locadora locadora = locadoraService.buscarPorId(l);
-		
+		Opcionais op = optionalService.buscarPorId(o);
+
 		veic.setLocadoraDevolucao(locadora);
+		veic.setOpcionais(op);
 		locacao.setDataEntrega(localDatee);
 		locacao.setDataRetirada(localDate);
 		locacao.setVeiculo(veic);
 		locacao.setSeguro(seg);
 		locacao.setValorTotal(valorTotal);
 		
-		System.out.println(locacao.getValorTotal());
+		veiculoService.save(veic);
 		return "/home";
 		
 	}

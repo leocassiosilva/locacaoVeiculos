@@ -7,7 +7,7 @@ import br.com.spring.locacaoveiculos.model.Veiculo;
 
 public interface VeiculoService {
 
-	void save(Veiculo veiculo);
+	Veiculo save(Veiculo veiculo);
 
 	Veiculo [] buscarTodos();
 
