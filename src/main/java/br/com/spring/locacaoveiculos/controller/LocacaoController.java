@@ -142,6 +142,7 @@ public class LocacaoController {
 		locacao.setValorTotal(valorTotal);
 		
 		veiculoService.save(veic);
+		locacaoService.save(locacao);
 		return "/home";
 		
 	}

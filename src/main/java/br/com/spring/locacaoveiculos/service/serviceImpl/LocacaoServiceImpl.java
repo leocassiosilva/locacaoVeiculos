@@ -2,6 +2,7 @@ package br.com.spring.locacaoveiculos.service.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import br.com.spring.locacaoveiculos.model.Locacao;
@@ -16,7 +17,11 @@ public class LocacaoServiceImpl implements LocacaoService {
 
 	@Override
 	public Locacao save(Locacao locacao) {
-		return null;
+		
+		Mono<Locacao> mono = this.webClientVeiculos.post().uri("/api/locacoes/confirmar")
+				.body(BodyInserters.fromValue(locacao)).retrieve().bodyToMono(Locacao.class);
+		Locacao locaca = mono.block();
+		return locaca;
 	}
 
 	@Override
