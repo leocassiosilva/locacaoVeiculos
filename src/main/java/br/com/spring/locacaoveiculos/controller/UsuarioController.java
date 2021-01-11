@@ -38,7 +38,7 @@ public class UsuarioController {
 	public ModelAndView logar(Usuario usuario, HttpSession session) {
 		Usuario userLogado = usuarioService.login(usuario);
 		if (userLogado == null) {
-			return new ModelAndView("redirect:logar").addObject("fail", "E-mail e/ou senha incorreto");
+			return new ModelAndView("redirect:login").addObject("Erro", "E-mail e/ou senha incorreto");
 		}
 
 		session.setAttribute("iduser", userLogado.getId());

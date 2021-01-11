@@ -14,6 +14,16 @@ public class LocacaoServiceImpl implements LocacaoService {
 
 	@Autowired
 	private WebClient webClientVeiculos;
+	
+	private WebClient wcUsuario = WebClient.create("https://projeto-pag-api.herokuapp.com");
+	
+	@Override
+	public Locacao[] buscarPeloUsuarioEmail(String usuario) {
+		Mono<Locacao[]> mono = this.webClientVeiculos.get().uri("/api/locacoes/finduser/{usuario}" + usuario).retrieve()
+				.bodyToMono(Locacao[].class);
+		Locacao[] locacoes = mono.block();
+		return locacoes;
+	}
 
 	@Override
 	public Locacao save(Locacao locacao) {
@@ -22,14 +32,6 @@ public class LocacaoServiceImpl implements LocacaoService {
 				.body(BodyInserters.fromValue(locacao)).retrieve().bodyToMono(Locacao.class);
 		Locacao locaca = mono.block();
 		return locaca;
-	}
-
-	@Override
-	public Locacao[] buscarPeloUsuarioEmail(String email) {
-		Mono<Locacao[]> mono = this.webClientVeiculos.get().uri("/api/locacoes/" + email).retrieve()
-				.bodyToMono(Locacao[].class);
-		Locacao[] locacoes = mono.block();
-		return locacoes;
 	}
 
 	@Override
