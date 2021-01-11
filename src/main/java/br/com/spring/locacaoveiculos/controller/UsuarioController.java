@@ -1,6 +1,5 @@
 package br.com.spring.locacaoveiculos.controller;
 
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +18,11 @@ public class UsuarioController {
 	@Autowired
 	UsuarioService usuarioService;
 
-	
 	@RequestMapping(value = "/newUsuario", method = RequestMethod.GET)
 	public String form(Usuario usuario) {
 		return "usuario/cadastroUsuario";
 	}
 
-	
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public String cadastrando(Usuario usuario) {
 		usuarioService.save(usuario);
@@ -39,6 +36,7 @@ public class UsuarioController {
 
 	@PostMapping("/logar")
 	public ModelAndView logar(Usuario usuario, HttpSession session) {
+<<<<<<< HEAD
 		Usuario usuarioLogado = usuarioService.login(usuario);
 		if (usuarioLogado == null) {
 			
@@ -50,16 +48,26 @@ public class UsuarioController {
 		session.setAttribute("token",usuarioLogado.getTokenUser());
 		session.setAttribute("nome",usuarioLogado.getNome());
 		ModelAndView mv = new ModelAndView("redirect:/painel").addObject("logado", session.getAttribute("email_usuario"));
+=======
+		Usuario userLogado = usuarioService.login(usuario);
+		if (userLogado == null) {
+			return new ModelAndView("redirect:login").addObject("Erro", "E-mail e/ou senha incorreto");
+		}
+
+		session.setAttribute("iduser", userLogado.getId());
+		session.setAttribute("userlogado", userLogado.getEmail());
+		ModelAndView mv = new ModelAndView("redirect:/painel").addObject("logado", session.getAttribute("userlogado"));
+>>>>>>> 1a851fba2d28e3da28f880f604861199ec413122
 
 		return mv;
 	}
-	
+
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/login";
 	}
-	
+
 	@RequestMapping(value = "/painel", method = RequestMethod.GET)
 	public String painel(Usuario usuario) {
 		return "usuario/painel";
