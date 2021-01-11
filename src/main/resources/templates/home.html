@@ -4,12 +4,18 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout}">
 <head>
+<title>SLV - Home</title>
 <meta charset="UTF-8" />
 </head>
 <body>
 	<section layout:fragment="corpo">
 		<div class="btn-topo2" style="margin: 32px 0;" id="about">
 			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-xs-8 mx-auto" id="classePrincipal">
+						<th:block th:include="veiculo/mensagemValidacao"></th:block>
+					</div>
+				</div>
 				<div class="w3-display-left w3-padding ">
 					<div class="w3-container w3-red" style="text-align: center;">
 						<h2>

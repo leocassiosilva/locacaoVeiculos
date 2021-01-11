@@ -1,11 +1,15 @@
 package br.com.spring.locacaoveiculos.service.serviceImpl;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import br.com.spring.locacaoveiculos.model.Locacao;
+import br.com.spring.locacaoveiculos.model.Usuario;
 import br.com.spring.locacaoveiculos.service.LocacaoService;
 import reactor.core.publisher.Mono;
 
@@ -14,6 +18,9 @@ public class LocacaoServiceImpl implements LocacaoService {
 
 	@Autowired
 	private WebClient webClientVeiculos;
+	
+	private WebClient webPagamento = WebClient.create("https://projeto-pag-api.herokuapp.com");
+
 
 	@Override
 	public Locacao save(Locacao locacao) {
@@ -35,6 +42,35 @@ public class LocacaoServiceImpl implements LocacaoService {
 	@Override
 	public Locacao[] buscarPeloId(Long id) {
 		return null;
+	}
+
+	@Override
+	public String pagamentoLocacao(Long id_usuario, Locacao locacao, String token) {
+		
+		
+		LocalDate dataLocacao = LocalDate.now();
+		DateTimeFormatter dataLocacaoFomatada = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		String dataLoca = dataLocacaoFomatada.format(dataLocacao);
+		
+		
+		try {
+			Mono<Usuario> mono = this.webPagamento.post()
+					.uri(uriBuilder -> uriBuilder
+						.path("api/compras/gerarLink")
+						.queryParam("id", id_usuario)
+						.queryParam("valor", locacao.getValorTotal())
+						.queryParam("data", dataLoca)
+						.build())
+					.header("Origem", "http://localhost:8080/home")
+					.header("Authorization", "Bearer " + token)
+					.retrieve()
+					.bodyToMono(Usuario.class);
+			Usuario usuario = mono.block();
+			
+			return usuario.getLink();
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }

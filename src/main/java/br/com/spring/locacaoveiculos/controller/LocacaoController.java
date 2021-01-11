@@ -16,6 +16,7 @@ import br.com.spring.locacaoveiculos.model.Locacao;
 import br.com.spring.locacaoveiculos.model.Locadora;
 import br.com.spring.locacaoveiculos.model.Opcionais;
 import br.com.spring.locacaoveiculos.model.Seguro;
+import br.com.spring.locacaoveiculos.model.Usuario;
 import br.com.spring.locacaoveiculos.model.Veiculo;
 import br.com.spring.locacaoveiculos.service.LocacaoService;
 import br.com.spring.locacaoveiculos.service.LocadoraService;
@@ -105,7 +106,7 @@ public class LocacaoController {
 
 	}
 	
-	@PostMapping("/confirmar")
+	@PostMapping("/salvar")
 	public String confirmarPagamento(String dataRetirar, String dataDevolver, String id_seguro,
 			String locadoraDevolucao, String opcional, String id_veiculo, double valorTotal, Locacao locacao) {
 		System.out.println(valorTotal);
@@ -133,6 +134,8 @@ public class LocacaoController {
 		Locadora locadora = locadoraService.buscarPorId(l);
 		Opcionais op = optionalService.buscarPorId(o);
 
+		Usuario user = new Usuario();
+		user.setId(30);
 		veic.setLocadoraDevolucao(locadora);
 		veic.setOpcionais(op);
 		locacao.setDataEntrega(localDatee);
@@ -140,9 +143,11 @@ public class LocacaoController {
 		locacao.setVeiculo(veic);
 		locacao.setSeguro(seg);
 		locacao.setValorTotal(valorTotal);
+		locacao.setUsuario(user);
 		
 		veiculoService.save(veic);
-		locacaoService.save(locacao);
+		Locacao loca = locacaoService.save(locacao);
+		System.out.println("Id_Locacao: "  + loca.getId_locacao());
 		return "/home";
 		
 	}

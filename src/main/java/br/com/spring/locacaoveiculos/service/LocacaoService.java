@@ -9,4 +9,6 @@ public interface LocacaoService {
 	
 	Locacao [] buscarPeloId(Long id);
 	
+	String pagamentoLocacao(Long id_usuario, Locacao locacao, String token);
+	
 }
