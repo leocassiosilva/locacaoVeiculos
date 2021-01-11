@@ -3,6 +3,8 @@ package br.com.spring.locacaoveiculos.controller;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -59,7 +61,14 @@ public class LocacaoController {
 
 	@PostMapping("/pagar")
 	public String pagarLocacao(ModelMap model, String dataRetirar, String dataDevolver, String seguro,
-			String locadoraDevolucao, String opcional, String veiculo) {
+			String locadoraDevolucao, String opcional, String veiculo,  HttpSession session) {
+		
+		
+		Long usuarioLogado =  (Long) session.getAttribute("id_usuario");
+		
+		if(usuarioLogado == null) {
+			return "redirect:login";
+		}
 		// veiculoService.save(veiculo);
 
 		LocalDate localDate = LocalDate.parse(dataRetirar);

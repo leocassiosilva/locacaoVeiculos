@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,29 +36,20 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/logar")
-	public ModelAndView logar(Usuario usuario, HttpSession session) {
-<<<<<<< HEAD
+	public ModelAndView logar(Usuario usuario, HttpSession session, ModelMap model) {
 		Usuario usuarioLogado = usuarioService.login(usuario);
 		if (usuarioLogado == null) {
 			
-			return new ModelAndView("redirect:logar").addObject("fail", "E-mail e/ou senha incorreto");
+			return new ModelAndView("redirect:login").addObject("menssgem", "E-mail e/ou senha incorreto");
 		}
 
 		session.setAttribute("id_usuario", usuarioLogado.getId());
 		session.setAttribute("email_usuario", usuarioLogado.getEmail());
 		session.setAttribute("token",usuarioLogado.getTokenUser());
 		session.setAttribute("nome",usuarioLogado.getNome());
-		ModelAndView mv = new ModelAndView("redirect:/painel").addObject("logado", session.getAttribute("email_usuario"));
-=======
-		Usuario userLogado = usuarioService.login(usuario);
-		if (userLogado == null) {
-			return new ModelAndView("redirect:login").addObject("Erro", "E-mail e/ou senha incorreto");
-		}
-
-		session.setAttribute("iduser", userLogado.getId());
-		session.setAttribute("userlogado", userLogado.getEmail());
-		ModelAndView mv = new ModelAndView("redirect:/painel").addObject("logado", session.getAttribute("userlogado"));
->>>>>>> 1a851fba2d28e3da28f880f604861199ec413122
+		
+		
+		ModelAndView mv = new ModelAndView("redirect:/home").addObject("logado", session.getAttribute("email_usuario"));
 
 		return mv;
 	}
