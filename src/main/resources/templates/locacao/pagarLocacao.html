@@ -61,7 +61,7 @@
 									<h5 class="card-title text-center">Pague com o Cartão de
 										créditos</h5>
 									<hr>
-									<form method="POST" th:action=@{/locacaos/salvar}
+									<form method="POST" th:action="@{/locacaos/salvar}"
 										enctype="multipart/form-data">
 										<input type="text" th:value="${veiculo.id_veiculo}"
 											id="id_veiculo" name="id_veiculo" class="form control">
@@ -78,6 +78,9 @@
 											th:value="${seg}" id="id_seguro" name="id_seguro"> <input
 											type="text" th:value="${opcional}" id="opcional"
 											name="opcional">
+											<input
+											type="text" th:value="${id_usuario}" id="id_usuario"
+											name="id_usuario">
 
 										<button type="submit" class="btn btn-primary">Confirmar</button>
 									</form>

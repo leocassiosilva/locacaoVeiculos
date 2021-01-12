@@ -18,7 +18,7 @@ public class Locacao {
 	
 	private Veiculo veiculo;
 	
-	private Usuario usuario;
+	private long id_usuario;
 	@DateTimeFormat(iso = ISO.DATE)
 
 	private LocalDate dataRetirada;
@@ -55,12 +55,14 @@ public class Locacao {
 		this.veiculo = veiculo;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	
+	
+	public long getId_usuario() {
+		return id_usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setId_usuario(long id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 
 	public LocalDate getDataRetirada() {

@@ -41,8 +41,7 @@ public class LocacaoController {
 
 	@Autowired
 	private OpcionaisService optionalService;
-	
-	
+
 	@Autowired
 	private LocadoraService locadoraService;
 
@@ -61,13 +60,12 @@ public class LocacaoController {
 
 	@PostMapping("/pagar")
 	public String pagarLocacao(ModelMap model, String dataRetirar, String dataDevolver, String seguro,
-			String locadoraDevolucao, String opcional, String veiculo,  HttpSession session) {
-		
-		
-		Long usuarioLogado =  (Long) session.getAttribute("id_usuario");
-		
-		if(usuarioLogado == null) {
-			return "redirect:login";
+			String locadoraDevolucao, String opcional, String veiculo, HttpSession session) {
+
+		Long usuarioLogado = (Long) session.getAttribute("id_usuario");
+
+		if (usuarioLogado == null) {
+			return "redirect:/login";
 		}
 		// veiculoService.save(veiculo);
 
@@ -79,9 +77,9 @@ public class LocacaoController {
 		long s = Long.parseLong(seguro);
 		long o = Long.parseLong(opcional);
 		long l = Long.parseLong(locadoraDevolucao);
-		
-		System.out.println("Opcionais = "  + opcional);
-		
+
+		System.out.println("Opcionais = " + opcional);
+
 		Seguro seg = seguroService.buscarPorId(s);
 
 		Veiculo veic = veiculoService.buscarVeiculo(v);
@@ -90,19 +88,16 @@ public class LocacaoController {
 		model.addAttribute("veiculo", veic);
 		model.addAttribute("opcional", opcional);
 
-		
-		
 		double valorSeguro = (seg.getPreco() * diaria);
 		double valorLocacao = (veic.getCategoria().getValor() * diaria);
 		double valorTotal = (valorLocacao + valorSeguro);
 
 		System.out.println("Diaria: " + diaria);
 		System.out.println("Valor veiculo: " + veic.getCategoria().getValor());
-		
+
 		Locadora locadora = locadoraService.buscarPorId(l);
-		
-		
-  		model.addAttribute("locadoraDevolucao", locadora);
+
+		model.addAttribute("locadoraDevolucao", locadora);
 		model.addAttribute("diarias", diaria);
 		model.addAttribute("valorLocacao", valorLocacao);
 		model.addAttribute("valorTotal", valorTotal);
@@ -110,41 +105,43 @@ public class LocacaoController {
 		model.addAttribute("dataRetirar", localDate);
 		model.addAttribute("dataDevolver", localDatee);
 		model.addAttribute("seg", seg.getId_seguro());
-		
+		model.addAttribute("id_usuario", usuarioLogado);
+
 		return "/locacao/pagarLocacao";
 
 	}
-	
+
 	@PostMapping("/salvar")
 	public String confirmarPagamento(String dataRetirar, String dataDevolver, String id_seguro,
-			String locadoraDevolucao, String opcional, String id_veiculo, double valorTotal, Locacao locacao) {
-		System.out.println(valorTotal);
+			String locadoraDevolucao, String opcional, String id_veiculo, double valorTotal, long id_usuario, Locacao locacao, HttpSession session) {
+
+		Long usuarioLogado =  (Long) session.getAttribute("id_usuario");
 		
+		System.out.println(usuarioLogado);
+
+
 		LocalDate localDate = LocalDate.parse(dataRetirar);
 		LocalDate localDatee = LocalDate.parse(dataDevolver);
-		
-		
 
 		System.out.println(localDate);
 		System.out.println(opcional);
 		System.out.println(id_seguro);
 		System.out.println(locadoraDevolucao);
-		
-		
+
 		long v = Long.parseLong(id_veiculo);
 		long s = Long.parseLong(id_seguro);
 		long o = Long.parseLong(opcional);
 		long l = Long.parseLong(locadoraDevolucao);
-		
+
 		Seguro seg = seguroService.buscarPorId(s);
 
 		Veiculo veic = veiculoService.buscarVeiculo(v);
-		
+
 		Locadora locadora = locadoraService.buscarPorId(l);
 		Opcionais op = optionalService.buscarPorId(o);
 
 		Usuario user = new Usuario();
-		user.setId(30);
+		user.setId(usuarioLogado);
 		veic.setLocadoraDevolucao(locadora);
 		veic.setOpcionais(op);
 		locacao.setDataEntrega(localDatee);
@@ -152,13 +149,13 @@ public class LocacaoController {
 		locacao.setVeiculo(veic);
 		locacao.setSeguro(seg);
 		locacao.setValorTotal(valorTotal);
-		locacao.setUsuario(user);
-		
+		locacao.setId_usuario(id_usuario);;
+	
 		veiculoService.save(veic);
 		Locacao loca = locacaoService.save(locacao);
-		System.out.println("Id_Locacao: "  + loca.getId_locacao());
+		System.out.println("Id_Locacao: " + loca.getId_locacao());
 		return "/home";
-		
+
 	}
 
 }

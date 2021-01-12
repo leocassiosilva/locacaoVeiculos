@@ -14,7 +14,7 @@ public class LocacaoVeiculosApplication {
 	
 	@Bean
 	public WebClient webClientVeiculos(WebClient.Builder builder) {
-		return builder.baseUrl("https://apirest-locacoes.herokuapp.com/")
+		return builder.baseUrl("http://localhost:8081")
 				.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE).build();
 	}
 	
