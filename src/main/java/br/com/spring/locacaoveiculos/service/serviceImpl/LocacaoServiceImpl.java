@@ -9,6 +9,7 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import br.com.spring.locacaoveiculos.model.Locacao;
+import br.com.spring.locacaoveiculos.model.Usuario;
 import br.com.spring.locacaoveiculos.service.LocacaoService;
 import reactor.core.publisher.Mono;
 
@@ -20,14 +21,7 @@ public class LocacaoServiceImpl implements LocacaoService {
 	
 
 	private WebClient wcUsuario = WebClient.create("https://projeto-pag-api.herokuapp.com");
-	
-	@Override
-	public Locacao[] buscarPeloUsuarioEmail(String usuario) {
-		Mono<Locacao[]> mono = this.webClientVeiculos.get().uri("/api/locacoes/finduser/{usuario}" + usuario).retrieve()
-				.bodyToMono(Locacao[].class);
-		Locacao[] locacoes = mono.block();
-		return locacoes;
-	}
+
 
 	@Override
 	public Locacao save(Locacao locacao) {
@@ -40,7 +34,11 @@ public class LocacaoServiceImpl implements LocacaoService {
 
 	@Override
 	public Locacao[] buscarPeloId(Long id) {
-		return null;
+		System.out.println(id);
+		Mono<Locacao[]> mono = this.webClientVeiculos.get().uri("/api/locacoes/{id}", id).retrieve()
+				.bodyToMono(Locacao[].class);
+		Locacao[] locacoes = mono.block();
+		return locacoes;
 	}
 
 	@Override
@@ -51,8 +49,24 @@ public class LocacaoServiceImpl implements LocacaoService {
 		DateTimeFormatter dataLocacaoFomatada = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String dataLoca = dataLocacaoFomatada.format(dataLocacao);
 		
-		
+		try {
+			Mono<Usuario> mono = this.wcUsuario.post()
+					.uri(uriBuilder -> uriBuilder
+						.path("api/compras/gerarLink")
+						.queryParam("id", id_usuario)
+						.queryParam("valor", locacao.getValorTotal())
+						.queryParam("data", dataLoca)
+						.build())
+					.header("Origem", "http://localhost:8080/home")
+					.header("Authorization", "Bearer " + token)
+					.retrieve()
+					.bodyToMono(Usuario.class);
+			Usuario usuario = mono.block();
+			
+			return usuario.getLink();
+		} catch (Exception e) {
 			return null;
+		}
 		
 	}
 

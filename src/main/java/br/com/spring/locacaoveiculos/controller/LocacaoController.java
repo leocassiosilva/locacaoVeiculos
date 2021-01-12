@@ -45,15 +45,14 @@ public class LocacaoController {
 	@Autowired
 	private LocadoraService locadoraService;
 
-	@GetMapping(value = "/getLocacoesUsuarioEmail/{email}")
-	public ResponseEntity<Locacao[]> listarLocacoesEmailUser(@PathVariable("email") String email) {
-		Locacao[] locacao = locacaoService.buscarPeloUsuarioEmail(email);
-		return ResponseEntity.ok(locacao);
-	}
+	
 
-	@GetMapping(value = "/getLocacoesUsuario/{id}")
-	public String listarLocacoesUsuario(@PathVariable("id") Long id, ModelMap model) {
-		Locacao[] locacao = locacaoService.buscarPeloId(id);
+	@GetMapping(value = "/getLocacoesUsuario")
+	public String listarLocacoesUsuario(ModelMap model, HttpSession session) {
+
+		Long usuarioLogado = (Long) session.getAttribute("id_usuario");
+		System.out.println(usuarioLogado);
+		Locacao[] locacao = locacaoService.buscarPeloId(usuarioLogado);
 		model.addAttribute("locacao", locacao);
 		return "usuario/minhasLocacoes";
 	}
@@ -116,8 +115,8 @@ public class LocacaoController {
 			String locadoraDevolucao, String opcional, String id_veiculo, double valorTotal, long id_usuario, Locacao locacao, HttpSession session) {
 
 		Long usuarioLogado =  (Long) session.getAttribute("id_usuario");
-		
-		System.out.println(usuarioLogado);
+		String token =  (String) session.getAttribute("token");
+		System.out.println(token);
 
 
 		LocalDate localDate = LocalDate.parse(dataRetirar);
@@ -154,8 +153,13 @@ public class LocacaoController {
 		veiculoService.save(veic);
 		Locacao loca = locacaoService.save(locacao);
 		System.out.println("Id_Locacao: " + loca.getId_locacao());
+		
+		String retorno = locacaoService.pagamentoLocacao(id_usuario, locacao, token);
+		System.out.println(retorno);
 		return "/home";
 
 	}
+	
+	
 
 }

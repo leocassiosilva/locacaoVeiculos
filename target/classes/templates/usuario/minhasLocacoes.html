@@ -38,19 +38,12 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="#"> <span
-						class="sr-only">(current)</span>
-				</a></li>
-
 			</ul>
 			<div class="form-inline my-2 my-lg-0">
 				<ul class="navbar-nav mr-auto">
-
-
-					<li class="nav-item active"><a class="nav-link"><span
-							sec:authorize="isAuthenticated()"><div
-									sec:authentication="name" id="nome" name="nome"></div> </span></a></li>
-					<li class="nav-item active"><a class="nav-link" href="/login">Sair</a></li>
+					<li class="nav-item active"><a class="nav-link" href="#">Minhas
+							Locações</a></li>
+					<li class="nav-item active"><a class="nav-link" href="/logout">Sair</a></li>
 				</ul>
 			</div>
 		</div>
@@ -58,7 +51,9 @@
 	<!-- Sidebar -->
 	<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 25%">
 		<h3 class="w3-bar-item">Menu</h3>
-		<a href="/painel" class="w3-bar-item w3-button">Home</a>
+		<a href="/home" class="w3-bar-item w3-button">Home</a> <a href="/locacaos/getLocacoesUsuario"
+			class="w3-bar-item w3-button">Minhas Locações</a>
+
 		<div id="listar" name="listar"></div>
 	</div>
 
@@ -73,7 +68,6 @@
 				<table class="table table-striped table-hover table-sm">
 					<thead>
 						<tr>
-							<th>Veículos</th>
 							<th>Nome</th>
 							<th>Marca</th>
 							<th>Categoria</th>
@@ -81,21 +75,18 @@
 							<th>Local Devolução</th>
 							<th>Seguro</th>
 							<th>Valor</th>
-							<th>Situação</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="l : ${locacao}">
-							<td><img style="width: 100px; padding-left: 5px;"
-								class="imgbtn" th:src="${l.veiculo.arquivos[0].nome}"></td>
-								<td th:text="${l.veiculo.nome}"></td>
+							<td th:text="${l.veiculo.nome}"></td>
 							<td th:text="${l.veiculo.tipoMarca.marca.nome}"></td>
 							<td th:text="${l.veiculo.categoria.nome}"></td>
 							<td th:text="${l.veiculo.locadora.nome}"></td>
 							<td th:text="${l.veiculo.locadoraDevolucao.nome}"></td>
-							<td th:text="${l.veiculo.seguro.nome}"></td>
+							<td th:text="${l.seguro.nome}"></td>
 							<td th:text="${l.valorTotal}"></td>
-							
+
 						</tr>
 					</tbody>
 				</table>
@@ -108,33 +99,39 @@
 	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 	crossorigin="anonymous"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
+	$(document)
+			.ready(
+					function() {
 
-		var email = $('#nome').text();
-		console.log(email);
+						var email = $('#nome').text();
+						console.log(email);
 
-		var id_user;
-		
-		//$("#listar").append('<a class="nav-link" href="/locacaos/getUsuario/'+ email +'">Título</a1>');
-		//alert(link);
-		
-		jQuery.ajax({
-			type : "GET",
-			url : "/locacaos/getUsuario/" + email,
-			data : {},
-			success : function(dados) {
-				console.log(dados.id_usuario);
-				id_user = dados.id_usuario;
-				$("#listar").append('<a class="w3-bar-item w3-button" href="/locacaos/getLocacoesUsuario/'+ id_user +'">Minhas Locações</a>');
-			}
-		}).done(function() {
+						var id_user;
 
-		}).fail(function() {
-			console.log("erro ajax");
-		});
-		
-		
-	});
+						//$("#listar").append('<a class="nav-link" href="/locacaos/getUsuario/'+ email +'">Título</a1>');
+						//alert(link);
+
+						jQuery
+								.ajax(
+										{
+											type : "GET",
+											url : "/locacaos/getUsuario/"
+													+ email,
+											data : {},
+											success : function(dados) {
+												console.log(dados.id_usuario);
+												id_user = dados.id_usuario;
+												$("#listar")
+														.append(
+																'<a class="w3-bar-item w3-button" href="/locacaos/getLocacoesUsuario/'+ id_user +'">Minhas Locações</a>');
+											}
+										}).done(function() {
+
+								}).fail(function() {
+									console.log("erro ajax");
+								});
+
+					});
 </script>
 </html>
 

@@ -48,7 +48,7 @@ public class UsuarioController {
 		session.setAttribute("token",usuarioLogado.getTokenUser());
 		session.setAttribute("nome",usuarioLogado.getNome());
 		
-		
+		System.out.println(usuarioLogado.getTokenUser());
 		ModelAndView mv = new ModelAndView("redirect:/home").addObject("logado", session.getAttribute("email_usuario"));
 
 		return mv;

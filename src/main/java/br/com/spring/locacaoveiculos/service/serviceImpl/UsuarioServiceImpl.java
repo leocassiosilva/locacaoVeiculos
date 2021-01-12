@@ -39,6 +39,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 					.retrieve()
 					.bodyToMono(Usuario.class);
 			Usuario user = mono.block();
+			System.out.println(user.getTokenUser());
 			return user;
 		} catch (Exception e) {
 			return null;
