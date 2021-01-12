@@ -46,6 +46,7 @@ public class UsuarioController {
 		session.setAttribute("id_usuario", usuarioLogado.getId());
 		session.setAttribute("email_usuario", usuarioLogado.getEmail());
 		session.setAttribute("token",usuarioLogado.getTokenUser());
+		System.out.println(usuarioLogado.getTokenUser());
 		session.setAttribute("nome",usuarioLogado.getNome());
 		
 		System.out.println(usuarioLogado.getTokenUser());
