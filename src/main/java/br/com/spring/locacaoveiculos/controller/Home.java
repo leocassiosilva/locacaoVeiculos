@@ -7,6 +7,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.spring.locacaoveiculos.model.Usuario;
+
 @Controller
 public class Home {
 
@@ -20,5 +22,10 @@ public class Home {
 		ModelAndView mv = new ModelAndView("/home");
 		
 		return mv;
+	}
+	
+	@GetMapping("/index")
+	public String index(Usuario usuario) {
+		return "index";
 	}
 }
